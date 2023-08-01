@@ -29,6 +29,7 @@ public class SecurityConfig {
     }
     
     // 로그인할 때 사용할 임시 사용자(메모리에 임시 저장) bean 생성
+    /*
     @Bean
     public UserDetailsService inMemoryUserDetailsService() {
         // 사용자 상세 정보
@@ -52,6 +53,7 @@ public class SecurityConfig {
         
         return new InMemoryUserDetailsManager(user1, user2, user3);
     }
+    */
 //    
     // Security Filter 설정 bean:
     // 로그인/로그아웃 설정
@@ -64,8 +66,13 @@ public class SecurityConfig {
         // -> CSRF 기능 비활성화.
         http.csrf((csrf) -> csrf.disable());
         
-        // 로그인 페이지 설정 - 스프링에서 제공하는 기본 로그인 페이지를 사용. 
+        // 로그인 페이지 설정 - 스프링에서 제공하는 기본 로그인 페이지를 사용.
         http.formLogin(Customizer.withDefaults());
+//        http.formLogin((formLogin) ->
+//        formLogin
+//        .loginPage("/authentication/login")
+//        .failureUrl("/authentication/login?failed")
+//        );
         
         // 로그아웃 이후 이동할 페이지 - 메인 페이지
         http.logout((logout) -> logout.logoutSuccessUrl("/"));
