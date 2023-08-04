@@ -70,7 +70,7 @@ public class SecurityConfig {
         http.formLogin(Customizer.withDefaults());
 //        http.formLogin((formLogin) ->
 //        formLogin
-//        .loginPage("/authentication/login")
+//        .loginPage("/login")
 //        .failureUrl("/authentication/login?failed")
 //        );
         
