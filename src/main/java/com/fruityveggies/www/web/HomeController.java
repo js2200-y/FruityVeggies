@@ -18,9 +18,28 @@ public class HomeController {
     public String home(Model model) {
         log.info("home()");
         
-        LocalDateTime now = LocalDateTime.now();
-        model.addAttribute("now", now);
-        
         return "/main/index"; // View의 이름.
     }
+    
+    @GetMapping("/main/regulardelivery")
+    public String regulardelivery(Model model) {
+        log.info("regulardelivery()");
+        
+        return "/main/regulardelivery"; // View의 이름.
+    }
+    
+    @GetMapping("/main/market")
+    public String market(Model model) {
+        log.info("market()");
+        
+        return "/main/market"; // View의 이름.
+    }
+    
+    @GetMapping("/main/recipes")
+    public String recipes(Model model) {
+        log.info("recipes()");
+        
+        return "/main/recipes"; // View의 이름.
+    }
+
 }
