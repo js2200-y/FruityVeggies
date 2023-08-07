@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정기배송</title>
+<link
+ href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+ rel="stylesheet"
+ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+ crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/rescueOrder.css" />
+</head>
+
+
+
+
+<main>
+
+ <div class="my-2 card">
+  <div class="card-body">
+   <form method="post" style="margin: auto; width: 400px;">
+
+    
+     <h1 class="font-bold my-5" style="font-size: 26px;">주문 확인 및 결제</h1>    
+     <div class="my-48px h-14px w-full bg-gray-100 mt-40px mb-32px"></div>
+     <h1 class="font-bold my-4"  style="font-size: 26px;">배송 정보</h1>
+    
+
+    <div class="my-2">
+     <label class="form-label" for="orderName" >받는 사람</label>
+     <!-- data-testid="renewal-textfield" -->
+     <input class="form-control" id="orderName" type="text"
+      name="orderName" placeholder="이름을 입력해주세요." />
+    </div>
+    <div class="my-2">
+     <label class="form-label" for="orderPhone">휴대폰 번호</label> <input
+      class="form-control" id="orderPhone" type="text" name="orderPhone"
+      placeholder="휴대폰 번호를 입력해주세요." />
+    </div>
+    
+    <div class="my-2">
+      <label class="form-label" for="orderAddress">주소</label>
+      <div style="display: flex; align-items: center;">
+          <input class="form-control" id="orderAddress" type="text" style="width: 330px; margin-right: 10px;" 
+          name="orderAddress" disabled="" placeholder="주소를 검색하세요." />
+          <button class="btn" style="background-color: #9FE2BF;">검색</button>
+      </div>
+    </div>
+    <div>
+     <input class="form-control" id="orderAddress2" type="text"
+      name="orderAddress2" placeholder="상세주소를 입력하세요.">
+    </div>
+ 
+ <div class="my-2">
+    <label class="form-label" for="orderRequest">배송 요청 사항(선택)</label>
+    <select class="form-select" id="orderRequest" name="orderRequest">
+        <option value="선택안함">선택안함</option>
+        <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
+        <option value="문 앞에 놓아주시고 벨을 누르지 말아주세요.">문 앞에 놓아주시고 벨을 누르지 말아주세요.</option>
+        <option value="경비실에 맡아주세요">경비실에 맡아주세요</option>
+        <option value="부재 시 전화 또는 문자 주세요.">부재 시 전화 또는 문자 주세요.</option>
+        <option value="배송 전에 연락주세요.">배송 전에 연락주세요.</option>
+        <option value="직접 입력">직접 입력</option>
+    </select>
+    <div id="inputContainer" style="display: none;">
+        <input class="form-control my-2" id="customInput" type="text" name="customInput" placeholder="배송 요청사항을 입력하세요." />
+    </div>
+</div>
+
+<div class="my-48px h-14px w-full bg-gray-100 mt-40px mb-32px"></div>
+
+ <div>
+ <h1 class="font-bold my-4"  style="font-size: 26px;">주문 상품<span id="orderCount"  style="color: #9FE2BF;"> 1</span></h1>
+ <!-- th:text="${item.getCount()}" -->
+ </div>
+ 
+ 
+  <div class="image-container">
+    <div class="image-content">
+  <!--   th:src="${item.filepath}" -->
+  <img th:src="@{/img/마늘.jpg}" width="100" height="100">
+<!--   <img src=".${detail.images_loc}" width="600" height="425" style="margin-right: 700px; margin-left: -70px;" > -->
+     <!-- th:text="${item.name}" -->
+     <p class="text-bold" >item name</p>
+    </div>
+    </div>
+    
+<br>
+    <div class="border border-gray-200">
+     <div>
+      <div class="flex justify-between p-16px">
+      <!-- th:text="${item.name}" -->
+       <p class="text-16px text-gray-800" >item.name</p>
+       <!-- th:text="${item.price} + ' 원'" -->
+       <p class="text-16px text-gray-800" >item.price</p>
+      </div>
+     </div>
+
+      <div class="flex items-start justify-between border-t border-gray-200 bg-gray-100 p-16px">
+      <p class="text-16px font-semibold text-gray-800">배송비</p>
+      <p class="flex flex-col items-end gap-9px">
+       <span class="text-16px font-normal text-gray-800">무료</span>
+      </p>
+     </div> 
+    </div>
+    
+    <br>
+<div class="my-48px h-14px w-full bg-gray-100 mt-40px mb-32px"></div>
+
+ <div class="my-2">
+    <h1 class="font-bold my-4"  style="font-size: 26px;">결제 정보</h1>
+     <div class="flex flex-col gap-16px">
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">총 상품금액</p>
+       <!-- th:text="${item.price * item.count}" -->
+       <p class="text-16px" >원</p>
+      </div>
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">총 배송비</p>
+       <p class="text-16px">+0원</p>
+      </div>
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">사용 적립금</p>
+       <p class="text-16px">-0원</p>
+      </div>
+      <hr>
+      <div class="flex justify-between text-lg font-bold text-gray-800">
+       <p class="text-18px" >총 결제 금액</p>
+       <p class="text-18px text-brand-1" style="color: #9FE2BF;" 
+          >합계</p>
+          <!-- th:text="${item.price * item.count}" -->
+      </div>
+     </div>
+    </div>
+    
+    <div class="my-2">
+    <h1 class="font-bold my-4"  style="font-size: 20px;">결제 수단을 선택해주세요!</h1>
+    </div>
+   <div>
+     <button>카드</button>
+     <button>계좌이체</button>
+     <button>무통장입금</button>
+   </div>
+   <br> 
+    <br>
+
+
+     <div class="flex flex-row items-center gap-13px"
+     style="margin-bottom: 0px;">
+     <img
+      src="https://d3cpiew7rze14b.cloudfront.net/assets/login/Group_4383__2__X6V1UNE92.svg"
+      class="cursor-pointer" name="checkBox" alt="체크 박스">
+    <div class="flex w-full items-center justify-between">
+     <p class="font-body2 text-gray-600">&nbsp;&nbsp;[필수] 개인정보 수집 및 이용 동의</p>
+     <a
+      href="https://fantastic-interest-ad9.notion.site/1f2cdaba7c014ee8b53e76bb1d1e31cb"
+      target="_blank" rel="noreferrer">
+      <img
+      src="https://d3cpiew7rze14b.cloudfront.net/assets/buynow/One/Vector_6_glTm6KLoR.svg?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1659317729815"
+      alt="개인정보 수집 및 이용 동의" class="h-14px w-7px"></a>
+    </div>
+    </div>
+    
+    
+    <br>
+    <button class="btn btn-long" id="buyBtn" style="background-color: #9FE2BF;">바로 구매하기</button> 
+
+
+
+
+
+
+
+   </form>
+
+  
+
+
+  </div>
+ </div>
+
+
+</main>
+
+
+<script
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+ crossorigin="anonymous"></script>
+ 
+ <script src="/js/order/regularOrder.js"></script>
+ <
+</html>
