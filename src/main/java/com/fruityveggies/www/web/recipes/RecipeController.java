@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/recipes")
+@RequestMapping("/recipe")
 public class RecipeController {
     
     @GetMapping("/detail")
@@ -24,7 +24,7 @@ public class RecipeController {
     
     @GetMapping("/upload")
     public String recipe(Model model) {
-        log.info("recipe()");
+        log.info("upload()");
         
         return "/recipe/upload"; // View의 이름.
     }
