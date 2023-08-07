@@ -43,6 +43,9 @@ public class MemberController {
     
     @PostMapping("/signup")
     public String signUp(MemberSignUpDto dto) {
+    	
+    	
+    	
         log.info("signUp(dto={}) POST", dto);
         
         // 회원 가입 서비스 호출
