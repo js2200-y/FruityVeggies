@@ -21,6 +21,13 @@ public class HomeController {
         return "/main/index"; // View의 이름.
     }
     
+    @GetMapping("/main/mission")
+    public String mission(Model model) {
+        log.info("mission()");
+        
+        return "/main/mission"; // View의 이름.
+    }
+    
     @GetMapping("/main/regulardelivery")
     public String regulardelivery(Model model) {
         log.info("regulardelivery()");
