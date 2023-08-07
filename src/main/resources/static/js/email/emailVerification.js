@@ -6,7 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (email === '') {
             alert('이메일을 입력하세요.');
             return;
-        }
+        } else{
+			document
+				.getElementById('requestVerificationBtn')
+				.addEventListener(
+						'click',
+						function() {
+							document.querySelector('.verification-input-group').style.display = 'block';
+						});
+		}
 
         const data = { email };
         const reqUrl = '/email/verify';
@@ -25,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     emailConfirmBtn.addEventListener('click', async () => {
         const verificationCode = document.querySelector('input#verificationCode').value;
 
+		console.log("verificationCode :"+verificationCode);
+
+
         if (verificationCode === '') {
             alert('인증번호를 입력하세요.');
             return;
@@ -32,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = { verificationCode };
         const reqUrl = '/email/confirm';
+
+		console.log('test confirm');
+
 
         try {
             const response = await axios.post(reqUrl, data);

@@ -2,24 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/base_layout}">
-<head>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<head>
 <style>
 .verification-input-group {
 	display: none;
 }
 </style>
-</head>
+</head>	
+
 
 <main layout:fragment="main">
-	<div layout:fragment="main" class="container mt-5">
+	<div class="container mt-5">
 		<div class="card mx-auto" style="max-width: 400px;">
 			<div class="card-header bg-primary text-white text-center">
 				<h1>회원 가입 페이지</h1>
 			</div>
 			<div class="card-body">
-				<form method="post" th:action="@{/emailConfirm}">
+				<form method="post" th:action="@{/member/signup}">
 					<div class="form-group">
 						<label for="username">이름:</label> <input type="text"
 							class="form-control" id="username" name="username"
