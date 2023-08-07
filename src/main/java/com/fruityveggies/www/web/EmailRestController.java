@@ -47,7 +47,10 @@ public class EmailRestController {
 	  log.info("dto={}", dto);	  
 
 	  log.info("emailServiceImpl.ePw={}",emailServiceImpl.ePw);
-	  dto.setConfirmMessage("success");
+	  
+	  if (dto.getVerificationCode().equals(emailServiceImpl.ePw))
+		  dto.setConfirmMessage("success");
+	  
 	  if (!dto.getVerificationCode().equals(emailServiceImpl.ePw)) {
 		  dto.setConfirmMessage("fail");
 	  }	
