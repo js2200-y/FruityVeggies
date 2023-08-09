@@ -5,11 +5,61 @@
     <th:block layout:fragment="mycss">
     </th:block>    
     
-    <main layout:fragment="main">
-        레시피
+    <main layout:fragment="main" class="centered-content card">
+
+		<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <ul class="navbar-nav bg-light">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/community/capture/capturelist}">글 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/community/capture/capturecreate}">새 글 작성</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="my-2">
+        <div id="board" class="clearfix">
+            <form name="search" id="search" th:action="@{/mugmung/community/capture/search}" method="get">
+                <div class="card">
+                    <div class="p-form-group">
+                        <select name="searchCnd_search" id="searchCnd_search" title="검색항목선택" class="p-input">
+                            <option value="content">내용</option>
+                        </select>
+                        <input name="search" id="search" type="text" placeholder="검색어를 입력하세요" />
+                        <button type="submit" id="searchBtn" class="p-button black">검색</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
-    
-    <th:block layout:fragment="myscripts">
+
+    <main>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                               <a href="/recipe/detail"> <!-- Updated URL -->
+                        <img class="bd-placeholder-img card-img-top"
+                             src="/img/111.jpeg"
+                             alt="고기 이미지" width="100%" height="225"
+                             aria-label="Placeholder: Thumbnail"
+                             preserveAspectRatio="xMidYMid slice" />
+                    </a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+            
+    </main>
+
+	<th:block layout:fragment="myscripts">
     </th:block>
+
     
 </html>

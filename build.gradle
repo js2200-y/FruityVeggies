@@ -30,6 +30,10 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	
+	// 파일 업로드 시 필요
+    implementation 'commons-io:commons-io:2.11.0'
+	
+	
 		// Thymeleaf Layout Dialect
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
 	
