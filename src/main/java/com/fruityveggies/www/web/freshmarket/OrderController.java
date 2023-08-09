@@ -8,14 +8,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/order")
+@RequestMapping("/freshmarket")
 public class OrderController {
 
     @GetMapping("/freshmarketOrder")
     public String regularOrder() {
         
         log.info("regularOrder");
-       return "order/freshmarketOrder";
+       return "freshmarket/freshmarketOrder";
     }
     
 }

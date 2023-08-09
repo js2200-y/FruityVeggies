@@ -31,6 +31,8 @@ dependencies {
 	
 	// 파일 업로드 시 필요
     implementation 'commons-io:commons-io:2.11.0'
+    
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	
 	
 		// Thymeleaf Layout Dialect
