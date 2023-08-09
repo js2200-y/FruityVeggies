@@ -1,4 +1,4 @@
-package com.fruityveggies.www.repository.order;
+package com.fruityveggies.www.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

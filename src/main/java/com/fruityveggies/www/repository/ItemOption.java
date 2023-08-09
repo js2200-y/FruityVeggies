@@ -24,28 +24,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor  // Parameter가 없는 생성자
 @Entity // Jpa에서 관리하는 클래스로 테이블과 자동 매핑
 @Getter
-@Table(name = "ITEM")
-@SequenceGenerator(name = "ITEM_SEQ_GEN", sequenceName = "ITEM_SEQ", allocationSize = 1)
-public class Item {
+@Table(name = "ITEMOPTION")
+@SequenceGenerator(name = "ITEMOPTION_SEQ_GEN", sequenceName = "ITEMOPTION_SEQ", allocationSize = 1)
+public class ItemOption {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ_GEN")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEMOPTION_SEQ_GEN")
     private Long id;
     
     @Column(nullable = false)
     private String name; // 상품 이름
     
     @Column(nullable = false)
-    private String grow_char; // 재배 특징 
-    
-    @Column(nullable = false)
-    private String main_image_path; //
-  
-    @Column(nullable = false)
-    private Long ITEM_OPTION_ID; // 상품 정보
+    private int price; // 
     
     @Column(nullable = false) 
-    private String DETAIL_IMAGE_PATH;
+    private int MAX_COUNT;
     
     /*
      * @Column(nullable = false) private int count; // 상품 개수
