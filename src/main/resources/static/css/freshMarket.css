@@ -40,9 +40,10 @@
     padding:20px 0;
 }
 #order_wrap .right .top .action {padding-left: 20px;}
-#order_wrap .right .top .action #button {background-color: rgb(200, 227, 204); width: 30px; }
-#order_wrap .right .top .action input {text-align: center; width:30px;}
+#order_wrap .right .top .action #button {background-color: rgb(200, 227, 204); width: 30px; height: 30px; position: relative; }
+#order_wrap .right .top .action input {text-align: center; width:30px; }
 #order_wrap .right .top .action label {padding-left: 200px;}
+#order_wrap .right .top .action #buttonx {padding-left: 10px; background-color: #fff; width: 30px; text-align: center; height: 30px; position: relative;}
 #order_wrap .right .top .total_price p {}
 #order_wrap .right .total_price p:nth-child(1) {}
 #order_wrap .right .top .total_price .result_price {color: #cc0202; font-size:1.2rem;}

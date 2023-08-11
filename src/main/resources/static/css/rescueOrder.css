@@ -21,7 +21,7 @@
 /* 크기 줄이기 */
 .border, .border-gray-200, .p-16px, .text-16px, .font-semibold,
  .bg-gray-100, .border-t, .items-start, .gap-9px {
- max-width: 400px; /* 원하는 크기로 설정 */
+ max-width: 600px; /* 원하는 크기로 설정 */
  margin-bottom: 1px; /* 아래 간격을 음수 마진으로 조절 */
  margin-top: 1px; /* 위 간격을 음수 마진으로 조절 */
 }
@@ -171,7 +171,8 @@ hr {
 .modal-content {
  background-color: white;
  padding: 20px;
- max-width: 400px;
+ max-width: 600px;
  border-radius: 8px;
  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
+

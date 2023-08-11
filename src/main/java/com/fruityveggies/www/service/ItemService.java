@@ -2,6 +2,7 @@ package com.fruityveggies.www.service;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,17 +13,31 @@ import com.fruityveggies.www.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.fruityveggies.www.dto.ItemItemOptionDto;
+import com.fruityveggies.www.repository.Item;
+import com.fruityveggies.www.repository.ItemRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
-@RequiredArgsConstructor
+
+@Service
 public class ItemService {
 
-    private final ItemRepository itemRepository;
+    @Autowired
+    private ItemRepository itemRepository;
     
-    @Transactional(readOnly = true)
-    public List<Item> getItemsWithItemOption(Long itemId) {
-        log.info("getItemsWithItemOption(itemOption={})", itemId);
-
-        return itemRepository.findItemsWithItemOption(itemId);
+    public Item findItemById(long id) {
+        return itemRepository.findItemById(id);
     }
+    
+    public List<ItemItemOptionDto> getJoinedItemAndItemOptionByItemId(long id){
+        return itemRepository.getJoin(id);
+    }
+    
+
 }

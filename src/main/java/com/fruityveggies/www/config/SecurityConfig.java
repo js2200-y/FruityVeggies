@@ -65,8 +65,13 @@ public class SecurityConfig {
         .logout()
             .logoutUrl("/logout") // 로그아웃 URL 설정
             .logoutSuccessUrl("/") // 로그아웃 성공 후 이동할 URL 설정
-            .invalidateHttpSession(true); // 세션 무효화 설정 (로그아웃 시 세션 삭제)
-            
+            .invalidateHttpSession(true) // 세션 무효화 설정 (로그아웃 시 세션 삭제)
+        .and()
+        .formLogin()
+            .loginPage("/login") // 커스텀 로그인 페이지 경로 지정
+            .loginProcessingUrl("/login") // /login 경로로의 POST 요청을 처리
+            .permitAll(); // 누구나 접근 가능하게 설정
+        
 return http.build();
     }
 }
