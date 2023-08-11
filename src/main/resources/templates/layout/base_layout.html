@@ -14,7 +14,7 @@
     
     <link rel="stylesheet" type="text/css" th:href="@{/css/base_layout.css}">
 
-    
+        
     <th:block layout:fragment="mycss"></th:block>
 </head>
 <body>
@@ -46,10 +46,27 @@
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search..." aria-label="Search">
         </form>
-        <div class="text-end">
-          <button type="button" id="loginBtn" class="btn btn-outline-light me-2">로그인</button>
-          <button type="button" id="signBtn"class="btn btn-warning">회원가입</button>
-        </div>
+        <!-- 인증된 사용자이면(로그인 상태이면) -->
+                        <th:block sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <!-- 로그인한 username 표시 -->
+                                
+                                <span th:text="${session.email}"></span>
+                                <span th:text="${#authentication.principal.email}"></span>
+                                <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+                                <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
+                            </li>
+                        </th:block>
+                        
+                        <!-- 익명 사용자이면(로그인 하지 않은 상태이면) -->
+                        <th:block sec:authorize="isAnonymous()">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light me-2" th:href="@{/login}">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light me-2" th:href="@{ /member/signup }">회원가입</a>
+                            </li>
+                        </th:block>
       </div>
     </div>
   </header>
@@ -63,15 +80,18 @@
       <a class="p-2 link-secondary" th:href="@{/main/regulardelivery}">정기배송</a>
       <a class="p-2 link-secondary" th:href="@{/main/market}">싱싱마켓</a>
       <a class="p-2 link-secondary" th:href="@{/main/recipes}">레시피</a>
+
+      <a th:if="${isLoggedIn}" href="https://kauth.kakao.com/oauth/logout?client_id=64615d2948ebecc89b74c2a630c4a480&logout_redirect_uri=http://localhost:8030/logout">로그아웃</a>
       <a class="p-2 link-secondary" href="#"></a>
       <div  id="text-end1" style="display: none;">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search..." aria-label="Search">
         </form>  
-     </div>   
+     </div>     
         <div id="text-end2" style="display: none;">
           <button type="button" id="loginBtn1" class="btn btn-light text-dark me-2">로그인</button>
           <button type="button" id="signBtn1" class="btn btn-primary">회원가입</button>
+          
         </div>
     </nav>
   </div>
