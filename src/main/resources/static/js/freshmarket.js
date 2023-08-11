@@ -25,6 +25,7 @@
                     				<input type="number" class="numBox" min="1" max="10" value="1" readonly="readonly" />
                     				<button type="button" class="btn" id="button">+</button>
                     				<label>${numbersOnly}원</label>
+                    				<button type="button" class="btn btn-outline-dark" id="buttonx">x</button>
                     				<p><p>`;
                     action.appendChild(div);
                 }
