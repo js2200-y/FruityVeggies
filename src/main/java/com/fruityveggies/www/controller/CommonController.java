@@ -3,6 +3,7 @@ package com.fruityveggies.www.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,6 +18,11 @@ public class CommonController {
     public String login(Model model) {
         log.info("login()");
         return "/login/login";
+    }
+    @PostMapping("/login")
+    public String loginPost(Model model) {
+        log.info("loginPost()");
+        return "redirect:/main"; // 로그인 후 리다이렉트할 페이지 설정
     }
     
     @GetMapping("/login/mypage")
