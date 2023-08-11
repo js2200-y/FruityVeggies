@@ -2,6 +2,17 @@ package com.fruityveggies.www.service;
 
 import java.util.List;
 
+<<<<<<< HEAD
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fruityveggies.www.repository.Item;
+import com.fruityveggies.www.repository.ItemOption;
+import com.fruityveggies.www.repository.ItemRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequiredArgsConstructor
+
 @Service
 public class ItemService {
 
@@ -28,4 +39,5 @@ public class ItemService {
         return itemRepository.getJoin(id);
     }
     
+
 }
