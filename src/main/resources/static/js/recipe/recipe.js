@@ -5,8 +5,10 @@
  * 추가 버튼 클릭
  */
 
-//대표 사진 업로드
+
 document.addEventListener('DOMContentLoaded', () => {
+//대표 사진 업로드
+    
     // 이미지 클릭 시 파일 업로드 창 띄우기
     const uploadImage = document.getElementById("uploadImage");
     const fileInput = document.getElementById("fileInput");
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //필수재료 추가 버튼 누르면 input 추가 / 삭제버튼
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('ingredientContainer');
+    const ingredientContainer  = document.getElementById('ingredientContainer');
     const btnReq = document.getElementById('btnReq');
 
     btnReq.addEventListener('click', () => {
@@ -110,11 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
          // 삭제 버튼 추가
         const deleteButton = document.createElement('img');
-        deleteButton.src = '/image/del.svg';
+        deleteButton.src = '/img/del.svg';
         deleteButton.alt = '삭제';
         deleteButton.style.cursor = 'pointer';
         deleteButton.addEventListener('click', () => {
-            container.removeChild(newRow);
+            ingredientContainer.removeChild(newRow);
         });
         
         newRow.appendChild(newInput1);
@@ -123,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 삭제 버튼 추가
         newRow.appendChild(deleteButton);
 
-        container.appendChild(newRow);
+        ingredientContainer.appendChild(newRow);
     });
 
     function createInput(name, placeholder) {
@@ -137,10 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return input;
     }
 });
-
 // 부재료 추가버튼
-document.addEventListener('DOMContentLoaded',() => {
-    const container = document.getElementById('AddIngredIentContainer');
+document.addEventListener('DOMContentLoaded', () => {
+    const AddIngredIentContainer  = document.getElementById('AddIngredIentContainer');
     const btnAdd = document.getElementById('btnAdd');
 
     btnAdd.addEventListener('click', () => {
@@ -150,11 +151,11 @@ document.addEventListener('DOMContentLoaded',() => {
         
         // 삭제 버튼 추가
         const removeButton = document.createElement('img');
-        removeButton.src = '/image/del.svg';
+        removeButton.src = '/img/del.svg';
         removeButton.alt = '삭제';
         removeButton.style.cursor = 'pointer';
         removeButton.addEventListener('click', () => {
-            container.removeChild(newRow);
+            AddIngredIentContainer.removeChild(newRow);
         });
         
         newRow.appendChild(newInput);
@@ -162,7 +163,7 @@ document.addEventListener('DOMContentLoaded',() => {
         // 삭제 버튼 추가
         newRow.appendChild(removeButton);
 
-        container.appendChild(newRow);
+        AddIngredIentContainer.appendChild(newRow);
     });
 
     function createInput(name, placeholder) {
@@ -173,11 +174,11 @@ document.addEventListener('DOMContentLoaded',() => {
         input.classList.add('form-control');
         return input;
     }
-});
 
+});
 // 양념 추가버튼
-document.addEventListener('DOMContentLoaded',() => {
-    const container = document.getElementById('SeaningIngredientContainer');
+document.addEventListener('DOMContentLoaded', () => {
+    const SeaningIngredientContainer = document.getElementById('SeaningIngredientContainer');
     const btnSeaning = document.getElementById('btnSeaning');
 
     btnSeaning.addEventListener('click', () => {
@@ -187,11 +188,11 @@ document.addEventListener('DOMContentLoaded',() => {
         
         // 삭제 버튼 추가
         const deleteButton = document.createElement('img');
-        deleteButton.src = '/image/del.svg';
+        deleteButton.src = '/img/del.svg';
         deleteButton.alt = '삭제';
         deleteButton.style.cursor = 'pointer';
         deleteButton.addEventListener('click', () => {
-            container.removeChild(newRow);
+            SeaningIngredientContainer.removeChild(newRow);
         });
         
         newRow.appendChild(newInput);
@@ -199,7 +200,7 @@ document.addEventListener('DOMContentLoaded',() => {
         // 삭제 버튼 추가
         newRow.appendChild(deleteButton);
 
-        container.appendChild(newRow);
+        SeaningIngredientContainer.appendChild(newRow);
     });
 
     function createInput(name, placeholder) {
@@ -210,11 +211,11 @@ document.addEventListener('DOMContentLoaded',() => {
         input.classList.add('form-control');
         return input;
     }
-});
 
+});
 // 단계추가
-document.addEventListener('DOMContentLoaded',() => {
-    const container = document.getElementById('makingContainer');
+document.addEventListener('DOMContentLoaded', () => {
+    const makingContainer = document.getElementById('makingContainer');
     const btnStep = document.getElementById('btnStep');
 
     btnStep.addEventListener('click', () => {
@@ -229,18 +230,18 @@ document.addEventListener('DOMContentLoaded',() => {
 
         // 삭제 버튼 추가
         const deleButton = document.createElement('img');
-        deleButton.src = '/image/del.svg';
+        deleButton.src = '/img/del.svg';
         deleButton.alt = '삭제';
         deleButton.style.cursor = 'pointer';
         deleButton.addEventListener('click', () => {
-            container.removeChild(newRow);
+            makingContainer.removeChild(newRow);
         });
         
         
         // 삭제 버튼 추가
         newRow.appendChild(deleButton);
 
-        container.appendChild(newRow);
+        makingContainer.appendChild(newRow);
     });
 
     function createInput(name, placeholder) {
@@ -263,7 +264,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         const plusIcon = document.createElement('img');
         plusIcon.id = 'recipeUpload';
-        plusIcon.src = '/image/save.svg';
+        plusIcon.src = '/img/save.svg';
         plusIcon.alt = 'plus-icon';
         plusIcon.style.cursor = 'pointer';
 
@@ -281,11 +282,11 @@ document.addEventListener('DOMContentLoaded',() => {
         return imageUploadArea;
     }
     
-    
-});
+});   
+
 
 // 기준량 +,-
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
      // 결과를 표시할 element
   const resultElement = document.getElementById('result');
 
@@ -303,8 +304,8 @@ document.addEventListener('DOMContentLoaded',()=>{
      
     resultElement.innerText = number;
   });
-});
 
+});
 
 // 만드는 방법 이미지 업로드
 document.addEventListener('DOMContentLoaded', () => {
@@ -350,8 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Tip추가
-document.addEventListener('DOMContentLoaded',() => {
-    const container = document.getElementById('TipContainer');
+document.addEventListener('DOMContentLoaded', () => {
+    const TipContainer = document.getElementById('TipContainer');
     const btnTip = document.getElementById('btnTip');
 
     btnTip.addEventListener('click', () => {
@@ -366,18 +367,18 @@ document.addEventListener('DOMContentLoaded',() => {
 
         // 삭제 버튼 추가
         const deleButton = document.createElement('img');
-        deleButton.src = '/image/del.svg';
+        deleButton.src = '/img/del.svg';
         deleButton.alt = '삭제';
         deleButton.style.cursor = 'pointer';
         deleButton.addEventListener('click', () => {
-            container.removeChild(newRow);
+            TipContainer.removeChild(newRow);
         });
         
         
         // 삭제 버튼 추가
         newRow.appendChild(deleButton);
 
-        container.appendChild(newRow);
+        TipContainer.appendChild(newRow);
     });
 
     function createInput(name, placeholder) {
@@ -400,7 +401,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         const plusIcon = document.createElement('img');
         plusIcon.id = 'recipeUpload';
-        plusIcon.src = '/image/save.svg';
+        plusIcon.src = '/img/save.svg';
         plusIcon.alt = 'plus-icon';
         plusIcon.style.cursor = 'pointer';
 
@@ -417,6 +418,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         return imageUploadArea;
     }
+});   
+//작성완료 -> DB에 보냄
     
-    
-});
+

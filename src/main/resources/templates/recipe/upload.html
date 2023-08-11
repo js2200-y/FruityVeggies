@@ -12,10 +12,11 @@
             <div class="card-header text-center" >
                 <h1>레시피 작성</h1>
             </div>
+            <!-- 후기작성 적립금 안내 -->
             <img alt="recipe-point-info" src="/img/info.webp">
-            <div class="card-body">
-           
             
+            <div class="card-body">
+            <form method="post">
             <div class="multiple-upload">
                     <img alt="대표 이미지 업로드" src="/img/recipe-image-upload.svg" id="uploadImage" style="cursor: pointer;">
                     <input type="file" id="fileInput">
@@ -23,10 +24,8 @@
                     <!-- 이미지 미리보기 -->
                     <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
                 </div>
-            
-                <form method="post">
+                
                     <div class="my-2">
-                        
                         <input class="form-control" id="title"
                             type="text" name="title"  placeholder="레시피의 이름이 무엇인가요?"/>
                         <p class="font-body" id="CurrentTextLengthInput" style="line-height: 1;">0/20</p>
@@ -37,13 +36,19 @@
                         <p class="font-body" id="CurrentTextLengthTextarea" style="line-height: 1;">0/240</p>
                     </div>
                     
+                    <hr>
+                    
                     <div class="my-2">
                         <label class="form-label" for="title">예상 소요 시간*</label>
                         <br/>
-                        <button id="btnTime1">15분 컷</button>
-                        <button id="btnTime2">30분 컷</button>
-                        <button id="btnTime3">45분 컷</button>
-                        <button id="btnTime4">45분 이상</button>
+                        <input type="radio" id="btnTime1" name="timeEstimate" value="15" />
+                        <label for="btnTime1">15분 컷</label>
+                        <input type="radio" id="btnTime2" name="timeEstimate" value="30" />
+                        <label for="btnTime2">30분 컷</label>
+                        <input type="radio" id="btnTime3" name="timeEstimate" value="45" />
+                        <label for="btnTime3">45분 컷</label>
+                        <input type="radio" id="btnTime4" name="timeEstimate" value="over45" />
+                        <label for="btnTime4">45분 이상</label>
                     </div>
                     <hr>
                     <div class="my-2">
@@ -141,7 +146,7 @@
                         
                             <div id="recipe-image-upload">
                                 <input type="file" id="recipeUploadInput" >
-                                <img id="recipeUpload" src="/image/save.svg" alt="plus-icon" style="cursor: pointer;">
+                                <img id="recipeUpload" src="/img/save.svg" alt="plus-icon" style="cursor: pointer;">
                                 
                                 <!-- 이미지 미리보기 -->
                                 <img id="preImage" src="#" alt="Image Preview" style="display: none;"> 
@@ -165,7 +170,7 @@
                             type="text" name="author" th:value="${ #authentication.name }" />
                     </div>
                     <div class="my-2">
-                        <input class="form-control btn btn-outline-success" 
+                        <input id="btnSave"  class="form-control btn btn-outline-success" 
                             type="submit" value="작성 완료" />
                     </div>
                 </form>
