@@ -1,5 +1,7 @@
 package com.fruityveggies.www.repository.recipes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +29,6 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RECIPES_SEQ_GEN")
     private Long id;
     
-    @Column
-    private Long recipe_id;
     
     @Column
     private String image;
@@ -49,7 +49,7 @@ public class Recipe {
     private String category_sub;
     
     @Column
-    private String hashtag;
+    private List<String> hashtag;
     
     @Column
     private String reference_amount;

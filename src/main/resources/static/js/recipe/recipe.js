@@ -103,12 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const ingredientContainer  = document.getElementById('ingredientContainer');
     const btnReq = document.getElementById('btnReq');
 
-    btnReq.addEventListener('click', () => {
+    btnReq.addEventListener('click', (e) => {
+        e.preventDefault();
+        
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
 
-        const newInput1 = createInput('Required_Ingredients', '예) 당근');
-        const newInput2 = createInput('Required_Ingredients', '예) 1개');
+        const newInput1 = createInput('reqIngredNames', '예) 당근');
+        const newInput2 = createInput('reqIngredAmounts', '예) 1개');
         
          // 삭제 버튼 추가
         const deleteButton = document.createElement('img');
@@ -144,10 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const AddIngredIentContainer  = document.getElementById('AddIngredIentContainer');
     const btnAdd = document.getElementById('btnAdd');
 
-    btnAdd.addEventListener('click', () => {
+    btnAdd.addEventListener('click', (e) => {
+        e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
-        const newInput = createInput('Additional_Ingredients', '예) 달걀');
+        const newInput = createInput('addIngredNames', '예) 달걀');
         
         // 삭제 버튼 추가
         const removeButton = document.createElement('img');
@@ -181,10 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const SeaningIngredientContainer = document.getElementById('SeaningIngredientContainer');
     const btnSeaning = document.getElementById('btnSeaning');
 
-    btnSeaning.addEventListener('click', () => {
+    btnSeaning.addEventListener('click', (e) => {
+        e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
-        const newInput = createInput('Seaning', '예) 소금, 1큰술');
+        const newInput = createInput('seasoningNmaes', '예) 소금, 1큰술');
         
         // 삭제 버튼 추가
         const deleteButton = document.createElement('img');
@@ -218,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const makingContainer = document.getElementById('makingContainer');
     const btnStep = document.getElementById('btnStep');
 
-    btnStep.addEventListener('click', () => {
+    btnStep.addEventListener('click', (e) => {
+        e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
         const newInput = createInput( 'making','만드는 방법을 입력하세요.');
@@ -355,7 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const TipContainer = document.getElementById('TipContainer');
     const btnTip = document.getElementById('btnTip');
 
-    btnTip.addEventListener('click', () => {
+    btnTip.addEventListener('click', (e) => {
+        e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
         const newInput = createInput( 'TIP','팁을 입력하세요.');
@@ -419,6 +425,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return imageUploadArea;
     }
 });   
-//작성완료 -> DB에 보냄
-    
+
+//해시태그 체크박스
+document.addEventListener('DOMContentLoaded', () => {
+    const btnSave = document.querySelector('#btnSave');
+    btnSave.addEventListener('click', () => {
+        console.log('test');
+        let hash = [];
+        for(let i = 1; i <= 7; i++) {
+            let hashtag = document.querySelector(`#hashtag${i}`)[i].checked;
+            if(hashtag) {
+                let hashtagValue = document.querySelector(`#hashtag${i}`).value;
+                hash.push(hashtagValue);
+            }
+        }
+
+        console.log(hash);
+        
+    });
+});
 

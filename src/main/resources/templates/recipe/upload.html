@@ -16,14 +16,14 @@
             <img alt="recipe-point-info" src="/img/info.webp">
             
             <div class="card-body">
-            <form method="post">
+            <form method="post" id="formRe" >
             <div class="multiple-upload">
                     <img alt="대표 이미지 업로드" src="/img/recipe-image-upload.svg" id="uploadImage" style="cursor: pointer;">
                     <input type="file" id="fileInput">
                     
                     <!-- 이미지 미리보기 -->
                     <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
-                </div>
+            </div>
                 
                     <div class="my-2">
                         <input class="form-control" id="title"
@@ -41,41 +41,42 @@
                     <div class="my-2">
                         <label class="form-label" for="title">예상 소요 시간*</label>
                         <br/>
-                        <input type="radio" id="btnTime1" name="timeEstimate" value="15" />
-                        <label for="btnTime1">15분 컷</label>
-                        <input type="radio" id="btnTime2" name="timeEstimate" value="30" />
-                        <label for="btnTime2">30분 컷</label>
-                        <input type="radio" id="btnTime3" name="timeEstimate" value="45" />
-                        <label for="btnTime3">45분 컷</label>
-                        <input type="radio" id="btnTime4" name="timeEstimate" value="over45" />
-                        <label for="btnTime4">45분 이상</label>
+                        <input class="radio_input" type="radio" id="cooking_time1" name="cooking_time" value="15" />
+                        <label for="cooking_time1">15분 컷</label>
+                        <input class="radio_input" type="radio" id="cooking_time2" name="cooking_time" value="30" />
+                        <label for="cooking_time2">30분 컷</label>
+                        <input class="radio_input" type="radio" id="cooking_time3" name="cooking_time" value="45" />
+                        <label for="cooking_time3">45분 컷</label>
+                        <input class="radio_input" type="radio" id="cooking_time4" name="cooking_time" value="over45" />
+                        <label for="cooking_time4">45분 이상</label>
                     </div>
+                   
                     <hr>
                     <div class="my-2">
                         <label class="form-label" for="category">카테고리*</label>
                         <div class="d-flex">
-                             <select class="form-select me-3" aria-label="Default select example">
+                             <select class="form-select me-3" name="category_main" aria-label="Default select example">
                                  <option selected>요리 분류</option>
-                                 <option value="1">한식</option>
-                                 <option value="2">중식</option>
-                                 <option value="3">양식</option>
-                                 <option value="4">일식</option>
-                                 <option value="5">분식</option>
-                                 <option value="6">베이킹</option>
+                                 <option value="한식">한식</option>
+                                 <option value="중식">중식</option>
+                                 <option value="양식">양식</option>
+                                 <option value="일식">일식</option>
+                                 <option value="분식">분식</option>
+                                 <option value="베이킹">베이킹</option>
                              </select>
-                             <select class="form-select" aria-label="Default select example">
+                             <select class="form-select" name="category_sub" aria-label="Default select example">
                                  <option selected>요리 종류</option>
-                                 <option value="1">덮밥·볶음밥</option>
-                                 <option value="2">면요리</option>
-                                 <option value="3">샐러드</option>
-                                 <option value="4">밑반찬</option>
-                                 <option value="5">찌개·국</option>
-                                 <option value="6">조림</option>
-                                 <option value="7">찜</option>
-                                 <option value="8">전·튀김</option>
-                                 <option value="9">디저트</option>
-                                 <option value="10">구이</option>
-                                 <option value="11">기타</option>
+                                 <option value="덮밥·볶음밥">덮밥·볶음밥</option>
+                                 <option value="면요리">면요리</option>
+                                 <option value="샐러드">샐러드</option>
+                                 <option value="밑반찬">밑반찬</option>
+                                 <option value="찌개·국">찌개·국</option>
+                                 <option value="조림">조림</option>
+                                 <option value="찜">찜</option>
+                                 <option value="전·튀김">전·튀김</option>
+                                 <option value="디저트">디저트</option>
+                                 <option value="구이">구이</option>
+                                 <option value="기타">기타</option>
                              </select>
                          </div>
                     </div>
@@ -83,13 +84,20 @@
                     <div class="my-2">
                         <label class="form-label" for="hashtag">해시태그</label>
                         <br/>
-                        <button id="btnTag1">비건</button>
-                        <button id="btnTag2">간단요리</button>
-                        <button id="btnTag3">다이어트요리</button>
-                        <button id="btnTag4">건강식</button>
-                        <button id="btnTag5">든든한</button>
-                        <button id="btnTag6">집밥</button>
-                        <button id="btnTag7">냉장고털이</button>
+                        <input type="checkbox" name="hashtag" id="hashtag1" value="비건"> 
+                            <label for="btnTag1">비건</label>
+                        <input type="checkbox" name="hashtag" id="hashtag2" value="간단요리"> 
+                            <label for="btnTag2">간단요리</label>
+                        <input type="checkbox" name="hashtag" id="hashtag3" value="다이어트요리"> 
+                            <label for="btnTag3">다이어트요리</label>
+                        <input type="checkbox" name="hashtag" id="hashtag4" value="건강식"> 
+                            <label for="btnTag4">건강식</label>
+                        <input type="checkbox" name="hashtag" id="hashtag5" value="든든한"> 
+                            <label for="btnTag5">든든한</label>
+                        <input type="checkbox" name="hashtag" id="hashtag6" value="집밥"> 
+                            <label for="btnTag6">집밥</label>
+                        <input type="checkbox" name="hashtag" id="hashtag7" value="냉장고털이"> 
+                            <label for="btnTag7">냉장고털이</label>
                     </div>
                     
                     <hr class="h-14px bg-gray-0">
@@ -115,9 +123,9 @@
                         <div class="d-flex" >
                             
                             <input class="form-control" id="Required_Ingredients1"
-                                type="text" name="Required_Ingredients"   placeholder="예) 당근"/>
+                                type="text" name="reqIngredNames" placeholder="예) 당근"/>
                             <input class="form-control" id="Required_Ingredients2"
-                                type="text" name="Required_Ingredients" required  placeholder="예) 1개"/>
+                                type="text" name="reqIngredAmounts" required  placeholder="예) 1개"/>
                             
                         </div>
                         <br>
@@ -170,6 +178,9 @@
                             type="text" name="author" th:value="${ #authentication.name }" />
                     </div>
                     <div class="my-2">
+                    <button type="button" id="testBtn">test button</button>
+                         <!-- <input id="btnSave"  class="form-control btn btn-outline-success" 
+                            value="작성 완료" /> -->
                         <input id="btnSave"  class="form-control btn btn-outline-success" 
                             type="submit" value="작성 완료" />
                     </div>
