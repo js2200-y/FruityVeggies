@@ -40,7 +40,7 @@ public class RecipeController {
     public String recipes(Model model) {
         log.info("recipes()");
         
-        return "/recipe/detail"; // View의 이름.
+        return "/recipe/detail";
     }
     
     @GetMapping("/upload")
@@ -55,6 +55,7 @@ public class RecipeController {
         
         return "/recipe/upload"; // View의 이름.
     }
+    
 
     @PostMapping("/upload")
     public String create(RecipeUploadDto dto) {
