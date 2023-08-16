@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 /*스크롤 컨트롤*/    
     
-    const loginBtn = document.querySelector('button#loginBtn');
+    const loginBtn = document.querySelector('button#loginBtn1');
     loginBtn.addEventListener('click', function(){
         console.log('login');
         location.href="/login";
     });
     
     
-    const signBtn = document.querySelector('button#signBtn');
+    const signBtn = document.querySelector('button#signBtn1');
     signBtn.addEventListener('click', function(){
         console.log('signup');
     });
