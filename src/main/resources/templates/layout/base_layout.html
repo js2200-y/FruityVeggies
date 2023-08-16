@@ -25,15 +25,15 @@
     <!-- <img th:src="@{/img/logo.png}" alt="이미지" class="h-72px w-72px" style="padding-right: 10px;">
     <span class="fs-4">fruityVeggies</span> -->
     
-    <header class="p-3 text-bg-dark">
+    <header class="p-3">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
           <img th:src="@{/img/logo.png}" alt="이미지" class="h-72px w-72px" style="padding-right: 10px;"><use xlink:href="#bootstrap"></use></svg>
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 18px;font-weight: 900;">
-            <li><a href="/" class="nav-link px-2 text-white" style="font-size: 30px; font-weight: 900;">FruityVeggies</a></li>
+            <li><a href="/" class="nav-link px-2 text-black" style="font-size: 30px; font-weight: 900;">FruityVeggies</a></li>
           <!-- <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
           <li><a href="/" class="nav-link px-2 text-white">Features</a></li>
           <li><a href="/" class="nav-link px-2 text-white">Pricing</a></li>
@@ -41,10 +41,10 @@
           <li><a href="/" class="nav-link px-2 text-white">About</a></li> -->
         </ul>
 
-        <button type="button" class="btn btn-outline-light me-2">장바구니</button>
+        <button type="button" class="btn btn-outline-black me-2">장바구니</button>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search..." aria-label="Search">
+          <input type="search" class="form-control form-control-dark text-bg-black" placeholder="Search..." aria-label="Search">
         </form>
         <!-- 인증된 사용자이면(로그인 상태이면) -->
                         <th:block sec:authorize="isAuthenticated()">
@@ -61,10 +61,10 @@
                         <!-- 익명 사용자이면(로그인 하지 않은 상태이면) -->
                         <th:block sec:authorize="isAnonymous()">
                             <li class="nav-item">
-                                <a class="btn btn-outline-light me-2" th:href="@{/login}">로그인</a>
+                                <a class="btn btn-outline-black me-2" th:href="@{/login}">로그인</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-outline-light me-2" th:href="@{ /member/signup }">회원가입</a>
+                                <a class="btn btn-outline-black me-2" th:href="@{ /member/signup }">회원가입</a>
                             </li>
                         </th:block>
       </div>
@@ -75,24 +75,24 @@
   <header class="d-flex justify-content-center py-3" id="header">
   <div id="lnb">
   <div class="nav-scroller " style="position: relative; background-color: rgba(255, 255, 255, 0.8); z-index: 1;">
-    <nav class="nav d-flex justify-content-between" style="font-size: 18px;font-weight: 900; background: white;">
-      <a class="p-2 link-secondary" th:href="@{/main/mission}">우리의 미션</a> 
-      <a class="p-2 link-secondary" th:href="@{/main/regulardelivery}">정기배송</a>
-      <a class="p-2 link-secondary" th:href="@{/main/market}">싱싱마켓</a>
-      <a class="p-2 link-secondary" th:href="@{/main/recipes}">레시피</a>
+    <nav class="nav d-flex justify-content-between " style="font-size: 15px;font-weight: 900; background: white;">
+      <a class="link-secondary" th:href="@{/main/mission}" style="padding: 0 15px; margin-right: 250px;" >우리의 미션</a> 
+      <a class="link-secondary" th:href="@{/main/regulardelivery}" style="padding: 0 15px; margin-right: 250px;">정기배송</a>
+      <a class="link-secondary" th:href="@{/main/market}" style="padding: 0 15px;; margin-right: 250px;">싱싱마켓</a>
+      <a class="link-secondary" th:href="@{/main/recipes}" style="padding: 0 15px; ">레시피</a>
 
       <a th:if="${isLoggedIn}" href="https://kauth.kakao.com/oauth/logout?client_id=64615d2948ebecc89b74c2a630c4a480&logout_redirect_uri=http://localhost:8030/logout">로그아웃</a>
-      <a class="p-2 link-secondary" href="#"></a>
-      <div  id="text-end1" style="display: none;">
+      <a class="link-secondary " href="#" style="padding-right: 50px; font-size: 15px;"></a>
+     <!--  <div  id="text-end1" style="display: none;">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-white" placeholder="Search..." aria-label="Search">
         </form>  
-     </div>     
+    </div>     
         <div id="text-end2" style="display: none;">
           <button type="button" id="loginBtn1" class="btn btn-light text-dark me-2">로그인</button>
           <button type="button" id="signBtn1" class="btn btn-primary">회원가입</button>
           
-        </div>
+        </div> --> 
     </nav>
   </div>
   </div>  
