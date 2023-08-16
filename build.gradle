@@ -32,8 +32,11 @@ dependencies {
 	// 파일 업로드 시 필요
     implementation 'commons-io:commons-io:2.11.0'
 	
+	// 채팅-websocket
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	
-		// Thymeleaf Layout Dialect
+	// Thymeleaf Layout Dialect
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
 	
 	compileOnly 'org.projectlombok:lombok'
