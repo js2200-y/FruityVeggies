@@ -9,11 +9,10 @@ import com.fruityveggies.www.dto.ItemItemOptionDto;
 import com.fruityveggies.www.repository.Item;
 import com.fruityveggies.www.repository.ItemRepository;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequiredArgsConstructor
+
 @Service
 public class ItemService {
 
@@ -28,4 +27,5 @@ public class ItemService {
         return itemRepository.getJoin(id);
     }
     
+
 }
