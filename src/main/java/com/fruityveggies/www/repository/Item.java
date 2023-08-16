@@ -19,11 +19,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor // Parameter로 모든 변수를 받는 생성자
 @NoArgsConstructor  // Parameter가 없는 생성자
 @Entity // Jpa에서 관리하는 클래스로 테이블과 자동 매핑
 @Getter
+@ToString
 @Table(name = "ITEM")
 @SequenceGenerator(name = "ITEM_SEQ_GEN", sequenceName = "ITEM_SEQ", allocationSize = 1)
 public class Item {
@@ -41,20 +43,23 @@ public class Item {
     @Column(nullable = false)
     private String main_image_path; //
   
-    @Column(nullable = false)
-    private Long ITEM_OPTION_ID; // 상품 정보
+    // 하나의 item이 여러개의 옵션을 가질 수 있다.
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private ItemOption itemOption; // 상품 정보
     
     @Column(nullable = false) 
-    private String DETAIL_IMAGE_PATH;
+    private String detail_image_path;
     
     /*
      * @Column(nullable = false) private int count; // 상품 개수
      */    
-    
-    // 판매자 연결
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private Member user;
+    /*
+     * // 판매자 연결
+     * 
+     * @ManyToOne(fetch = FetchType.EAGER)
+     * 
+     * @JoinColumn(name = "user_id") private Member user;
+     */
 
     
 //    @OneToMany(mappedBy = "item")
