@@ -13,7 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
     
-//    @PreAuthorize("hasRole('USER')") // 페이지 접근 이전에 인증(권한, 로그인) 여부를 확인.
+//    @PreAuthorize("hassRole('USER')") // 페이지 접근 이전에 인증(권한, 로그인) 여부를 확인.
+    
     @GetMapping("/")
     public String home(Model model) {
         log.info("home()");

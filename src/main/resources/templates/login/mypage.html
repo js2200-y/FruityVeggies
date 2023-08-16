@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
+    <th:block layout:fragment="mycss">
+    </th:block>    
+    
+    <main layout:fragment="main" style="min-height: 100vh;">
+
+    <div class="text-center">
+        
+        <h1>사용자 정보</h1>
+        <p>이메일: <span th:text="${session.email}"></span></p>
+        <p>가입경로: <span th:text="${session.oauthType}"></span></p>
+        <div class="d-flex flex-column align-items-center">
+            <h1>최신 주문내역</h1>
+            <a class="btn btn-outline-black me-2" th:href="@{orderhistory}">주문내역 보기</a>
+            <button type="button" class="btn btn-outline-dark" style="width: 350px;">내 회원정보</button>
+            
+            </div>
+            </div>
+            
+    </main>
+    
+    <th:block layout:fragment="myscripts">
+    </th:block>
+    
+</html>
