@@ -21,7 +21,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "ORDERS")
 @SequenceGenerator(name = "ORDERS_SEQ_GEN", sequenceName = "ORDERS_SEQ", allocationSize = 1)
-public class Order extends BaseTimeEntity {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDERS_SEQ_GEN")
@@ -46,7 +46,7 @@ public class Order extends BaseTimeEntity {
     private String orderaddress2;
     
     @Column(nullable = false)
-    private String orderquest;
+    private String orderrequest;
     
     
 }

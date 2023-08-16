@@ -11,7 +11,7 @@ public class freshmarketOrderDto {
     private String orderphone;
     private String orderaddress1;
     private String orderaddress2;
-    private String orderquest;
+    private String orderrequest;
     private int price;
     private int count;
     
@@ -21,7 +21,7 @@ public class freshmarketOrderDto {
                 .orderphone(orderphone)
                 .orderaddress1(orderaddress1)
                 .orderaddress2(orderaddress2)
-                .orderquest(orderquest)
+                .orderrequest(orderrequest)
                 .price(price)
                 .count(count)
                 .build();
