@@ -40,8 +40,9 @@ public class ReviewController {
 	}
 	
 	@GetMapping("/review")
-    public void review() {
+    public void review(@RequestParam(value = "id") Long id) {
         log.info("review() GET");
+        log.info("id={}", id);
         
     }
 }

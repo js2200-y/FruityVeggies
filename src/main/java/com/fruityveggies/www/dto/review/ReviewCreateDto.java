@@ -10,6 +10,7 @@ public class ReviewCreateDto {
 	private int star_score;
 	private String content;
 	private String writer;
+	private Long itemId;
 	
 	
 	// Dto를 엔터티 객체로 변환해서 리턴하는 메서드:
@@ -18,6 +19,7 @@ public class ReviewCreateDto {
 				.star_score(star_score)
 				.content(content)
 				.writer(writer)
+				.item_id(itemId)
 				.build();
 	}
 }

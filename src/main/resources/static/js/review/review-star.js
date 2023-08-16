@@ -58,6 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
 			alert('별점과 내용을 반드시 입력하세요.');
 			return;
 		}
+		// 쿼리스트링 id값 알아내기 시작
+   // 주어진 URL
+   const url = window.location.href;
+   
+   // URL 객체 생성
+   const urlObject = new URL(url);
+   
+   // URLSearchParams 객체 생성
+   const searchParams = new URLSearchParams(urlObject.search);
+   
+   // "id" 쿼리스트링 값 가져오기
+   const idValue = searchParams.get("id");
+   
+   console.log(idValue); // "1" 출력
+   const itemId = document.querySelector('#itemId');
+   itemId.value = idValue;
+// 쿼리스트링 id값 알아내기 끝
 		reviewForm.append('star_score', star_score); //star_score.title-> star_score = item.value로 받으니까 
 		const check = confirm('변경 내용을 저장할까요?');
 		if (check) {

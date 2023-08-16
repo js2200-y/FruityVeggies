@@ -40,6 +40,9 @@ public class Review {
 	@Column(nullable = false) // Not Null 제약조건
 	private String writer;
 	
+	@Column(nullable = false) // Not Null 제약조건
+	private Long item_id;
+	
 	
 	
 	
