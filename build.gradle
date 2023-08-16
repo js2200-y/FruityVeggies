@@ -35,8 +35,11 @@ dependencies {
     
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	
+	// 채팅-websocket
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	
-		// Thymeleaf Layout Dialect
+	// Thymeleaf Layout Dialect
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
 	
 	compileOnly 'org.projectlombok:lombok'

@@ -1,7 +1,13 @@
 /**
  * 
  */
+
 function handleBoxClick(type) {
+	
+	
+	
+	
+	
 		const singleBoxB = document.querySelector('#singleBox');
 		const familyBoxB = document.querySelector('#familyBox');
         const singleBox = document.getElementById('exampleRadios1');
@@ -151,6 +157,33 @@ document.addEventListener('DOMContentLoaded', () =>{
     	}
  	 }
 	});
+	
+	 const maxSelection = 3; // Maximum number of checkboxes to be selected
+
+        // Function to update the selection count for a category
+        function updateSelectionCount(category) {
+            const checkboxes = document.querySelectorAll(`[name="${category}"]:checked`);
+            const remainingCheckboxes = document.querySelectorAll(`[name="${category}"]:not(:checked)`);
+
+            if (checkboxes.length >= maxSelection) {
+                remainingCheckboxes.forEach((checkbox) => {
+                    checkbox.disabled = true;
+                });
+            } else {
+                remainingCheckboxes.forEach((checkbox) => {
+                    checkbox.disabled = false;
+                });
+            }
+        }
+
+        // Add event listeners to the checkboxes
+        const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        allCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', () => {
+                const category = checkbox.getAttribute('name');
+                updateSelectionCount(category);
+            });
+        });
 	
 });
     

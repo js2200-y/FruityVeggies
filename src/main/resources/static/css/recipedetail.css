@@ -80,3 +80,55 @@
   background-color: #45a049;
 }
 
+/*좋아요*/
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.bottom {
+    margin-top: 200px;
+}
+
+.text-15px {
+    font-size: 15px;
+}
+
+.text-gray{
+    color: #333;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+button img {
+    width: 24px;
+    height: 24px;
+}
+
+.h-14px {
+    height: 14px;
+}
+
+.bg-gray-0 {
+    background-color: #f0f0f0;
+}
+
+.sm-my-48px {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
