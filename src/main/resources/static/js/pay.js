@@ -19,8 +19,8 @@ tossPaymentsCardBtn.addEventListener('click', () => {
       orderId: 'Io63ef89pAyGLgQOk0lEx', // 주문 ID(주문 ID는 상점에서 직접 만들어주세요.)
       orderName: '토스 티셔츠', // 주문명
       customerName: '김토스', // 구매자 이름
-      successUrl: window.location.origin + "/pay/success", // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
-      failUrl: window.location.origin + "/pay/fail", // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+      successUrl: window.location.origin + "/freshmarket/success", // 결제 성공 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
+      failUrl: window.location.origin + "/freshmarket/fail", // 결제 실패 시 이동할 페이지(이 주소는 예시입니다. 상점에서 직접 만들어주세요.)
     })
     .catch(function (error) {
       if (error.code === 'USER_CANCEL') {

@@ -36,7 +36,7 @@
     const opDetailText = selectedOption_text;
     console.log('opDetailText : '+opDetailText)
 
-    if (!(selectedOptionsSet.has(selectedOption_value) || selectedOption_text =='옵션을 선택해주세요')) {// 없는 옵션을 선택하면 아래실행()
+    if (! (selectedOptionsSet.has(opDetailText) || selectedOption_text =='옵션을 선택해주세요')) {// 없는 옵션을 선택하면 아래실행()
     
         selectedOptionsSet.add(selectedOption_value);
     	for(let a of selectedOptionsSet){
@@ -390,4 +390,5 @@ const cart_btn = document.querySelector('#cart_btn');
 	}); 
 // 장바구니 버튼 끝
     	 
+
  });

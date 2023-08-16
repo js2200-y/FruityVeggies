@@ -15,11 +15,9 @@ import com.fruityveggies.www.repository.ItemRepository;
 import com.fruityveggies.www.repository.OrderItems;
 import com.fruityveggies.www.repository.OrderItemsRepository;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class ItemService {
 
@@ -34,6 +32,7 @@ public class ItemService {
     
     public Item findItemById(long id) {
         return itemRepository.findItemById(id);
+        
     }
     
     public List<ItemItemOptionDto> getJoinedItemAndItemOptionByItemId(long id){
@@ -110,4 +109,5 @@ public class ItemService {
 		return cartRepository.findByUserEmailOrderByDesc(id);
 	}
     
+
 }
