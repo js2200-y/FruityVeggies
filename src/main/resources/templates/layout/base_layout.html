@@ -52,7 +52,7 @@
                                 <!-- 로그인한 username 표시 -->
                                 
                                 <span th:text="${session.email}"></span>
-                                <span th:text="${#authentication.principal.email}"></span>
+                                <span id="userId" th:text="${#authentication.principal.email}"></span>
                                 <a class="nav-link" th:href="@{/logout}">로그아웃</a>
                                 <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
                             </li>

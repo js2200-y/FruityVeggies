@@ -43,32 +43,7 @@ public class ItemOption {
     @Column(nullable = false) 
     private int max_count;
     
-//    @Column(nullable = false) 
-//    private Long option_id;
-    
     @Column(nullable = false)
     private Long optionId;
-    
-    /*
-     * @Column(nullable = false) private int count; // 상품 개수
-     */    
-    
-    // 판매자 연결
-    /*
-     * @ManyToOne(fetch = FetchType.EAGER)
-     * 
-     * @JoinColumn(name = "user_id") private Member user;
-     */
-
-    
-//    @OneToMany(mappedBy = "item")
-//    private List<OrderList> orderLists = new ArrayList<>();
-    
-    
-//    @OneToMany(mappedBy = "item")
-//    private List<CartItem> cart_item = new ArrayList<>();
-  
-    
-    
     
 }
