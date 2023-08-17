@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class CommonController {
+	
     /**
      * 로그인 페이지
      * @return
@@ -23,7 +24,7 @@ public class CommonController {
     @PostMapping("/login")
     public String loginPost(Model model) {
         log.info("loginPost()");
-        return "redirect:/main"; // 로그인 후 리다이렉트할 페이지 설정
+        return "redirect:/login/login"; // 로그인 후 리다이렉트할 페이지 설정
     }
     
     @GetMapping("/login/mypage")
