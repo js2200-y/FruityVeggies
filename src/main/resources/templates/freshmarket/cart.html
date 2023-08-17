@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
+
+	<main layout:fragment="main">
+
+    	<div class="my-2 card">
+	    <div class="card-header text-center">
+	    	<h1>장바구니</h1>
+	    </div>
+	    </div>	    
+	    
+	    <div class="card-body">
+	    	<table class="table table-hover" style="
+    border-collapse: collapse;
+">
+	    		<thead>
+			    	<tr>
+			    		<th style="text-align: center;">선택</th>
+			    		<th style="text-align: center;">이미지</th>
+			    		<th>상품이름</th>
+			    		<th>수량</th>
+			    		<th>합계</th>
+			    		<th>배송비</th>
+			    		<th>적립급</th>
+			    	</tr>		
+    			</thead>
+	    		<tbody>
+	    				
+	    			<tr th:each="cart : ${lists}">
+	    				<td style="text-align: center; "><input type="checkbox" id="cartCheckbox"></td> 
+	    				<td style="width: 210px; text-align: center;">
+	    					<img th:src="${imgUrl}" style="width: 100px; " >
+	    				</td>
+	    				<td th:text="${cart.name}"></td>
+	    				<td>
+	    					<input type="number" id="quantity" name="quantity" min="0" max="10" step="1" th:value="${cart.cnt}">
+	    				</td>
+	    				<td th:text="${cart.price * cart.cnt}"></td>
+	    				<td >2000원</td>
+	    				<td th:text="${cart.price * 0.05}"></td>
+	    			</tr>
+	    		</tbody>
+	    	</table>
+	    </div>
+	    		
+</div>
+	</main>
+	<th:block layout:fragment="myscripts">
+        <script src="/js/cart.js"></script>
+    </th:block>
+</html>

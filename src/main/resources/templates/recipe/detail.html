@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
+    <th:block layout:fragment="mycss">
+        <link rel="stylesheet" href="/css/set.css">
+        <link rel="stylesheet" href="/css/recipedetail.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    </th:block>    
+    
+    <main layout:fragment="main" >
+    <div id="order_wrap">
+        <div class="left">
+           <img src="/img/alo.jpg" alt="">
+        </div>   
+        <div class="right">
+            <div class="top">
+                <div class="right-section" th:fragment="right-section">
+                    <p>FruityVeggies</p>
+                    <h2>깻잎유자메밀면</h2>
+                    <span class="rounded-sm border border-gray-600 px-4px pb-2px pt-2px font-medium text-gray-600" style="font-size: 13px;">15분 컷</span>
+                    <span class="font-medium text-gray-600" style="font-size: 15px;">퓨전 · 면요리</span>
+                </div>
+                <hr>
+                <span>
+                     <span>여름 하면 빼놓을 수 없는 요리, 메밀국수! 들기름과 유자청을 활용해
+                            만든 산뜻한 소스를 더해 간단하면서도 맛있는 한 끼를 만들어 보세요.
+                            깻잎, 참나물 등 향이 나는 채소는 뭐든 잘 어울려요.
+                     </span>
+                </span>
+                
+                <div class="w-full" style="height: 24px;"></div>
+                <div class="text-16px font-semibold leading-6 text-gray-800">
+                    #비건 #간단요리 #가벼운요리 #이색적인요리 #입맛돋우는요리
+                </div>
+                 
+                <div class="flex items-center justify-between bottom">
+                    <div class="flex items-center ">
+                        <p class="text-15px">
+                         <span class="text-gray">댓글 </span>
+                         <span class="font-semibold text-gray">1</span>
+                        </p>
+                        <p class="text-15px">
+                            <span class="text-gray">좋아요 </span>
+                            <span class="font-semibold text-gray">9</span>
+                        </p>
+                    </div>
+                    <button>
+                        <img src="/img/like.svg" alt="like-post">
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 0px; margin-bottom: 0px;"></div>
+    
+    
+    <div class="uploadBtn">
+         <a href="/recipe/upload"> <!-- Update this with your target URL -->
+            <button id="uploadBtn">업로드</button>
+         </a>
+    </div>
+    
+    <ul class="nav nav-underline">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#" tabindex="0">재료</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">만드는 방법</a>
+      </li>
+    </ul>
+    
+    <div id="IngredientTab">
+        <div class="w-full" style="height: 49px;">
+        </div>
+        <div class="px-16px">
+            <div class="flex items-center gap-8px">
+                <h3 class="text-22px font-bold text-gray-800">재료</h3>
+                    <div class="rounded-[100px] bg-brand-10 px-8px py-5px">
+                        <p class="text-14px font-semibold text-brand-1">1인분 기준</p>
+                    </div>
+            </div>
+            
+            <div class="w-full" style="height: 24px;"></div>
+            <div class="grid grid-cols-3 gap-15px">
+                <div class="flex flex-col gap-12px"><h6 class="text-14px font-medium text-gray-800">주재료</h6>
+                <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-16px gap-8px">
+                    <li class="flex-between">
+                        <div class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;">메밀면</div>
+                            <span class="text-16px text-gray-800 sm:text-sm">1인분</span>
+                    </li>
+                        <li class="flex-between">
+                            <div class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;">깻잎 또는 깻잎순</div>
+                                <span class="text-16px text-gray-800 sm:text-sm">1줌</span>
+                        </li>
+                </ul>
+                </div>
+                <div class="flex flex-col gap-12px">
+                    <h6 class="text-14px font-medium text-gray-800">양념</h6>
+                        <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-16px gap-16px">
+                            <li class="flex-between">
+                                <p class="text-16px text-gray-800 sm:text-sm">들기름</p>
+                                <span class="text-16px text-gray-800 sm:text-sm">5T</span>
+                            </li>
+                            <li class="flex-between">
+                                <p class="text-16px text-gray-800 sm:text-sm">간장</p>
+                                <span class="text-16px text-gray-800 sm:text-sm">2T</span>
+                            </li>
+                            <li class="flex-between">
+                                <p class="text-16px text-gray-800 sm:text-sm">유자청</p>
+                                <span class="text-16px text-gray-800 sm:text-sm">2/3T</span>
+                            </li>
+                            <li class="flex-between">
+                                <p class="text-16px text-gray-800 sm:text-sm">물</p>
+                                <span class="text-16px text-gray-800 sm:text-sm">1T</span>
+                            </li>
+                            <li class="flex-between">
+                                <p class="text-16px text-gray-800 sm:text-sm">후추</p>
+                                <span class="text-16px text-gray-800 sm:text-sm">1꼬집</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Makingtab" class="pt-48px">
+            <div class="px-16px" style="line-break: anywhere;">
+                <h1 class="text-22px font-bold text-gray-700">만드는 방법</h1>
+            <div class="w-full" style="height: 24px;"></div>
+            <div class="">
+                <div class="flex flex-col gap-8px">
+                    <div class="rounded-[16px] p-16px  bg-brand-10">
+                        <div class="flex items-start">
+                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-16px text-brand-1">1</p><div class="h-full shrink-0" style="width: 12px;"></div><p class="grow text-16px leading-6 text-gray-800 ">들기름 5T, 간장 2T, 유자청 2/3T, 물 1T, 후추 한 꼬집을 섞어 소스를 만들어 주세요. </p>
+                        </div>
+                    </div>
+                    <div class="rounded-[16px] p-16px  bg-brand-10">
+                        <div class="flex items-start">
+                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-16px text-brand-1">2</p>
+                                <div class="h-full shrink-0" style="width: 12px;"></div>
+                                    <p class="grow text-16px leading-6 text-gray-800 ">깻잎 또는 깻잎순을 얇게 채 썰고, 방울토마토나 오이, 대파 등 취향에 맞는 고명도 먹기 좋게 썰어 준비해 주세요. </p>
+                        </div>
+                    </div>
+                    <div class="rounded-[16px] p-16px  bg-brand-10">
+                        <div class="flex items-start">
+                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-16px text-brand-1">3</p>
+                                <div class="h-full shrink-0" style="width: 12px;"></div>
+                                    <p class="grow text-16px leading-6 text-gray-800 ">메밀면을 삶아 찬물에 헹궈 물기를 털어주세요. </p>
+                                </div>
+                    </div>
+                    <div class="rounded-[16px] p-16px  bg-brand-10">
+                        <div class="flex items-start">
+                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-16px text-brand-1">4</p>
+                                <div class="h-full shrink-0" style="width: 12px;"></div>
+                                    <p class="grow text-16px leading-6 text-gray-800 ">면을 그릇에 담고, 준비해 둔 채소를 얹은 뒤 소스를 뿌려주면 완성!  </p>
+                        </div>
+                    </div>
+                    <div class="rounded-[16px] p-16px  bg-brand-10">
+                        <div class="flex items-start">
+                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-14px text-gray-800">TIP</p>
+                                <div class="h-full shrink-0" style="width: 12px;"></div>
+                                    <p class="grow text-16px leading-6 text-gray-800 ">깻잎, 참나물 등 향이 나는 채소를 다양하게 활용해보세요. </p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    
+        <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 0px; margin-bottom: 0px;"></div>
+    
+        <div class="my-2">
+            <div class="my-2 header">
+                <span>댓글</span>
+                <span id="replyCount" th:text="${replyCount}"></span>개
+            </div>
+            <div class="d-none" id="authName" th:text="${ #authentication.name }"></div>
+                <div class="my-2 row">
+                    <div class="col-10">
+                        <textarea id="replyText" placeholder="댓글 내용 입력"></textarea>
+                    </div>
+                    <div class="col-2">
+                        <button class="control btn" id="btnReplyCreate">등록</button>
+                    </div>
+                </div>
+                
+                <!-- 댓글 목록 보여줄 영역 -->
+                <div class="my-2 row" id="replies"></div>
+            </div>
+        </div>
+    
+    
+    </main>
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+<th:block layout:fragment="myscripts">
+    <script src="/js/recipe/detail.js"></script>
+    <script src="/js/recipe/reply.js"></script>
+</th:block>
+
+    
+</html>
