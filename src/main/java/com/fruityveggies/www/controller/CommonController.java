@@ -35,6 +35,8 @@ public class CommonController {
     @GetMapping("/login/orderhistory")
     public String orderhistory(Model model) {
         log.info("orderhistory");
+        
+//        model.addAttribute("items", items);
         return "/login/orderhistory";
     }
 }

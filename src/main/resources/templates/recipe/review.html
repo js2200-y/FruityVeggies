@@ -58,7 +58,7 @@
 <div class="d-none">
 <label class="form-label" for="writer">작성자</label>
 <input class="form-control" id="writer"
-      type="text" name="writer" th:value="${ #authentication.name }" />
+      type="text" name="writer" th:value="${session.email}" />
 </div>
 <input class="form-control" id="itemId"
       type="hidden" name="itemId" />
