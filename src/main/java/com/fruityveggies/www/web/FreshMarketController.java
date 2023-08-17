@@ -1,6 +1,7 @@
 package com.fruityveggies.www.web;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +33,35 @@ public class FreshMarketController {
     private ItemService itemService;
 
     @GetMapping("/freshmarket/cart")
-    public String cart(Model model, @RequestParam(value = "id") String id) {
+    public String cart(Model model, @RequestParam(value = "id") String id, Principal principal) {
+    	
+    	String s = principal.getName();
+
+    	log.info("asdfasdfs={}",s);
+        // "@" 기호의 인덱스를 찾습니다.
+        int atIndex = s.indexOf('@');
+
+        log.info("atIndex={}",atIndex);
+        
+        if (atIndex != -1) {
+            // "@" 기호 앞의 문자열을 추출합니다.
+            String beforeAt = s.substring(s.lastIndexOf(' ', atIndex) + 1, atIndex);
+
+            // "@" 기호 뒤의 문자열을 추출합니다.
+            String afterAt = s.substring(atIndex + 1);
+
+            // "@" 기호 앞뒤 문자열을 변수에 저장합니다.
+            String result = beforeAt + "@" + afterAt;
+            
+            System.out.println("Result: " + result);
+        } else {
+            System.out.println("No '@' symbol found.");
+        }
+
+    	
     	
     	log.info("cart get");
+    	log.info("cart get id={}",id); 
     	
     	List<Cart> lists = itemService.read(id);
     	
@@ -42,8 +69,9 @@ public class FreshMarketController {
     	
     	log.info("lists={}"+lists);
     	
+    	
+    	
     	model.addAttribute("lists", lists);
-    	model.addAttribute("imgUrl", items.getMain_image_path());
     	
     	return "/freshmarket/cart";
     }
@@ -72,63 +100,6 @@ public class FreshMarketController {
 	     model.addAttribute("items", items);
 	    
 		return "/freshmarket/freshmarket";
-	    // 상품이름 : 스트링
-	    // 성장 특징 :
-	    // 메인 이미지
-	    // 디테일 이미지
-	 // 옵션 이름 : 배열
-        // 옵션 가격 : 배열
-//	    String name = items.get(0).getName();
-//	    log.info("name={}", name);
-//	    model.addAttribute("name", name);
-//	    String growChar = items.get(0).getGrow_char();
-//	    log.info("growChar={}", growChar);
-//        model.addAttribute("growChar", growChar);       
-//	    String mainImg = items.get(0).getMain_image_path();
-//	    String detailImg = items.get(0).getDetail_image_path();
-//	    log.info("mainImg={}", mainImg);
-//        model.addAttribute("mainImg", mainImg);
-//        log.info("detailImg={}", detailImg);
-//        model.addAttribute("detailImg", detailImg);
-//	    List<String> itemOptNames = new ArrayList<>(); 
-//	    List<Integer> itemOptPrices = new ArrayList<>();
-	    
-//	    log.info("options={}", items);
-//	    for(int i=0;i<items.size();i++) {
-//	        itemOptNames.add(items.get(i).toString());
-//	    }
-	    
-//	    log.info("itemOptNames:"+itemOptNames);
-//	    log.info("itemOptPrices:"+itemOptPrices);
-//	    
-//	    for(int i=0; i<items.size();i++) {
-//	        itemOptNames.add(i, items.get(i).getItemOption().getName()) ;
-//	        itemOptPrices.add (i, items.get(i).getItemOption().getPrice());	       
-//	    }
-	    
-//	    log.info("itemOptNames={}", itemOptNames);
-//        model.addAttribute("itemOptNames", itemOptNames);
-//        log.info("itemOptPrices={}", itemOptPrices);
-//        model.addAttribute("itemOptPrices", itemOptPrices);
-        
-//	    log.info("items={}", items);
-//	    log.info("name={}", name);
-//	    log.info("growChar={}", growChar);
-//	    log.info("mainImg={}", mainImg);
-//	    log.info("detailImg={}", detailImg);
-//	    log.info("itemOptNames={}", itemOptNames);
-//	    log.info("itemOptPrices={}", itemOptPrices);
-//	    
-//	    
-//	    
-//	    
-
-//	    model.addAttribute("name", name);
-//	    model.addAttribute("growChar", growChar);
-//	    model.addAttribute("mainImg", mainImg);
-//	    model.addAttribute("detailImg", detailImg);
-//	    model.addAttribute("itemOptNames", itemOptNames);
-//	    model.addAttribute("itemOptPrices", itemOptPrices);
 	    
 	    
 	}
@@ -183,7 +154,10 @@ public class FreshMarketController {
 	    List<String> pricesAsStrings = (List<String>) data.get("prices");
 	    String id = (String) data.get("id");
 	    String userId = (String) data.get("userId");
+	    String main_image_path = (String) data.get("mainImg");
 
+	    log.info("main_image_path={}",main_image_path);
+	    
 	    List<Integer> counts = new ArrayList<>();
 	    List<Integer> prices = new ArrayList<>();
 	    
@@ -206,7 +180,7 @@ public class FreshMarketController {
 	    // id를 Long으로 변환
 	    Long convertedId = Long.parseLong(id);
 	    
-	    itemService.cartSave(names, counts, prices, convertedId, userId);
+	    itemService.cartSave(names, counts, prices, convertedId, userId, main_image_path);
 		
 		return "redirect:/main/mission";
 	}

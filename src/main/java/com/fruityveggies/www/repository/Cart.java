@@ -40,4 +40,7 @@ public class Cart {
 	
 	@Column(nullable = false)
 	private String useremail;
+	
+	@Column(nullable = false)
+    private String main_image_path;
 }
