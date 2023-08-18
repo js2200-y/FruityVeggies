@@ -67,7 +67,7 @@
         <th:block sec:authorize="isAuthenticated()">
             <li class="nav-item">
         <!-- 로그인한 email 표시 -->
-                 <span th:if="${session.email}" th:text="${session.email}"></span>
+                 <span id="useremail" th:if="${session.email}" th:text="${session.email}"></span>
                  <span th:unless="${session.email}" sec:authentication="name"></span>
                         <a class="nav-link" th:href="@{/logout}">로그아웃</a>
                         <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
@@ -125,7 +125,6 @@
 =======
           
         </div> --> 
->>>>>>> branch 'master' of https://github.com/js2200-y/FruityVeggies.git
     </nav>
   </div>
   </div>  

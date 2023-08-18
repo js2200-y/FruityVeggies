@@ -35,10 +35,15 @@ public class ItemService {
         
     }
     
+    public List<OrderItems> getOrderItemsByUserEmail(String useremail) {
+        return orderItemsRepository.findByUseremail(useremail);
+    }
+    
     public List<ItemItemOptionDto> getJoinedItemAndItemOptionByItemId(long id){
         return itemRepository.getJoin(id);
     }
-
+    
+    
     @Transactional
 	public void itemOrderSave(List<String> names, List<Integer> counts, List<Integer> prices, Long id,
 			String userId) {

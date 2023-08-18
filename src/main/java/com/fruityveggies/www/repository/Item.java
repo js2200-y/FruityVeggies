@@ -47,5 +47,4 @@ public class Item {
     private String detail_image_path;
     
     
- 
 }
