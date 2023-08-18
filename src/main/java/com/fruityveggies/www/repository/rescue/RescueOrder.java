@@ -25,7 +25,7 @@ public class RescueOrder {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REGULARDELIVERY_SEQ_GEN")
-    private Long ID;
+    private Long Id;
     
     @Column(nullable = false)
     private String BOXSIZE;

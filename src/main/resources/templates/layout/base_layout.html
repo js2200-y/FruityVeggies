@@ -24,7 +24,7 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-    crossorigin="anonymous" />
+    crossorigin="anonymous"/>
     
     <link rel="stylesheet" type="text/css" th:href="@{/css/base_layout.css}">
 
@@ -62,16 +62,29 @@
         </form>
 
         <!-- 인증된 사용자이면(로그인 상태이면) -->
-                        <th:block sec:authorize="isAuthenticated()">
+
+                        <!-- 인증된 사용자이면(로그인 상태이면) -->
+        <th:block sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+        <!-- 로그인한 email 표시 -->
+                 <span id="userId" th:if="${session.email}" th:text="${session.email}"></span>
+                 <span id="userId" th:unless="${session.email}" th:text="${#authentication.principal.email}"></span>
+                 <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+                 <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
+            </li>
+        </th:block>
+
+                        <!-- <th:block sec:authorize="isAuthenticated()">
                             <li class="nav-item">
-                                <!-- 로그인한 username 표시 -->
+                                로그인한 username 표시
                                 
                                 <span th:text="${session.email}"></span>
                                 <span id="userId" th:text="${#authentication.principal.email}"></span>
                                 <a class="nav-link" th:href="@{/logout}">로그아웃</a>
                                 <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
                             </li>
-                        </th:block>
+                        </th:block> -->
+
                         
                         <!-- 익명 사용자이면(로그인 하지 않은 상태이면) -->
                         <th:block sec:authorize="isAnonymous()">
@@ -107,6 +120,9 @@
         <div id="text-end2" style="display: none;">
           <button type="button" id="loginBtn1" class="btn btn-light text-dark me-2">로그인</button>
           <button type="button" id="signBtn1" class="btn btn-primary">회원가입</button>
+<<<<<<< HEAD
+        </div>
+=======
           
         </div> --> 
     </nav>

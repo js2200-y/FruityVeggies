@@ -40,4 +40,7 @@ public class OrderItems {
 	
 	@Column(nullable = false)
 	private String useremail;
+
+
 }
+

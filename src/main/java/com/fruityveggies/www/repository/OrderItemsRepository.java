@@ -25,4 +25,8 @@ public interface OrderItemsRepository extends JpaRepository<OrderItems, Long> {
 	
 	
 	
+	// 로그인한 사용자의 주문 내역 가져오기
+    List<OrderItems> findByUseremail(String useremail);
+	
+	
 }
