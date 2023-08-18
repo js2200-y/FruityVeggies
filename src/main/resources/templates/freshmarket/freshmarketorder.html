@@ -26,46 +26,48 @@
     
 
     <div class="my-2">
-     <label class="form-label" for="customerName">받는 사람</label>
-     <!-- data-testid="renewal-textfield" -->
-     <input class="form-control" id="customerName" type="text"
-      name="customerName" placeholder="이름을 입력해주세요." />
+     <label class="form-label" for="ordername">받는 사람</label>
+     <input class="form-control" id="ordername" type="text"
+      name="ordername" placeholder="이름을 입력해주세요." />
     </div>
     <div class="my-2">
-     <label class="form-label" for="orderPhone">휴대폰 번호</label> <input
-      class="form-control" id="orderPhone" type="text" name="orderPhone"
+     <label class="form-label" for="orderphone">휴대폰 번호</label> <input
+      class="form-control" id="orderphone" type="text" name="orderphone"
       placeholder="휴대폰 번호를 입력해주세요." />
     </div>
 
 
 
     <div class="my-2">
-        <label class="form-label" for="orderAddress">주소</label>
-           <div class="card-body fw-bold my-2" style="display: flex; align-items: center;">
-             <div style="display: flex; align-items: center;">
-              <input class="form-control" type="text" id="sample4_postcode" style="width: 330px; margin-right: 10px;"
-               placeholder="주소를 검색하세요" disabled=""> 
-               <input type="button" class="btn btn-success" onclick="sample4_execDaumPostcode()" value="검색">
-             </div>
-             <div class="w-full" style="height: 10px;"></div>
-                 <input class="form-control" style="width: 400px;" type="text"
-                         id="address1" name="address1" placeholder="도로명주소" size="60">
-                 <input class="form-control" type="hidden" id="sample4_jibunAddress" style="width: 400px;"
-                        placeholder="지번주소" size="60"> 
-                 <span id="guide" style="color: #999; display: none"></span>
-             <div class="w-full" style="height: 5px;"></div>
-             <input class="form-control" type="text" id="address2" name="address2" style="width: 400px;" 
-             placeholder="상세주소를 입력하세요" size="60"><br> 
-             <input type="hidden" id="sample4_extraAddress" placeholder="참고항목" size="60">
-             <input type="hidden" id="sample4_engAddress" placeholder="영문주소" size="60"><br>
-        
-        </div>
-       
-       <script>
-							
-      
-								//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+     <label class="form-label" for="orderAddress">주소</label>
+     <div class="card-body fw-bold"
+      style="display: flex; align-items: center;">
+      <main class="my-2">
+       <div style="display: flex; align-items: center;">
+        <input class="form-control" type="text" id="sample4_postcode"
+         style="width: 330px; margin-right: 10px;"
+         placeholder="주소를 검색하세요" disabled=""> <input
+         type="button" class="btn btn-success"
+         onclick="sample4_execDaumPostcode()" value="검색">
+       </div>
+       <div class="w-full" style="height: 10px;"></div>
+       <input class="form-control" style="width: 400px;" type="text"
+        id="orderaddress1" name="orderaddress1" placeholder="도로명주소" size="60">
+       <input class="form-control" type="hidden"
+        id="sample4_jibunAddress" style="width: 400px;"
+        placeholder="지번주소" size="60"> <span id="guide"
+        style="color: #999; display: none"></span>
+       <div class="w-full" style="height: 5px;"></div>
+       <input class="form-control" type="text" id="orderaddress2"
+        name="orderaddress2" style="width: 400px;" placeholder="상세주소를 입력하세요"
+        size="60"><br> <input type="hidden"
+        id="sample4_extraAddress" placeholder="참고항목" size="60">
+       <input type="hidden" id="sample4_engAddress" placeholder="영문주소"
+        size="60"><br>
+       <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
+       <script>
+								//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 								function sample4_execDaumPostcode() {
 									new daum.Postcode(
 											{
@@ -102,7 +104,7 @@
 													document
 															.getElementById('sample4_postcode').value = data.zonecode;
 													document
-															.getElementById("address1").value = roadAddr;
+															.getElementById("orderaddress1").value = roadAddr;
 													document
 															.getElementById("sample4_jibunAddress").value = data.jibunAddress;
 
@@ -142,15 +144,16 @@
 												}
 											}).open();
 								}
-							</script></div>
+							</script>
+     </div>
 
 
 
 
 
      <div class="my-2">
-      <label class="form-label" for="orderRequest">배송 요청 사항(선택)</label>
-      <select class="form-select" id="orderRequest" name="orderRequest">
+      <label class="form-label" for="orderrequest">배송 요청 사항(선택)</label>
+      <select class="form-select" id="orderrequest" name="orderrequest">
        <option value="선택안함">선택안함</option>
        <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
        <option value="문 앞에 놓아주시고 벨을 누르지 말아주세요.">문 앞에 놓아주시고 벨을
@@ -251,7 +254,13 @@
   
   <br>
     <div style="display: flex;">   
-            <div style="flex: 1; text-align: center;">
+
+         <button class="button is-link" onclick="pay('카드',jsons.card);">일반결제창</button>
+          <button class="button is-link" onclick="pay('계좌이체',jsons.transfer);">계좌이체</button>
+             <button class="button is-link" onclick="pay('휴대폰',jsons.phone);">휴대폰</button>  
+
+
+ <!--            <div style="flex: 1; text-align: center;">
                <img th:src="@{/img/card.png}" style="display: block; margin: 0 auto;" width="50" height="50" >
                <label style="display: inline-block; margin-top: 10px;"><input type="radio" name="payment" value="card">카드</label>
             </div>
@@ -264,10 +273,95 @@
             <div style="flex: 1; text-align: center;">
                 <img th:src="@{/img/phone.png}"style="display: block; margin: 0 auto;" width="50" height="50">
                 <label style="display: inline-block; margin-top: 10px;"><input type="radio" name="payment" value="phone">휴대폰</label>    
-            </div>
+            </div>  --> 
      </div> 
    </div>
    </section>
+   
+   
+   
+   
+  <!--  <script>
+    let amount = 50000;
+
+    let tossPayments = TossPayments("test_ck_4vZnjEJeQVx9dyz6KMOrPmOoBN0k");
+
+    function pay(method, requestJson) {
+        console.log(requestJson);
+        tossPayments.requestPayment(method, requestJson)
+            .catch(function (error) {
+
+                if (error.code === "USER_CANCEL") {
+                    alert('유저가 취소했습니다.');
+                } else {
+                    alert(error.message);
+                }
+
+            });
+    }
+
+    let path = "/freshmarket";
+    let successUrl = window.location.origin + path + "/success";
+    let failUrl = window.location.origin + path + "/fail";
+    let callbackUrl = window.location.origin + path + "/va_callback";
+    let orderId = new Date().getTime();
+
+    let jsons = {
+        "card": {
+            "amount": amount,
+            "orderId": "sample-" + orderId,
+            "orderName": "토스 티셔츠 외 2건",
+            "successUrl": successUrl,
+            "failUrl": failUrl,
+            "cardCompany": null,
+            "cardInstallmentPlan": null,
+            "maxCardInstallmentPlan": null,
+            "useCardPoint": false,
+            "customerName": "박토스",
+            "customerEmail": null,
+            "customerMobilePhone": null,
+            "taxFreeAmount": null,
+            "useInternationalCardOnly": false,
+            "flowMode": "DEFAULT",
+            "discountCode": null,
+            "appScheme": null
+        },
+       
+        "transfer": { //계좌이체 결제창
+
+            "amount": amount,
+            "orderId": "sample-" + orderId,
+            "orderName": "토스 티셔츠 외 2건",
+            "successUrl": successUrl,
+            "failUrl": failUrl,
+            "customerName": "박토스",
+            "customerEmail": null,
+            "customerMobilePhone": null,
+            "taxFreeAmount": null,
+            "cashReceipt": {
+                "type": "소득공제"
+            },
+            "useEscrow": false
+
+        },
+        "phone": { // 휴대폰 결제창
+
+            "amount": amount,
+            "orderId": "sample-" + orderId,
+            "orderName": "토스 티셔츠 외 2건",
+            "successUrl": successUrl,
+            "failUrl": failUrl,
+            "mobileCarrier": null
+
+        }
+
+
+    }
+</script>   -->
+   
+   
+   
+   
     
     <br>
     
@@ -286,7 +380,7 @@
       alt="개인정보 수집 및 이용 동의" class="h-14px w-7px"></a>
     </div>
     </div> 
-    <button class="btn btn-long" id="buyBtn" style="background-color: #9FE2BF;">바로 구매하기</button> 
+    <button class="btn btn-long" id="buyBtn" type="submit" style="background-color: #9FE2BF;">바로 구매하기</button> 
 </form>
 
 
