@@ -30,7 +30,7 @@
 	    				
 	    			<tr th:each="cart : ${lists}">
 	    				<td style="text-align: center; ">
-	    					<input type="checkbox" id="cartCheckbox" th:value="${cart.id}">
+	    					<input type="checkbox" id="cartCheckbox" name="cartCheckbox" th:value="${cart.id}">
     					</td> 
 	    				<td style="width: 210px; text-align: center;">
 	    					<img th:src="${cart.main_image_path}" style="width: 100px; " >
@@ -53,10 +53,9 @@
 		    		<label id="total_price">10000</label>
 	    		</p>
 	    	</div>
-			<div class="my-2">
-                 <input class="form-control btn btn-outline-success" 
-                     type="submit" value="작성 완료" />
-             </div>
+			<div class="bottom">
+                <button type="button" id="bill_btn">결제하러 가기</button>
+            </div>
 	    </div>
 </div>
 <script th:inline="javascript">
@@ -65,6 +64,7 @@
 </script>
 	</main>
 	<th:block layout:fragment="myscripts">
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="/js/cart.js"></script>
     </th:block>
 </html>

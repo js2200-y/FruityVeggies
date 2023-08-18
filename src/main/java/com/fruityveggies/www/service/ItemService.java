@@ -116,6 +116,14 @@ public class ItemService {
 		
 		return cartRepository.findByUserEmailOrderByDesc(id);
 	}
+
+	public void deleteById(List<Long> delSelect) {
+		for(Long id : delSelect) {
+			cartRepository.deleteById(id);
+		}
+		
+		
+	}
     
 
 }

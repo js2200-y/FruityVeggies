@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,44 +33,71 @@ public class FreshMarketController {
     @Autowired
     private ItemService itemService;
 
+    @PostMapping("/cart/bill")
+    public ResponseEntity<Integer> billSelectedCarts(@RequestBody Map<String, Object> selectedIds) {
+        // 선택된 cart.id 값들을 받아 처리하는 로직을 여기에 구현합니다.
+        // 이 예시에서는 간단히 출력하도록 하겠습니다.
+        log.info("Selected IDs: " + selectedIds);
+        
+        List<String> selectedId = (List<String>) selectedIds.get("selectedIds");
+        List<Long> billSelect = new ArrayList<>();
+
+     // counts와 prices를 String에서 Integer로 변환
+	    for (String delStr : selectedId) {
+	        try {
+	        	billSelect.add(Long.parseLong(delStr));
+	        } catch (NumberFormatException e) {
+	            // 처리할 예외 상황에 대한 로직 추가
+	        }
+	    }
+	    
+	    log.info("asdf : {}",billSelect);
+	    
+	    // 이거 결제 사이트로 넘김
+        
+        // 처리 결과를 클라이언트에게 반환합니다.
+        return ResponseEntity.ok(200); // 또는 원하는 응답 데이터를 반환할 수 있습니다.
+    }
+    
+    
+    @PostMapping("/cart/del")
+    public ResponseEntity<Integer> deleteSelectedCarts(@RequestBody Map<String, Object> selectedIds) {
+        // 선택된 cart.id 값들을 받아 처리하는 로직을 여기에 구현합니다.
+        // 이 예시에서는 간단히 출력하도록 하겠습니다.
+        log.info("Selected IDs: " + selectedIds);
+        
+        List<String> selectedId = (List<String>) selectedIds.get("selectedIds");
+        List<Long> delSelect = new ArrayList<>();
+
+     // counts와 prices를 String에서 Integer로 변환
+	    for (String delStr : selectedId) {
+	        try {
+	        	delSelect.add(Long.parseLong(delStr));
+	        } catch (NumberFormatException e) {
+	            // 처리할 예외 상황에 대한 로직 추가
+	        }
+	    }
+	    
+	    log.info("asdf : {}",delSelect);
+	    
+	    itemService.deleteById(delSelect);
+        
+        // 처리 결과를 클라이언트에게 반환합니다.
+        return ResponseEntity.ok(200); // 또는 원하는 응답 데이터를 반환할 수 있습니다.
+    }
+    
     @GetMapping("/freshmarket/cart")
     public String cart(Model model, @RequestParam(value = "id") String id, Principal principal) {
-    	
-    	String s = principal.getName();
-
-    	log.info("asdfasdfs={}",s);
-        // "@" 기호의 인덱스를 찾습니다.
-        int atIndex = s.indexOf('@');
-
-        log.info("atIndex={}",atIndex);
         
-        if (atIndex != -1) {
-            // "@" 기호 앞의 문자열을 추출합니다.
-            String beforeAt = s.substring(s.lastIndexOf(' ', atIndex) + 1, atIndex);
-
-            // "@" 기호 뒤의 문자열을 추출합니다.
-            String afterAt = s.substring(atIndex + 1);
-
-            // "@" 기호 앞뒤 문자열을 변수에 저장합니다.
-            String result = beforeAt + "@" + afterAt;
-            
-            System.out.println("Result: " + result);
-        } else {
-            System.out.println("No '@' symbol found.");
-        }
-
-    	
-    	
     	log.info("cart get");
-    	log.info("cart get id={}",id); 
+    	log.info("cart get id={}",id);
+    	
     	
     	List<Cart> lists = itemService.read(id);
     	
     	Item items = itemService.findItemById(lists.get(0).getItemid());
     	
     	log.info("lists={}"+lists);
-    	
-    	
     	
     	model.addAttribute("lists", lists);
     	
