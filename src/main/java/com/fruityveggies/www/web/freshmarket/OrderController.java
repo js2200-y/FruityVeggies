@@ -53,7 +53,7 @@ public class OrderController {
     
     @GetMapping(value = "/success")
     public String paymentResult(Model model, @RequestParam(value = "orderId") String orderId,
-            @RequestParam(value = "price") Integer price,
+            @RequestParam(value = "amount") Integer price,
             @RequestParam(value = "paymentKey") String paymentKey) throws Exception {
 
         log.info("success()");
