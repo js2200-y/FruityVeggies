@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
+    <th:block layout:fragment="mycss">
+    </th:block>    
+
+    <main layout:fragment="main">
+        <div class="d-flex flex-column align-items-center">
+        
+        <h3>주문하신 상품의
+        <br>상세내역이에요</h3>
+        <div class="card mx-auto" style="max-width: 400px;">
+        <table>
+        <tbody>
+            <tbody>
+        <tr th:each="orderItem : ${orderItems}">
+             <td>상품명 : </td>
+            <td th:text="${orderItem.name}"></td>
+        </tr>
+        <tr th:each="orderItem : ${orderItems}">
+            <td>수량 : </td>
+            <td th:text="${orderItem.cnt + ' 개 '}"></td>
+            
+        </tr>
+        <tr th:each="orderItem : ${orderItems}">
+            <td>상품 금액 : </td>
+            <td th:text="${orderItem.price + ' 원 '}"></td>
+        </tr>
+    </tbody>
+        </tbody>
+    </table>
+    <a class="btn btn-outline-dark mb-2" th:href="@{recipe/review}">후기 작성</a>
+    </div>
+    </div>
+    </main>
+    
+    <th:block layout:fragment="myscripts">
+    </th:block>
+    
+</html>
