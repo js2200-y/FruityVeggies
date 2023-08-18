@@ -24,6 +24,16 @@ public class MemberService implements UserDetailsService{
     // SecurityConfig에서 설정한 PasswordEncoder 빈(bean)을 주입해줌.
     private final PasswordEncoder passwordEncoder;
     
+    public String findUsernameByEmail(String email) {
+        Member member = memberRepository.findByEmail(email);
+
+        if (member != null) {
+            return member.getUsername();
+        } else {
+            return null;
+        }
+    }
+
     // 회원 가입
     public Long registerMember(MemberSignUpDto dto) {
         log.info("registerMember(dto={})", dto);
