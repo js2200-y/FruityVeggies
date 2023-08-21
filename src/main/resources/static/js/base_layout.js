@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const cart_btn = document.querySelector('#cart_btn');
-    cart_btn.addEventListener('click', () =>{
+const cartmain_btn = document.querySelector('#cartmain_btn');
+    cartmain_btn.addEventListener('click', () =>{
 //로그인 했는지 확인 시작     
         const userIdElement = document.querySelector('#userId');
         let userId='';
