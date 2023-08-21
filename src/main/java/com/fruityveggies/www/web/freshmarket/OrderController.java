@@ -44,25 +44,25 @@ public class OrderController {
     
     
     
-    @GetMapping("/freshmarketorder")
-    public String freshmarketOrder() {
-        log.info("freshmarketOrder={}");
-        
-        
-        
-        return "/freshmarket/freshmarketorder";
-    }
-    
-//    @GetMapping("/freshmarketorder/{orderItemId}")
-//    public String getOrdersByOrderItemId(@PathVariable Long orderItemId, Model model) {
-//        log.info("orderItemId={}", orderItemId);
+//    @GetMapping("/freshmarketorder")
+//    public String freshmarketOrder() {
+//        log.info("freshmarketOrder={}");
 //        
-//        List<Order> orders = orderService.getOrdersByOrderItemId(orderItemId);
 //        
-//        model.addAttribute("orders", orders);
 //        
 //        return "/freshmarket/freshmarketorder";
 //    }
+    
+    @GetMapping("/freshmarketorder/{orderItemId}")
+    public String getOrdersByOrderItemId(@PathVariable Long orderItemId, Model model) {
+        log.info("orderItemId={}", orderItemId);
+        
+        List<Order> orders = orderService.getOrdersByOrderItemId(orderItemId);
+        
+        model.addAttribute("orders", orders);
+        
+        return "/freshmarket/freshmarketorder";
+    }
     
     
     @PostMapping("/create")
@@ -79,14 +79,13 @@ public class OrderController {
     @GetMapping(value = "/success")
     public String paymentResult(Model model, @RequestParam(value = "orderId") String orderId,
             @RequestParam(value = "amount") Integer amount,
-            @RequestParam(value = "amount") Integer price,
             @RequestParam(value = "paymentKey") String paymentKey) throws Exception {
 
         log.info("success()");
         
-        if (orderId.startsWith("sample-") && amount != amount) {
-            throw new RuntimeException("해킹의심 : 결제 요청 금액이 아닙니다.");
-        }
+//        if (orderId.startsWith("sample-") && amount != amount) {
+//            throw new RuntimeException("해킹의심 : 결제 요청 금액이 아닙니다.");
+//        }
 
         String secretKey = "test_sk_BE92LAa5PVb4QG2plwJ87YmpXyJj:";
 
