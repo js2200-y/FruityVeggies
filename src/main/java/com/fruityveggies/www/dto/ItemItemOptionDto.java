@@ -10,5 +10,6 @@ public class ItemItemOptionDto {
     private Long id;
     private String name;
     private int price;
+    private String main_image_path;
     
 }
