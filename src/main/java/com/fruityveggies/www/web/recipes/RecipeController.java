@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fruityveggies.www.dto.RecipeSearchDto;
 import com.fruityveggies.www.dto.recipes.AdditionalIngredientDto;
 import com.fruityveggies.www.dto.recipes.MakingDto;
 import com.fruityveggies.www.dto.recipes.RecipeDto;
@@ -148,5 +149,21 @@ public class RecipeController {
      // DB 테이블 insert 후 레시피 목록 페이지로 redirect 이동.
         return "redirect:/main/recipes";
     }
+    
+    @GetMapping("/search")
+    public String search(RecipeSearchDto dto, Model model) {
+        log.info("search(dto={})", dto);
+        
+        // postService의 검색 기능 호출:
+        List<Recipe> list = recipeService.search(dto);
+        log.info("list(dto={})", list);
+        
+        // 검색 결과를 Model에 저장해서 뷰로 전달:
+        model.addAttribute("recipes", list);
+        
+        return "/main/recipes";
+    }
+    
+    
     
 }
