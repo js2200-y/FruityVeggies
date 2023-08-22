@@ -40,6 +40,14 @@ public class RecipeService {
         List<Recipe> recipeList = recipeRepository.findAll();
         return recipeList;
     }
+
+    
+    //디테일 id로 읽어오기
+    public Recipe read(Long id) {
+        log.info("read(id={})",id);
+        
+        return recipeRepository.findById(id).orElseThrow();
+    }
     
     
 }
