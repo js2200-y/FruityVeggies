@@ -18,8 +18,9 @@
         
     
     </style>
+    <div class="w-full" style="height: 50px;"></div>
         <div class="card mx-auto" style="max-width: 400px;">
-        <div class="card-header bg-primary text-white text-center">
+        <div class="card-header text-white text-center" style="background-color: #9FE2BF;">
         <h2 style="text-align: center;">로그인·회원가입</h2>
         </div>
         <div class="center">
@@ -41,8 +42,8 @@
                 <div class="my-2">
                     <input type="password" class="form-control" name="password" placeholder="비밀번호" required>
                     <div class="d-flex justify-content-end">
-                        <a class="p-2 link-secondary" th:href="@{#}">이메일 찾기</a>
-                        <a class="p-2 link-secondary" th:href="@{#}">비밀번호 찾기</a>
+                        <a class="p-2 link-secondary" th:href="@{/member/findid}">아이디 찾기</a>
+                        <a class="p-2 link-secondary" th:href="@{/member/findpassword}">비밀번호 찾기</a>
                     </div>
                 </div>
                 <div class="my-2">

@@ -17,7 +17,7 @@
 
 
 <main id=rescueOrder>
-<form method="post" action="/rescueorder/rescue_order" style="margin: auto; width: 600px; align-items: center; display: flex;">
+<form method="post" action="/rescueorder/rescue_order2" style="margin: auto; width: 600px; align-items: center; display: flex;">
  <div class="my-2 card" id="card1" style="margin: auto; width: 450px; background-color: rgb(232, 247, 230); padding-top: 0.5px; padding-bottom: 12px; display: block;" >
   <div class="card-body"  >
   	
@@ -239,6 +239,7 @@
 		</div>
 		<div class="form-check form-check-inline">
   			<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="고구마">
+  			<input type="hidden" id="resId" name="resId" th:value="${resId}">
   			<label class="form-check-label" for="inlineCheckbox3">고구마</label>
 		</div>
 		<br>

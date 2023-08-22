@@ -1,5 +1,7 @@
 package com.fruityveggies.www.service.recipes;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.fruityveggies.www.dto.recipes.Required_IngredientDto;
@@ -45,7 +47,7 @@ public class Required_IngredientService {
     }
 
     //디테일 id로 읽어오기
-    public Required_Ingredient read(Long id) {
+    public List<Required_Ingredient> read(Long id) {
         log.info("read(id={})", id);//22
         
         Recipe recipe =  recipeRepository.findById(id).orElseThrow();

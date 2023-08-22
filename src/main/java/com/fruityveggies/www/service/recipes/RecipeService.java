@@ -3,7 +3,9 @@ package com.fruityveggies.www.service.recipes;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.fruityveggies.www.dto.RecipeSearchDto;
 import com.fruityveggies.www.dto.recipes.RecipeDto;
 import com.fruityveggies.www.repository.recipes.Recipe;
 import com.fruityveggies.www.repository.recipes.RecipeRepository;
@@ -47,6 +49,17 @@ public class RecipeService {
         log.info("read(id={})",id);
         
         return recipeRepository.findById(id).orElseThrow();
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Recipe> search(RecipeSearchDto dto) {
+        log.info("search(dto={})", dto);
+        
+        List<Recipe> list = recipeRepository.findByTitleContainsIgnoreCaseOrderByIdDesc(dto.getKeyword());
+        
+        
+        
+        return list;
     }
     
     

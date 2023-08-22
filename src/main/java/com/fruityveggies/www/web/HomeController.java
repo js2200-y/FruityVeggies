@@ -12,16 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fruityveggies.www.dto.ItemItemOptionDto;
 import com.fruityveggies.www.repository.Item;
+import com.fruityveggies.www.repository.recipes.Recipe;
 import com.fruityveggies.www.repository.review.Review;
 import com.fruityveggies.www.service.ItemService;
+import com.fruityveggies.www.service.recipes.RecipeService;
 import com.fruityveggies.www.service.ReviewService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+@RequiredArgsConstructor
 @Slf4j
 @Controller
 public class HomeController {
     
+	private final RecipeService recipeService;
+	
     @Autowired
     private ItemService itemService;
     
@@ -92,6 +98,11 @@ public class HomeController {
     @GetMapping("/main/recipes")
     public String recipes(Model model) {
         log.info("recipes()");
+        
+        List<Recipe> list = recipeService.getRecipeList();
+        
+        model.addAttribute("recipes", list);
+        
         
         return "/main/recipes"; // View의 이름.
     }

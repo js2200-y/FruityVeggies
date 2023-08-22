@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	btnCancel.addEventListener('click', () => {
 		const check = confirm('취소하시면 메인페이지로 넘어갑니다. 취소하시겠습니까?');
 		if (check) {
-			location.href = '/mugmung/';
+			location.href = '/main/mission';
 		}
 	});
 

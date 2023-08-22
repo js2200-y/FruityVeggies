@@ -18,6 +18,13 @@
   width: 70px;
   height: 70px;
 }
+
+@font-face {
+    font-family: 'Giants-Inline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 <link rel="icon" type="image/png" th:href="@{/img/icon.png}">
 <link
@@ -42,12 +49,13 @@
     <header class="p-3">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-black text-decoration-none">
-          <img th:src="@{/img/logo.png}" alt="이미지" class="h-72px w-72px" style="padding-right: 10px;"><use xlink:href="#bootstrap"></use></svg>
-        </a>
+        
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size: 18px;font-weight: 900;">
-            <li><a href="/" class="nav-link px-2 text-black" style="font-size: 30px; font-weight: 900;">FruityVeggies</a></li>
+        	<a href="/" class="d-flex align-items-center text-black text-decoration-none">
+          <img th:src="@{/img/fruitylogo.png}" alt="이미지" class="h-72px w-72px" style="padding-right: 10px; width:500px; height: 150px; padding-left: 50px; padding-right: -200px;"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+            <li><a href="/" class="nav-link  text-black" style="font-size: 30px; font-weight: 1000; padding-left: 180px;"></a></li>
           <!-- <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
           <li><a href="/" class="nav-link px-2 text-white">Features</a></li>
           <li><a href="/" class="nav-link px-2 text-white">Pricing</a></li>
@@ -57,9 +65,11 @@
 
         <button type="button" class="btn btn-outline-black me-2" id="cartmain_btn">장바구니</button>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-black" placeholder="Search..." aria-label="Search">
-        </form>
+        <button type="submit" class="chat-button">
+		 <a href="/chat/chatRoomlist">
+		  <img src="/img/telemarketer.avif" alt="채팅상담" class="chat-image">
+		 </a>
+		</button>
 
         <!-- 인증된 사용자이면(로그인 상태이면) -->
 
