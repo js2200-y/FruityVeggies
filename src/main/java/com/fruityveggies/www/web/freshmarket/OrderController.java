@@ -57,7 +57,7 @@ public class OrderController {
     @GetMapping("/freshmarketorder/{orderItemId}/{id}")
     public String getOrdersByOrderItemId_cart(@PathVariable Long orderItemId,@PathVariable String id, Model model ) {
         log.info("orderItemId={}", orderItemId);
-        log.info("orderItemId={}", id);
+        log.info("id={}", id);
         
         List<Order> orders = orderService.getOrdersByOrderItemId(orderItemId);
         
@@ -72,16 +72,15 @@ public class OrderController {
         return "/freshmarket/freshmarketorder";
     }
     
-    @GetMapping("/freshmarketorder/{id}")
-    public String getOrdersByOrderItemId_order(@PathVariable String id, Model model ) {
+    @GetMapping("/freshmarketorder/{userId}")
+    public String getOrdersByOrderItemId_order(@PathVariable String userId, Model model ) {
+        log.info("userId={}", userId);
+        List<OrderItems> lists = itemService.read_order(userId);
         
-        log.info("getOrdersByOrderItemId_order id={}", id);
-        
-        List<OrderItems> lists = itemService.read_order(id);
-        
-        log.info("lists_order={}"+lists);
+        log.info("lists_order={}",lists);
         
         model.addAttribute("lists", lists);
+        
         
         return "/freshmarket/freshmarketorder";
     }
