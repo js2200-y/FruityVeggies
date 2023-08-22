@@ -1,5 +1,7 @@
 package com.fruityveggies.www.service.recipes;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.fruityveggies.www.dto.recipes.TipDto;
@@ -45,7 +47,7 @@ public class TipService {
     }
     
     ////디테일 id로 읽어오기
-    public Tip read(Long id) {
+    public List<Tip> read(Long id) {
         log.info("read(id={})", id);
         
         Recipe recipe =  recipeRepository.findById(id).orElseThrow();

@@ -12,7 +12,7 @@ public interface Required_IngredientRepository  extends JpaRepository<Required_I
     List<Required_IngredientRepository> findByRecipeOrderById(Recipe recipe);
 
     //디테일 불러오려면 Required_Ingredient 검색
-    Required_Ingredient findByRecipe(Recipe recipe);
+    List<Required_Ingredient> findByRecipe(Recipe recipe);
 
     
     
