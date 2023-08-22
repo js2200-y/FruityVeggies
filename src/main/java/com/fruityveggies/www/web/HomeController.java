@@ -1,13 +1,11 @@
 package com.fruityveggies.www.web;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.fruityveggies.www.dto.ItemItemOptionDto;
 import com.fruityveggies.www.repository.Item;
 import com.fruityveggies.www.repository.recipes.Recipe;
+import com.fruityveggies.www.repository.review.Review;
 import com.fruityveggies.www.service.ItemService;
 import com.fruityveggies.www.service.recipes.RecipeService;
+import com.fruityveggies.www.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +32,9 @@ public class HomeController {
     private ItemService itemService;
     
 //    @PreAuthorize("hassRole('USER')") // 페이지 접근 이전에 인증(권한, 로그인) 여부를 확인.
+    
+    @Autowired
+    private ReviewService reviewService;
     
     @GetMapping("/")
     public String home(Model model) {
@@ -50,6 +53,12 @@ public class HomeController {
     @GetMapping("/main/regulardelivery")
     public String regulardelivery(Model model) {
         log.info("regulardelivery()");
+        
+        List<Review> lists = reviewService.findByAll();
+        
+        log.info("lists={}",lists);
+        
+        model.addAttribute("lists", lists);
         
         return "/main/regulardelivery"; // View의 이름.
     }
