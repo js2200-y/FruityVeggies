@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layout/base_layout}">
-    <th:block layout:fragment="mycss">
-    </th:block>    
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base_layout}">
+    
     <main layout:fragment="main">
         <div class="d-flex flex-column align-items-center">
-        
-        <h3>주문하신 상품의
-        <br>상세내역이에요</h3>
-        <div class="card mx-auto" style="max-width: 400px;">
-        <table>
-        <tbody>
-            <tbody>
-        <tr th:each="orderItem : ${orderItems}">
-             <td>상품명 : </td>
-            <td th:text="${orderItem.name}"></td>
-        </tr>
-        <tr th:each="orderItem : ${orderItems}">
-            <td>수량 : </td>
-            <td th:text="${orderItem.cnt + ' 개 '}"></td>
+            <div class="card mx-auto" style="max-width: 700px;">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>주문하신 상품의<br>상세내역이에요</h3>
+                </div>
             
-        </tr>
-        <tr th:each="orderItem : ${orderItems}">
-            <td>상품 금액 : </td>
-            <td th:text="${orderItem.price + ' 원 '}"></td>
-        </tr>
-    </tbody>
-        </tbody>
-    </table>
-    <a class="btn btn-outline-dark mb-2" th:href="@{recipe/review}">후기 작성</a>
-    </div>
-    </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">상품명</th>
+                            <th style="text-align: center;">수량</th>
+                            <th style="text-align: center;">상품금액</th>
+                            <th style="text-align: center;">이미지</th>
+                            <th style="text-align: center;">후기 작성</th>  
+                        </tr>
+                    </thead>
+                    <tbody th:each="orderItem, orderIndex : ${orderItems}">
+                        <tr>
+                             <td th:text="${orderItem.name}" style="padding: 15px;"></td>
+                             <td th:text="${orderItem.cnt + ' 개 '}" style="padding: 15px;"></td>
+                             <td th:text="${orderItem.price + ' 원 '}" style="padding: 15px;"></td>
+                            <td>
+                                <img th:src="${imgs[orderIndex.index]}" alt="상품 이미지" width="150" height="100">
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-dark mb-2"
+                                   th:href="@{/recipe/review(id=${orderItem.itemid})}"
+                                   th:text="'후기 작성 (' + ${orderItem.itemid} + ')'"
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
-    
-    <th:block layout:fragment="myscripts">
-    </th:block>
-    
 </html>

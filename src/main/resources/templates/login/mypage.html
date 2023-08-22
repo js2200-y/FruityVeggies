@@ -21,7 +21,11 @@
             <div class="mb-48px mt-24px h-14px bg-gray-0"></div>
             <h1>최신 주문내역</h1>
             
-            <a class="btn btn-success me-2 " th:href="@{orderhistory}">주문내역 보기
+            <a class="btn btn-success me-2 mb-3 " th:href="@{orderhistory}">주문내역 보기
+            <img th:src="@{/img/right.png}" style="width: 20px; height: 20px; margin-left: 100px;">
+            </a>
+           
+            <a class="btn btn-success me-2 mb-3 " th:href="@{#}">내가 올린 후기
             <img th:src="@{/img/right.png}" style="width: 20px; height: 20px; margin-left: 100px;">
             </a>
             
@@ -29,7 +33,7 @@
     <svg class="bi ms-1" width="20" height="20"><use xlink:href="#arrow-right-short"></use></svg>
 </a>
             
-            <a class="btn btn-success me-2" th:href="@{#}">내 회원 정보</a>
+          
             
             </div>
             </div>
