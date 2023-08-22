@@ -19,6 +19,7 @@ public class RescueOrderService {
 
     private final RescueOrderRepository rescueOrderRepository;
     
+    
     @Transactional
     public List<RescueOrder> read() {
     	
@@ -30,6 +31,9 @@ public class RescueOrderService {
     public RescueOrder create (RescueOrderDto dto) {
         
         log.info("create(dto={})", dto);
+        
+       // String ss = String.join(", ", dto.getDislikeList());
+      //  log.info("asdf={}",ss);
         
         RescueOrder entity = dto.toEntity();
         log.info("entity={}", entity );

@@ -251,7 +251,8 @@
 		axios.post(reqUrl,data)
 			.then(function(response){//성공 응답일 때 실행할 콜백 등록
 				console.log(response);
-				window.location.href = "/";
+				
+				location.href="/freshmarket/freshmarketorder/"+userId;
 			})
 			.catch((error)=>{//실패일 때 실행할 콜백 등록
 				console.log(error);

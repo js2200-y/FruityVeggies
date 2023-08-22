@@ -1,6 +1,8 @@
 package com.fruityveggies.www.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,10 +64,23 @@ public class CommonController {
         log.info("userLocalPart = {}",userLocalPart);
         
         
+        // 이미지 가지고 오기
+        
         List<OrderItems> orderItems = itemService.getOrderItemsByUserEmail(emailVal);
         log.info("orderItems={}", orderItems);
         model.addAttribute("orderItems", orderItems);
+        
+        
 
+        List<String> imgs = new ArrayList<>();
+             
+        for(int i=0; i<orderItems.size(); i++) {
+            imgs.add(itemService.findItemById(orderItems.get(i).getItemid()).getMain_image_path() );
+        }
+        
+        log.info("imgs={}",imgs);
+        
+        model.addAttribute("imgs",imgs);
         return "login/orderhistory";
     }
 }
