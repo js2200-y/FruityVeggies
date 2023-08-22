@@ -149,7 +149,7 @@ public class FreshMarketController {
 	public String freshmarket(@RequestBody Map<String, Object> data) {
 		
 		log.info("freshmarket data={}",data);
-//	
+
 		List<String> names = (List<String>) data.get("names");
 	    List<String> countsAsStrings = (List<String>) data.get("counts");
 	    List<String> pricesAsStrings = (List<String>) data.get("prices");
