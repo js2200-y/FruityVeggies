@@ -23,33 +23,38 @@ public class RescueOrderController {
 
 	private final RescueOrderService rescueOrderService;
    
-   @PreAuthorize("hasRole('USER')")
    @GetMapping("/rescueorder/rescue_order")
-   public String rescuorder() {
+   public String rescuorder(@RequestParam String resId, Model model) {
       
-	   log.info("rescuorder get");
+	  log.info("rescuorder get");
+	  
+	  log.info("resId={}", resId);
+	  
+	  model.addAttribute("resId",resId);
+	  
       return "/rescueorder/rescue_order";
    }
    
    @GetMapping("/rescueorder/rescue_order2")
-   public String rescuorder2(Model model) {
+   public String rescuorder2(Model model, @RequestParam String id) {
       
 	   log.info("read()");
 	   
 	   List<RescueOrder> list = rescueOrderService.read();
 	   
-	   model.addAttribute("rescues", list);
+	   log.info("lis11111111111111t={}", list);
 	   
+	   model.addAttribute("rescues", list);
 	   
       return "/rescueorder/rescue_order2";
    }
    
    
-   @PreAuthorize("hasRole('USER')")
-   @PostMapping("/rescueorder/rescue_order")
+   @PostMapping("/rescueorder/rescue_order2")
    public String rescuorderPost(RescueOrderDto dto, @RequestParam String boxsize, @RequestParam List<String> dislikeList) {
 	   log.info("create(dto={}) rescue", dto);
 	   log.info("Received boxsize: {}", boxsize);
+	   log.info("dislikeList: {}", dislikeList);
 	   
 	   dto.setBoxsize(boxsize); // 사용자 입력값을 dto에 설정
 	    
@@ -71,13 +76,7 @@ public class RescueOrderController {
 	   
 	   rescueOrderService.create(dto);
       
-      return "/rescueorder/rescue_order2";
+      return "redirect:/rescueorder/rescue_order2?id="+dto.getResId();
    }
    
-   @PostMapping("/rescueorder/rescue_order2")
-   public String rescuorder2Post( ) {
-      
-      log.info("rescuorder2 post={}");
-      return "/rescueorder/rescue_order2";
-   }
 }
