@@ -20,6 +20,35 @@ function showContent(sectionId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+	console.log('111');
+	const order_btn = document.querySelector('#order_btn_1');
+		order_btn.addEventListener('click', (e) =>{
+        
+        e.preventDefault();
+        
+        const userIdElement = document.querySelector('#userId');
+		let userId='';
+	
+	    if (userIdElement === null) {
+	        
+	        const confirmed = window.confirm("로그인 창으로 이동 하시겠습니까?");
+            if (confirmed) {
+                window.location.href = "/login";
+            } else {
+                return;
+            }
+	        
+	        console.log('Element not found.');
+	        return;
+	        
+	    } else {
+			userId = userIdElement.innerHTML;
+	        console.log(userId); // 출력: "exampleUser"
+	    }
+    });
+    
+    
+	
     var sectionLinks = document.querySelectorAll('.section-link');
 
     sectionLinks.forEach(function(link) {
@@ -28,5 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var sectionId = link.getAttribute('data-section-id');
             showContent(sectionId);
         });
-    });
+        
+        
+     });
 });
