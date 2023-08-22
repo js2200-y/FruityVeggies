@@ -142,3 +142,23 @@ button img {
 .liked{
     background-color: #FF0000;
 }
+
+
+
+.centered-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.outer-wrapper {
+  display: flex;
+  justify-content: center;
+}

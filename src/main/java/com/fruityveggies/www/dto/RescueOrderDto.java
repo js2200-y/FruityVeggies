@@ -25,7 +25,7 @@ public class RescueOrderDto {
     private String phone;
     private String address;
     private String addressdetail;
-    private String userId;
+    private String resId;
     
     public RescueOrder toEntity() {
         return RescueOrder.builder()
@@ -39,6 +39,7 @@ public class RescueOrderDto {
                     .phone(phone)
                     .address(address)
                     .address_detail(addressdetail)
+                    .userid(resId)
                     .build();
     }
     

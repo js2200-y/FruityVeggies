@@ -36,13 +36,13 @@ public class EmailServiceImpl implements EmailService {
         MimeMessage message = emailSender.createMimeMessage();
 
         message.addRecipients(RecipientType.TO, to);
-        message.setSubject("FrutyVeggies 회원가입 코드");
+        message.setSubject("FrutyVeggies 인증 코드");
 
         String msgg = "";
         msgg += "<div style='margin: 20px; font-family: Arial, sans-serif;'>";
-        msgg += "<h1 style='color: #007BFF; text-align: center;'>Fruity Veggies 회원가입</h1>";
+        msgg += "<h1 style='color: #007BFF; text-align: center;'>Fruity Veggies</h1>";
         msgg += "<div style='border: 1px solid #007BFF; padding: 20px; text-align: center;'>";
-        msgg += "<h3 style='color: #007BFF;'>회원가입 인증 코드입니다.</h3>";
+        msgg += "<h3 style='color: #007BFF;'>Fruity Veggies 인증 코드입니다.</h3>";
         msgg += "<p style='font-size: 120%;'>CODE: <strong>" + verificationCode + "</strong></p>";
         msgg += "</div>";
         msgg += "<p style='text-align: center; margin-top: 20px;'>감사합니다!</p>";

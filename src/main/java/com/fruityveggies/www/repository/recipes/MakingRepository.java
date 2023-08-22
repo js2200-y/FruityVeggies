@@ -10,5 +10,5 @@ public interface MakingRepository extends JpaRepository<Making,Long> {
     List<MakingRepository> findByRecipeOrderById(Recipe recipe);
     
     //디테일 불러오러면 Making 검색
-    Making findByRecipe(Recipe recipe);
+    List<Making> findByRecipe(Recipe recipe);
 }

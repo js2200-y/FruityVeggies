@@ -107,7 +107,7 @@
   
 <!-- 리스트 시작 -->  
  <div class="album py-5 bg-body-tertiary">
-    <div class="container">
+    <div class="container" style="padding-left: 100px; padding-right: 100px;">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div th:each="item : ${uniqueItems}" class="col">
             <div class="card shadow-sm">
@@ -117,7 +117,7 @@
                     <p class="card-text" th:text="${item.price} + '원'"></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary view-button" th:attr="data-id=${item.id}">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-success view-button" th:attr="data-id=${item.id}">View</button>
                             <!-- Add Edit button here -->
                         </div>
                     </div>

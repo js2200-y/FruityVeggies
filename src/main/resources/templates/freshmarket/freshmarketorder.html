@@ -171,7 +171,7 @@
 
      <div>
       <h1 class="font-bold my-4" style="font-size: 26px;">
-       주문 상품<span id="orderCount" style="color: #9FE2BF;"> 1</span>
+       주문 상품<span id="orderCount" style="color: #9FE2BF;"></span>
       </h1>
       <!-- th:text="${item.getCount()}" -->
      </div>
@@ -190,7 +190,6 @@
                     </tr>       
                 </thead>
                 <tbody>
-                        
                     <tr th:each="cart : ${lists}">
                         <td style="width: 210px; text-align: center;">
                             <img th:src="${cart.main_image_path}" style="width: 100px; " >
@@ -200,7 +199,7 @@
                             <input type="number" th:id="'cntNum_'+${cart.price}" th:name="'cntNum_'+${cart.price}" min="1" max="10" step="1" th:value="${cart.cnt}">
                         </td>
                         <td th:id="'opTotal_'+${cart.price}" th:text="${cart.price * cart.cnt}" th:name="'opTotal_'+${cart.price}"></td>
-                        <td >2000원</td>
+                        <td id="deliveryCost_1">2000원</td>
                         <td th:id="'reserves_'+${cart.price}" th:text="${cart.price * 0.05}"></td>
                     </tr>
                 </tbody>
@@ -235,22 +234,20 @@
       <div class="flex flex-col gap-16px">
        <div class="flex justify-between text-gray-800">
         <p class="text-16px">총 상품금액</p>
-        <!-- th:text="${item.price * items.max_count}" -->
-        <p class="text-16px" id="price">원</p>
+        <p class="text-16px" id="totalPrice"></p>
        </div>
        <div class="flex justify-between text-gray-800">
         <p class="text-16px">총 배송비</p>
-        <p class="text-16px">+0원</p>
+        <p class="text-16px" id="totalDeliveryCost"></p>
        </div>
        <div class="flex justify-between text-gray-800">
         <p class="text-16px">사용 적립금</p>
-        <p class="text-16px">-0원</p>
+        <p class="text-16px">-0</p>
        </div>
        <hr>
        <div class="flex justify-between text-lg font-bold text-gray-800">
         <p class="text-18px">총 결제 금액</p>
-        <p class="text-18px text-brand-1" style="color: #9FE2BF;">합계</p>
-        <!-- th:text="${item.price * items.max_count}" -->
+        <p class="text-18px text-brand-1" style="color: #9FE2BF;" id="totalPayment"></p>
        </div>
       </div>
      </div>

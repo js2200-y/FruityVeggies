@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fruityveggies.www.dto.RecipeSearchDto;
 import com.fruityveggies.www.dto.recipes.AdditionalIngredientDto;
 import com.fruityveggies.www.dto.recipes.MakingDto;
 import com.fruityveggies.www.dto.recipes.RecipeDto;
@@ -48,26 +49,26 @@ public class RecipeController {
     private final TipService tipService;
     
     @GetMapping("/detail")
-    public void read(@RequestParam("id") Long id, Model model) {
+    public String read(@RequestParam("id") Long id, Model model) {
         log.info("read(id={})",id);
 
         //RECIPES 테이블에서 id에 해당하는 레시피를 검색
         Recipe recipe = recipeService.read(id);
         
         //REQUIRED_INGREDIENT 테이블에에서 id에 해당하는 레시피를 검색
-        Required_Ingredient required_ingredient = required_IngredientService.read(id);
+        List<Required_Ingredient> required_ingredient = required_IngredientService.read(id);
         
         //AdditionalIngredient 테이블에서 id에 해당하는 레시피 검색
-        AdditionalIngredient additionalIngredient = additionalIngredientService.read(id);
+        List<AdditionalIngredient> additionalIngredient = additionalIngredientService.read(id);
         
         //Seasoning 테이블에서 id에 해당하는 레시피를 검색
-        Seasoning seasoning = seasoningService.read(id);
+        List<Seasoning> seasoning = seasoningService.read(id);
 
         //Making 테이블에서 id에 해당하는 레시피 검색
-        Making making = makingService.read(id);
+        List<Making> making = makingService.read(id);
         
         //Tip 테이블에서 id에 해당하는 레시피 검색
-        Tip tip = tipService.read(id);
+        List<Tip> tip = tipService.read(id);
         
         log.info("recipe={}",recipe);
         log.info("required_ingredient={}",required_ingredient);
@@ -78,6 +79,8 @@ public class RecipeController {
         model.addAttribute("seasoning", seasoning);
         model.addAttribute("making", making);
         model.addAttribute("tip", tip);
+        
+        return "/recipe/detail";
     }
     
     
@@ -146,5 +149,21 @@ public class RecipeController {
      // DB 테이블 insert 후 레시피 목록 페이지로 redirect 이동.
         return "redirect:/main/recipes";
     }
+    
+    @GetMapping("/search")
+    public String search(RecipeSearchDto dto, Model model) {
+        log.info("search(dto={})", dto);
+        
+        // postService의 검색 기능 호출:
+        List<Recipe> list = recipeService.search(dto);
+        log.info("list(dto={})", list);
+        
+        // 검색 결과를 Model에 저장해서 뷰로 전달:
+        model.addAttribute("recipes", list);
+        
+        return "/main/recipes";
+    }
+    
+    
     
 }

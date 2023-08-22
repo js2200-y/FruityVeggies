@@ -26,9 +26,9 @@
 <body>
 <th:block th:if="${#strings.equals(isSuccess, 'true')}">
     <h1>결제 성공</h1>
-    <p>결과데이터 : <span th:text="${responseStr}"></span></p>
-    <p>orderName : <span th:text="${orderName}"></span></p>
-    <p>method : <span th:text="${method}"></span></p>
+    <p>결과데이터 : <span th:text="${responseStr}"></span></p><br>
+    <p>orderName : <span th:text="${orderName}"></span></p><br>
+    <p>method : <span th:text="${method}"></span></p><br>
     <tr th:if="${#strings.equals(method, '카드')}">cardNumber
         <td th:text="${cardNumber}"></td>
     </tr>
