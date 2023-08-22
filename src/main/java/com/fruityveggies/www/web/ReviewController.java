@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/recipe")
 public class ReviewController {
-
+    
 	private final ReviewService reviewService;
 	
 	@PostMapping("/review")
@@ -43,6 +43,9 @@ public class ReviewController {
     public void review(@RequestParam(value = "id") Long id) {
         log.info("review() GET");
         log.info("id={}", id);
+            
         
     }
+	
+	
 }

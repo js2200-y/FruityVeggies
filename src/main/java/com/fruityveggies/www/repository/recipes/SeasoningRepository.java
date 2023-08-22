@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SeasoningRepository extends JpaRepository<Seasoning, Long> {
 
     //recipe로 검색
-    List<Seasoning> findByRecipeOrderById(Recipe recipe);
+    List<SeasoningRepository> findByRecipeOrderById(Recipe recipe);
+    
+   //디테일 불러오려면 Seasoning 검색
+   Seasoning findByRecipe(Recipe recipe);
 }

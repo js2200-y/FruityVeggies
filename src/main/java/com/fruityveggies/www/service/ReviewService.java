@@ -1,5 +1,7 @@
 package com.fruityveggies.www.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.fruityveggies.www.dto.review.ReviewCreateDto;
@@ -30,6 +32,11 @@ public class ReviewService {
         log.info("entity={}", entity);
         
         return entity;
+    }
+
+    public List<Review> findByAll() {
+        return reviewRepository.findAll();
+        
     }
     
 }

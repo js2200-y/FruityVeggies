@@ -132,3 +132,13 @@ button img {
     margin-top: 48px;
     margin-bottom: 48px;
 }
+
+.like-img {
+    width: 24px;
+    height: 24px;
+    
+}
+
+.liked{
+    background-color: #FF0000;
+}

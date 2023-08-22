@@ -39,4 +39,13 @@ public class AdditionalIngredientService {
         
         return entity;
     }
+    
+    //디테일 id로 읽어오기
+    public AdditionalIngredient read(Long id) {
+        log.info("read(id={})", id);
+        
+        Recipe recipe =  recipeRepository.findById(id).orElseThrow();
+        
+        return additionalIngredientRepository.findByRecipe(recipe);
+    }
 }

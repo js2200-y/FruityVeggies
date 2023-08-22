@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<meta charset="UTF-8">
+<html lang="ko"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/base_layout}">
 <head>
     <title>결제 성공</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="UTF-8">
 </head>
+
+ <main layout:fragment="main">
+    <br><br><br><br><br>
+    <div style="flex: 1; text-align: center;">
+        <img th:src="@{/img/success.png}" style="display: block; margin: 0 auto;" width="850" height="150"> 
+    <br><br><br>
+  <label style="display: inline-block; margin-top: 10px;"><h1>결제가 완료 되었습니다 :)</h1></label>
+  <br><br>
+    <a class="btn btn-long" href="/login/mypage" style="background-color: #9FE2BF;">확인</a>
+</div>
+
+
 
 
 <body>
@@ -30,4 +45,6 @@
     <p>에러코드 : <span th:text="${code}"></span></p>
 </th:block>
 </body>
+</main>
+
 </html>
