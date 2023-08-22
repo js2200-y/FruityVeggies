@@ -57,4 +57,9 @@ public class MemberController {
     public void findid() {
         log.info("findid() GET");
     }
+    
+    @GetMapping("/findpassword")
+    public void findpassword() {
+        log.info("findid() GET");
+    }
 }

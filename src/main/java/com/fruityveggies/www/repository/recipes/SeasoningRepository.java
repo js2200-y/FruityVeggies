@@ -10,5 +10,5 @@ public interface SeasoningRepository extends JpaRepository<Seasoning, Long> {
     List<SeasoningRepository> findByRecipeOrderById(Recipe recipe);
     
    //디테일 불러오려면 Seasoning 검색
-   Seasoning findByRecipe(Recipe recipe);
+   List<Seasoning> findByRecipe(Recipe recipe);
 }

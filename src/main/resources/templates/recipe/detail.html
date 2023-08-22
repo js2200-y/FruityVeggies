@@ -33,16 +33,7 @@
                 </div>
                  
                 <div class="flex items-center justify-between bottom">
-                    <div class="flex items-center ">
-                        <p class="text-15px">
-                         <span class="text-gray">댓글 </span>
-                         <span class="font-semibold text-gray">1</span>
-                        </p>
-                        <p class="text-15px">
-                            <span class="text-gray">좋아요 </span>
-                            <span class="font-semibold">9</span>
-                        </p>
-                    </div>
+                    
                     <button class="like-button">
                         <img class="like-img"  src="/img/like.svg" alt="like-post">
                     </button>
@@ -51,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 0px; margin-bottom: 0px;"></div>
+    <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 30px; margin-bottom: 30px;"></div>
     
     
     <div class="uploadBtn">
@@ -60,17 +51,21 @@
          </a>
     </div>
     
-    <ul class="nav nav-underline">
+    <div class="nav centered-nav">
+    <ul class="nav nav-underline nav-with-margin">
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="#" tabindex="0">재료</a>
+        <a class="nav-link" aria-current="page" href="#IngredientTab" tabindex="0">재료</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">만드는 방법</a>
+        <a class="nav-link" href="#Makingtab">만드는 방법</a>
       </li>
-    </ul>
+    </ul> 
+    </div>
     
-    <div id="IngredientTab">
-        <div class="px-16px">
+    <div class="w-full" style="height:30px;"></div>
+    
+    <div id="IngredientTab" class="outer-wrapper">
+        <div class="px-16px" >
                 <h3 class="text-22px font-bold text-gray-800">재료</h3>
                     <div class="rounded-[100px] bg-brand-10 px-8px py-5px">
                         <p class="text-14px font-semibold text-brand-1">1인분 기준</p>
@@ -78,29 +73,30 @@
         </div>
             
                 <div class="flex flex-col gap-12px">
-                    <h6 class="text-14px font-medium text-gray-800" >주재료</h6>
+                    <h6 class="text-14px font-medium text-gray-800" >&nbsp;주재료&nbsp;</h6>
                 <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-16px gap-8px">
                     <li class="flex-between">
-                        <div class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;" >
-                            <span th:text="${required_ingredient.name}"  class="text-16px text-gray-800 sm:text-sm"></span>
+                        <div th:each="cart : ${required_ingredient}" class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;" >
+                            <span th:text="${cart.name}" class="text-16px text-gray-800 sm:text-sm"></span>
                         </div>
                     </li>
                         <li class="flex-between">
-                            <div class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;">
-                                <span th:text="${required_ingredient.amount}"  class="text-16px text-gray-800 sm:text-sm"></span>
+                            <div th:each="cart : ${required_ingredient}" class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;">
+                                <span th:text="${cart.amount}" class="text-16px text-gray-800 sm:text-sm"></span>
                             </div>
                         </li>
+                        
                 </ul>
                 </div>
            
                 
                 
                 <div class="flex flex-col gap-12px">
-                    <h6 class="text-14px font-medium text-gray-800" >부재료</h6>
+                    <h6 class="text-14px font-medium text-gray-800" >&nbsp;부재료&nbsp;</h6>
                 <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-16px gap-8px">
                     <li class="flex-between">
-                        <div class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;" >
-                            <span th:text="${additionalIngredient.name}"  class="text-16px text-gray-800 sm:text-sm"></span>
+                        <div th:each="cart : ${additionalIngredient}" class="shrink-0 cursor-pointer rounded-sm p-5px text-14px font-medium bg-gray-200 text-gray-800" style="line-height: 14px;" >
+                            <span th:text="${cart.name}"  class="text-16px text-gray-800 sm:text-sm"></span>
                         </div>
                     </li>
                 </ul>
@@ -109,11 +105,12 @@
         
                 <div class="grid grid-cols-3 gap-15px">
                 <div class="flex flex-col gap-12px">
-                    <h6 class="text-14px font-medium text-gray-800">양념</h6>
-                        <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-16px gap-16px">
+                    <h6 class="text-14px font-medium text-gray-800">&nbsp;양념&nbsp;</h6>
+                        <ul class="flex flex-grow flex-col rounded-sm border border-gray-200 p-14px gap-16px">
                             <li class="flex-between">
-                                <p th:text="${seasoning.name}" class="text-16px text-gray-800 sm:text-sm"></p>
-                                
+                                <div th:each="cart : ${seasoning}">
+                                <p th:text="${cart.name}" class="text-16px text-gray-800 sm:text-sm"></p>
+                                </div>
                             </li>
                             
                         </ul>
@@ -122,29 +119,31 @@
             </div>
            
         
-        <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 0px; margin-bottom: 0px;"></div>
+        <div class="h-14px bg-gray-0 sm:my-48px" style="margin-top: 30px; margin-bottom: 30px;"></div>
+       
         
-        <div id="Makingtab" class="pt-48px">
+        <div id="Makingtab" class="outer-wrapper">
             <div class="px-16px" style="line-break: anywhere;">
-                <h3 class="text-22px font-bold text-gray-700">만드는 방법</h3>
+                <h3 class="text-22px font-bold text-gray-700">만드는 방법&nbsp;</h3>
             </div>
-            <div class="w-full" style="height: 24px;"></div>
+            <div  style="height: 24px;"></div>
             <div class="">
-                <div class="flex flex-col gap-8px">
-                    <div class="rounded-[16px] p-16px  bg-brand-10">
-                        <div class="flex items-start">
-                            <div class="h-full shrink-0" style="width: 12px;"></div>
-                                <p th:text="${making.description}"  class="grow text-16px leading-6 text-gray-800 "></p>
+                <div >
+                    <div >
+                        <div >
+                            <div th:each="cart : ${making}" class="h-full shrink-0">
+                                <p th:text="${cart.description}" class="grow text-16px leading-6 text-gray-800 "></p>
+                            </div>
                         </div>
                     </div>
                     
                     
                     </div>
-                    <div class="rounded-[16px] p-16px  bg-brand-10">
-                        <div class="flex items-start">
-                            <p class="flex-center mt-4px h-16px w-24px shrink-0 font-bold  text-14px text-gray-800">TIP</p>
-                                <div class="h-full shrink-0" style="width: 12px;">
-                                    <p th:text="${tip.description}"  class="grow text-16px leading-6 text-gray-800 "></p>
+                    <div >
+                        <div >
+                            <p >TIP</p>
+                                <div th:each="cart : ${tip}" class="h-full shrink-0">
+                                    <p th:text="${cart.description}" class="grow text-16px leading-6 text-gray-800 "></p>
                                 </div>
                         </div>
                     </div>

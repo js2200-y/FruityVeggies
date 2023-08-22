@@ -11,6 +11,7 @@ import com.fruityveggies.www.repository.member.Member;
 import com.fruityveggies.www.repository.member.MemberRepository;
 import com.fruityveggies.www.service.MemberService;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,4 +65,13 @@ public class MemberService implements UserDetailsService{
         
         throw new UsernameNotFoundException(username + " - not found");
     }
+
+    @Transactional
+	public void updatePassword(String email, String password) {
+    	
+    	String encodedPassword = passwordEncoder.encode(password);
+		
+    	memberRepository.updateMemberPassword(email, encodedPassword);
+	}
+    
 }

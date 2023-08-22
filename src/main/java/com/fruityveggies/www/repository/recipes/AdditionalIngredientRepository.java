@@ -10,5 +10,5 @@ public interface AdditionalIngredientRepository extends JpaRepository<Additional
     List<AdditionalIngredientRepository> findByRecipeOrderById(Recipe recipe);
     
   //디테일 불러오려면 AdditionalIngredient 검색
-    AdditionalIngredient findByRecipe(Recipe recipe);
+    List<AdditionalIngredient> findByRecipe(Recipe recipe);
 }

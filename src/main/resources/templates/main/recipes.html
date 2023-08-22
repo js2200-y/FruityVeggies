@@ -9,7 +9,7 @@
 
 <main layout:fragment="main">
  <h2 class="title">프루티베지스 레시피</h2>
-  <form class="search-container">
+  <form class="search-container" method="get" th:action>
    <input class="recipe-search-bar-input"
           placeholder="요리나 재료를 검색해보세요!">
    <button type="submit" class="search-button">
@@ -18,63 +18,26 @@
   </form>
         <hr style="width: 40%; margin: auto;">
         <div style="height: 30px;"></div>
-        <div class="ingredient-search-buttons">
-            <button class="ingredient-search-button">📦 전체</button>
-            <button class="ingredient-search-button">비건요리</button>
-            <button class="ingredient-search-button">다이어트요리</button>
-            <button class="ingredient-search-button">건강식</button>
-            <button class="ingredient-search-button">든든한</button>
-            <button class="ingredient-search-button">집밥</button>
-            <button class="ingredient-search-button">냉장고털이</button>
-        </div>
-    
+       
     <div>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <a href="/recipe/detail">
-                            <img class="bd-placeholder-img card-img-top" src="/img/111.jpeg" alt="감자 이미지" aria-label="Placeholder: Thumbnail">
-                        </a>
-                        <div class="card-body">
-                    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                		</div>
-                		<hr>
-                        <div>
-                    		<span>좋아요🩷</span>3<p class="text-14px font-normal text-gray-600 truncate-1-lines">#비건, #간단요리, #가벼운요리, #건강식, #입맛돋우는요리</p>
-                		</div>
-                    </div>
-                </div>
-                 <div class="col">
-                    <div class="card shadow-sm">
-                        <a href="/recipe/detail">
-                            <img class="bd-placeholder-img card-img-top" src="/img/111.jpeg" alt="감자 이미지" aria-label="Placeholder: Thumbnail">
-                        </a>
-                        <div class="card-body">
-                    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                		</div>
-                		<hr>
-                        <div>
-                    		<span>좋아요🩷</span>3<p class="text-14px font-normal text-gray-600 truncate-1-lines">#비건, #간단요리, #가벼운요리, #건강식, #입맛돋우는요리</p>
-                		</div>
-                    </div>
-                </div>
-                 <div class="col">
-                    <div class="card shadow-sm">
-                        <a href="/recipe/detail">
-                            <img class="bd-placeholder-img card-img-top" src="/img/111.jpeg" alt="감자 이미지" aria-label="Placeholder: Thumbnail">
-                        </a>
-                        <div class="card-body">
-                    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                		</div>
-                		<hr>
-                        <div>
-                    		<span>좋아요🩷</span>3<p class="text-14px font-normal text-gray-600 truncate-1-lines">#비건, #간단요리, #가벼운요리, #건강식, #입맛돋우는요리</p>
-                		</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	  <div class="container">
+	    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+	        <div class="col" th:each="recipe : ${recipes}">
+	            <div class="card shadow-sm">
+						<a th:href="@{ /recipe/detail?id={id} (id = ${recipe.id}) }"
+						th:text="${recipe.title}"></a>
+	                    <img class="bd-placeholder-img card-img-top" th:src="${recipe.image}" aria-label="Placeholder: Thumbnail">
+	                <div class="card-body">
+	                    <p class="card-text" th:text="${recipe.title}"></p>
+	                </div> 
+	                <hr>
+	                <div>
+	                    <span>좋아요🩷</span>3<p class="text-14px font-normal text-gray-600 truncate-1-lines">#비건, #간단요리, #가벼운요리, #건강식, #입맛돋우는요리</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	 </div>
     </div>
 <div class="uploadBtn">
          <a href="/recipe/upload">
@@ -84,11 +47,6 @@
 <br>
 <br>
 <br>
-<div>
-	<a href="/recipe/review">
-	 <button id="review">리뷰쓰기</button>
-	</a>
-</div>
 
 </main>
 	<th:block layout:fragment="myscripts">

@@ -53,8 +53,6 @@ public class FreshMarketController {
 	    
 	    log.info("asdf : {}",billSelect);
 	    
-	    // 이거 결제 사이트로 넘김
-        
         // 처리 결과를 클라이언트에게 반환합니다.
         return ResponseEntity.ok(200); // 또는 원하는 응답 데이터를 반환할 수 있습니다.
     }

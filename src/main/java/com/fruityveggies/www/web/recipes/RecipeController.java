@@ -48,26 +48,26 @@ public class RecipeController {
     private final TipService tipService;
     
     @GetMapping("/detail")
-    public void read(@RequestParam("id") Long id, Model model) {
+    public String read(@RequestParam("id") Long id, Model model) {
         log.info("read(id={})",id);
 
         //RECIPES 테이블에서 id에 해당하는 레시피를 검색
         Recipe recipe = recipeService.read(id);
         
         //REQUIRED_INGREDIENT 테이블에에서 id에 해당하는 레시피를 검색
-        Required_Ingredient required_ingredient = required_IngredientService.read(id);
+        List<Required_Ingredient> required_ingredient = required_IngredientService.read(id);
         
         //AdditionalIngredient 테이블에서 id에 해당하는 레시피 검색
-        AdditionalIngredient additionalIngredient = additionalIngredientService.read(id);
+        List<AdditionalIngredient> additionalIngredient = additionalIngredientService.read(id);
         
         //Seasoning 테이블에서 id에 해당하는 레시피를 검색
-        Seasoning seasoning = seasoningService.read(id);
+        List<Seasoning> seasoning = seasoningService.read(id);
 
         //Making 테이블에서 id에 해당하는 레시피 검색
-        Making making = makingService.read(id);
+        List<Making> making = makingService.read(id);
         
         //Tip 테이블에서 id에 해당하는 레시피 검색
-        Tip tip = tipService.read(id);
+        List<Tip> tip = tipService.read(id);
         
         log.info("recipe={}",recipe);
         log.info("required_ingredient={}",required_ingredient);
@@ -78,6 +78,8 @@ public class RecipeController {
         model.addAttribute("seasoning", seasoning);
         model.addAttribute("making", making);
         model.addAttribute("tip", tip);
+        
+        return "/recipe/detail";
     }
     
     
