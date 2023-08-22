@@ -133,6 +133,11 @@ public class ItemService {
 		
 		return cartRepository.findByUserEmailOrderByDesc(id);
 	}
+	
+	public List<OrderItems> read_order(String id) {
+        
+        return orderItemsRepository.findByUseremail(id);
+    }
 
 
 	public void deleteById(List<Long> delSelect) {

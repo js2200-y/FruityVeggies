@@ -18,6 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		console.log('selectedIds : ',selectedIds);
 		
+		// 쿼리스트링 id값 알아내기 시작
+    // 주어진 URL
+    const url = window.location.href;
+    
+    // URL 객체 생성
+    const urlObject = new URL(url);
+    
+    // URLSearchParams 객체 생성
+    const searchParams = new URLSearchParams(urlObject.search);
+    
+    // "id" 쿼리스트링 값 가져오기
+    const idValue = searchParams.get("id");
+    
+    console.log(idValue); // "1" 출력
+// 쿼리스트링 id값 알아내기 끝
+		
 		const data = {
 	        selectedIds: selectedIds
 	    };	    	
@@ -26,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		axios.post(reqUrl,data)
 			.then(function(response){//성공 응답일 때 실행할 콜백 등록
 				console.log(response);
-				location.reload();
+				
+				location.href="/freshmarket/freshmarketorder/1/"+idValue;
 			})
 			.catch((error)=>{//실패일 때 실행할 콜백 등록
 				console.log(error);
