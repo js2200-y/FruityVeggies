@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fruityveggies.www.dto.ItemItemOptionDto;
+import com.fruityveggies.www.email.dto.FreshmarketOrderDto;
 import com.fruityveggies.www.repository.Item;
 import com.fruityveggies.www.repository.Order;
 import com.fruityveggies.www.service.ItemService;
@@ -37,30 +39,53 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderController {
 
     private final OrderService orderService;
-//    private final OrderItemSerivice orderItemService;
+
     
     
-    @GetMapping("/freshmarketorder")
-    public String freshMarketOrder(Model model, @RequestParam(value = "Id") Long id ) {
-        log.info("freshmarketorder()");
+    
+    
+//    @GetMapping("/freshmarketorder")
+//    public String freshmarketOrder() {
+//        log.info("freshmarketOrder={}");
+//        
+//        
+//        
+//        return "/freshmarket/freshmarketorder";
+//    }
+    
+    @GetMapping("/freshmarketorder/{orderItemId}")
+    public String getOrdersByOrderItemId(@PathVariable Long orderItemId, Model model) {
+        log.info("orderItemId={}", orderItemId);
         
-        Order order = orderService.readOrder(id);
+        List<Order> orders = orderService.getOrdersByOrderItemId(orderItemId);
         
-        model.addAttribute("order", order);
+        model.addAttribute("orders", orders);
         
         return "/freshmarket/freshmarketorder";
     }
     
+    
+    @PostMapping("/create")
+    public String create(FreshmarketOrderDto dto) {
+        log.info("createOrder(dto={})", dto);
+        
+        orderService.create(dto);
+        
+        return "redirect:/success";
+                
+    }
+    
+    
     @GetMapping(value = "/success")
     public String paymentResult(Model model, @RequestParam(value = "orderId") String orderId,
-            @RequestParam(value = "amount") Integer price,
+            @RequestParam(value = "amount") Integer amount,
             @RequestParam(value = "paymentKey") String paymentKey) throws Exception {
 
         log.info("success()");
         
-        if (orderId.startsWith("sample-") && price != price) {
-            throw new RuntimeException("해킹의심 : 결제 요청 금액이 아닙니다.");
-        }
+//        if (orderId.startsWith("sample-") && amount != amount) {
+//            throw new RuntimeException("해킹의심 : 결제 요청 금액이 아닙니다.");
+//        }
 
         String secretKey = "test_sk_BE92LAa5PVb4QG2plwJ87YmpXyJj:";
 
@@ -77,7 +102,7 @@ public class OrderController {
         connection.setDoOutput(true);
         JSONObject obj = new JSONObject();
         obj.put("orderId", orderId);
-        obj.put("price", price);
+        obj.put("amount", amount);
 
         OutputStream outputStream = connection.getOutputStream();
         outputStream.write(obj.toString().getBytes("UTF-8"));

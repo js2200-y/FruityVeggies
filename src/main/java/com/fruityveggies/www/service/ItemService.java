@@ -14,6 +14,7 @@ import com.fruityveggies.www.repository.Item;
 import com.fruityveggies.www.repository.ItemRepository;
 import com.fruityveggies.www.repository.OrderItems;
 import com.fruityveggies.www.repository.OrderItemsRepository;
+import com.fruityveggies.www.repository.OrderRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +31,13 @@ public class ItemService {
     @Autowired
     private CartRepository cartRepository;
     
+    @Autowired
+    private OrderRepository orderRepository;
+    
+    public List<Item> findByAll() {
+        return itemRepository.findAll();
+    }
+    
     public Item findItemById(long id) {
         return itemRepository.findItemById(id);
         
@@ -41,6 +49,10 @@ public class ItemService {
     
     public List<ItemItemOptionDto> getJoinedItemAndItemOptionByItemId(long id){
         return itemRepository.getJoin(id);
+    }
+    
+    public List<ItemItemOptionDto> getJoinAll(){
+        return itemRepository.getJoinAll();
     }
     
     
@@ -122,6 +134,7 @@ public class ItemService {
 		return cartRepository.findByUserEmailOrderByDesc(id);
 	}
 
+
 	public void deleteById(List<Long> delSelect) {
 		for(Long id : delSelect) {
 			cartRepository.deleteById(id);
@@ -129,6 +142,6 @@ public class ItemService {
 		
 		
 	}
-    
+
 
 }

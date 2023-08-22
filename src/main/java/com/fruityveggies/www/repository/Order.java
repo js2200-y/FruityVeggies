@@ -27,14 +27,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ORDERS_SEQ_GEN")
     private Long id;
     
+    private String ordername; // 상품 이름
+    
     private int price;
     
     private int count;
     
-    private Long orderitem_id;
+    @Column(name = "ORDERITEMID")
+    private Long orderItemId;
     
     @Column(nullable = false)
-    private String ordername;
+    private String name; // 구매자 이름
     
     @Column(nullable = false)
     private String orderphone;
