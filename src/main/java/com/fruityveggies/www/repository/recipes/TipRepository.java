@@ -10,5 +10,5 @@ public interface TipRepository extends JpaRepository<Tip, Long>{
     List<TipRepository> findByRecipeOrderById(Recipe recipe);
     
   //디테일 불러오려면 Tip 검색
-    Tip findByRecipe(Recipe recipe);
+    List<Tip> findByRecipe(Recipe recipe);
 }
