@@ -104,6 +104,21 @@ public class FreshMarketController {
     	return "/freshmarket/cart";
     }
     
+    @PostMapping("/freshmarket/maincart")
+    public String cartmain(Model model, @RequestBody Map<String, Object> data) {
+        
+        String userId = (String) data.get("userId");
+        
+        
+        List<Cart> lists = itemService.read(userId);
+        
+        log.info("lists={}"+lists);
+        
+        model.addAttribute("lists", lists);
+        
+        return "/freshmarket/cart";
+    }
+    
     
 //	@GetMapping("/freshmarket/freshmarket")
 //	public String freshmarket() {

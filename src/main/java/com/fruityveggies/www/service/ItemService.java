@@ -34,6 +34,10 @@ public class ItemService {
     @Autowired
     private OrderRepository orderRepository;
     
+    public List<Item> findByAll() {
+        return itemRepository.findAll();
+    }
+    
     public Item findItemById(long id) {
         return itemRepository.findItemById(id);
         
@@ -45,6 +49,10 @@ public class ItemService {
     
     public List<ItemItemOptionDto> getJoinedItemAndItemOptionByItemId(long id){
         return itemRepository.getJoin(id);
+    }
+    
+    public List<ItemItemOptionDto> getJoinAll(){
+        return itemRepository.getJoinAll();
     }
     
     
