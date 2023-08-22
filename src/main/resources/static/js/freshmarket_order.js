@@ -20,22 +20,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+    
+    // 배송비 총 금액
+    // 배송비가 2000원인 경우
+    const deliveryCost = 2000;
+
+    // 배송비 총합 계산
+    let totalDeliveryCost = 0;
+    document.querySelectorAll('[id^="deliveryCost_"]').forEach(function(item) {
+        totalDeliveryCost += parseInt(item.innerText);
+    });
+    document.getElementById("totalDeliveryCost").innerText = totalDeliveryCost;
+    
+    
+    
+    // 총 상품 금액
+    let totalPrice = 0;
+     document.querySelectorAll('[id^="opTotal_"]').forEach(function(item) { // 소계 값을 가지고 있는 요소들을 선택합니다.
+    totalPrice += parseInt(item.innerText); // 해당 요소의 텍스트 값을 가져와 정수형으로 변환한 뒤 총 가격에 더합니다.
+  });
+  document.getElementById("totalPrice").innerText = totalPrice; // 총 가격을 보여주는 요소에 값을 할당합니다.
+
+    // 배송비 + 결제 총 금액 (결제하기 위한 금액임)
+    let totalPayment = totalDeliveryCost + totalPrice;
+     document.getElementById("totalPayment").innerText = totalPayment;
+    
+    
    // 결제
 
-     const buyBtn = document.querySelector('button#buyBtn')
-     const radioInputs = document.querySelectorAll('input[type="radio"][name="payment"]');
-        
+    const buyBtn = document.querySelector('button#buyBtn')
+    const radioInputs = document.querySelectorAll('input[type="radio"][name="payment"]');
+
+   
      buyBtn.addEventListener('click', () => {
-                  
          
-        console.log("떠라")
-
          let selectedPayment = null;
-         
-         let amount = 50000;
-
          let tossPayments = TossPayments("test_ck_4vZnjEJeQVx9dyz6KMOrPmOoBN0k");
 
+      /*   let orderName = document.querySelector("td[th\\:text='${cart.name}']").textContent;*/
+         let amount = parseFloat(totalPayment);  
+         console.log('떠라', amount);  
+    
          function pay(method, requestJson) {
              console.log(requestJson);
              tossPayments.requestPayment(method, requestJson)
@@ -64,20 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
              }
          }
        
-            console.log(orderId)
+            
          if (selectedPayment === 'card') {
              let jsons = {
                  "card": {
                      "amount": amount,
                      "orderId": "sample-" + orderId,
-                     "orderName": "토스 티셔츠 외 2건",
+                     "orderName": '생블루베리 중과 1kg...',
                      "successUrl": successUrl,
                      "failUrl": failUrl,
                      "cardCompany": null,
                      "cardInstallmentPlan": null,
                      "maxCardInstallmentPlan": null,
                      "useCardPoint": false,
-                     "customerName": "박토스",
+                     "customerName": "이재은",
                      "customerEmail": null,
                      "customerMobilePhone": null,
                      "taxFreeAmount": null,
@@ -95,10 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                      "amount": amount,
                      "orderId": "sample-" + orderId,
-                     "orderName": "토스 티셔츠 외 2건",
+                     "orderName": "생블루베리 중과 1kg",
                      "successUrl": successUrl,
                      "failUrl": failUrl,
-                     "customerName": "박토스",
+                     "customerName": "이재은",
                      "customerEmail": null,
                      "customerMobilePhone": null,
                      "taxFreeAmount": null,
@@ -116,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                      "amount": amount,
                      "orderId": "sample-" + orderId,
-                     "orderName": "토스 티셔츠 외 2건",
+                     "orderName": "생블루베리 중과 1kg",
                      "successUrl": successUrl,
                      "failUrl": failUrl,
                      "mobileCarrier": null
