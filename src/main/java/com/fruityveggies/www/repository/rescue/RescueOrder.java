@@ -25,39 +25,40 @@ public class RescueOrder {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REGULARDELIVERY_SEQ_GEN")
-    private Long Id;
+    private long id;
     
     @Column(nullable = false)
-    private String BOXSIZE;
+    private String boxsize;
     
     @Column(nullable = false)
-    private String WEEKSIZE;
+    private String weeksize;
     
     @Column(nullable = false)
-    private Long BOX_PRICE;
+    private long box_price;
     
     @Column(nullable = false)
-    private Long DISLIKEID_1;
+    private String dislikeid_1;
     
-    private Long DISLIKEID_2;
-    private Long DISLIKEID_3;
-    
-    @Column(nullable = false)
-    private String RECIPIENT;
+    private String dislikeid_2;
+    private String dislikeid_3;
     
     @Column(nullable = false)
-    private String PHONE;
+    private String recipient;
     
     @Column(nullable = false)
-    private String ADDRESS;
+    private String phone;
     
     @Column(nullable = false)
-    private String ADDRESS_DETAIL;
+    private String address;
     
     @Column(nullable = false)
-    private String USERID;
+    private String address_detail;
     
+    @Column(nullable = false)
+    private String userid;
     
-    
+   // @Column(nullable = false)
+   // private String dislike;
+       
 
 }

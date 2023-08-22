@@ -43,4 +43,13 @@ public class Required_IngredientService {
                 
         
     }
+
+    //디테일 id로 읽어오기
+    public Required_Ingredient read(Long id) {
+        log.info("read(id={})", id);//22
+        
+        Recipe recipe =  recipeRepository.findById(id).orElseThrow();
+        
+        return required_IngredientRepository.findByRecipe(recipe);
+    }
 }

@@ -1,6 +1,6 @@
 package com.fruityveggies.www.web.recipes;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,17 +9,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fruityveggies.www.dto.recipes.AdditionalIngredientDto;
+import com.fruityveggies.www.dto.recipes.MakingDto;
 import com.fruityveggies.www.dto.recipes.RecipeDto;
 import com.fruityveggies.www.dto.recipes.RecipeUploadDto;
 import com.fruityveggies.www.dto.recipes.Required_IngredientDto;
 import com.fruityveggies.www.dto.recipes.SeasoningDto;
+import com.fruityveggies.www.dto.recipes.TipDto;
+import com.fruityveggies.www.repository.recipes.AdditionalIngredient;
+import com.fruityveggies.www.repository.recipes.Making;
 import com.fruityveggies.www.repository.recipes.Recipe;
+import com.fruityveggies.www.repository.recipes.Required_Ingredient;
+import com.fruityveggies.www.repository.recipes.Seasoning;
+import com.fruityveggies.www.repository.recipes.Tip;
 import com.fruityveggies.www.service.recipes.AdditionalIngredientService;
+import com.fruityveggies.www.service.recipes.MakingService;
 import com.fruityveggies.www.service.recipes.RecipeService;
 import com.fruityveggies.www.service.recipes.Required_IngredientService;
 import com.fruityveggies.www.service.recipes.SeasoningService;
+import com.fruityveggies.www.service.recipes.TipService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,14 +44,44 @@ public class RecipeController {
     private final Required_IngredientService required_IngredientService;
     private final AdditionalIngredientService additionalIngredientService;
     private final SeasoningService seasoningService;
-    
+    private final MakingService makingService;
+    private final TipService tipService;
     
     @GetMapping("/detail")
-    public String recipes(Model model) {
-        log.info("recipes()");
+    public void read(@RequestParam("id") Long id, Model model) {
+        log.info("read(id={})",id);
+
+        //RECIPES 테이블에서 id에 해당하는 레시피를 검색
+        Recipe recipe = recipeService.read(id);
         
-        return "/recipe/detail";
+        //REQUIRED_INGREDIENT 테이블에에서 id에 해당하는 레시피를 검색
+        Required_Ingredient required_ingredient = required_IngredientService.read(id);
+        
+        //AdditionalIngredient 테이블에서 id에 해당하는 레시피 검색
+        AdditionalIngredient additionalIngredient = additionalIngredientService.read(id);
+        
+        //Seasoning 테이블에서 id에 해당하는 레시피를 검색
+        Seasoning seasoning = seasoningService.read(id);
+
+        //Making 테이블에서 id에 해당하는 레시피 검색
+        Making making = makingService.read(id);
+        
+        //Tip 테이블에서 id에 해당하는 레시피 검색
+        Tip tip = tipService.read(id);
+        
+        log.info("recipe={}",recipe);
+        log.info("required_ingredient={}",required_ingredient);
+        //결과를 model에 저장 -> 뷰로 전달
+        model.addAttribute("recipe", recipe);
+        model.addAttribute("required_ingredient", required_ingredient);
+        model.addAttribute("additionalIngredient", additionalIngredient);
+        model.addAttribute("seasoning", seasoning);
+        model.addAttribute("making", making);
+        model.addAttribute("tip", tip);
     }
+    
+    
+    
     
     @GetMapping("/upload")
     public String recipe(Model model) {
@@ -87,6 +127,21 @@ public class RecipeController {
         for(SeasoningDto seasoning : seasoningList) {
             seasoningService.create(seasoning);
         }
+        
+        //만드는 방법 리스트 넘기는
+        List<MakingDto> makingList = 
+                dto.toMakingList(recipe.getId());
+        for(MakingDto making : makingList) {
+            makingService.create(making);
+        }
+        
+        //Tip 리스트 넘기는
+        List<TipDto> tipList = 
+                dto.toTipList(recipe.getId());
+        for(TipDto tip : tipList) {
+            tipService.create(tip);
+        }
+        
         
      // DB 테이블 insert 후 레시피 목록 페이지로 redirect 이동.
         return "redirect:/main/recipes";

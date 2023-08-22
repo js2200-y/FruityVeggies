@@ -20,13 +20,19 @@ public class RecipeUploadDto {
     private String category_sub; // 서브 카테고리
     private List<String> hashtag;// 해시태그
     // TODO: 기준량
+    //필수재료
     private List<String> reqIngredNames;
     private List<String> reqIngredAmounts;
-    // TODO: 부재료, ...
+    //부재료, ...
     private List<String> addIngredNames;
     //시즈닝
     private List<String> seasoningNmaes;
+    //만드는 방법
+    private List<String> makingDes;
+    //private List<String> makingImage;
     
+    //Tip
+    private List<String> TipDes;
     
     public RecipeDto toRecipeDto() {
         return RecipeDto.builder()
@@ -77,6 +83,36 @@ public class RecipeUploadDto {
             SeasoningDto dto = SeasoningDto.builder()
                     .recipe_id(recipeId)
                     .name(seasoningNmaes.get(i))
+                    .build();
+            list.add(dto);
+        }
+        return list;
+    }
+    
+    // 만드는 방법
+    public List<MakingDto> toMakingList(Long recipeId){
+        List<MakingDto> list = new ArrayList<>();
+        
+        for(int i = 0; i < makingDes.size(); i++) {
+            MakingDto dto = MakingDto.builder()
+                    .recipe_id(recipeId)
+                    .description(makingDes.get(i))
+                    //.image(makingImage.get(i))
+                    .build();
+            list.add(dto);
+        }
+        return list;
+    }
+    
+    //Tip
+    public List<TipDto> toTipList(Long recipeId){
+        List<TipDto> list = new ArrayList<>();
+        
+        for(int i = 0; i < TipDes.size(); i++ ) {
+            TipDto dto = TipDto.builder()
+                    .recipe_id(recipeId)
+                    .description(makingDes.get(i))
+                    //.image(makingImage.get(i))
                     .build();
             list.add(dto);
         }
