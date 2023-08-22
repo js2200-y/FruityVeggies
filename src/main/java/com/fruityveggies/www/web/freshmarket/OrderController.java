@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fruityveggies.www.dto.ItemItemOptionDto;
 import com.fruityveggies.www.email.dto.FreshmarketOrderDto;
+import com.fruityveggies.www.repository.Cart;
 import com.fruityveggies.www.repository.Item;
 import com.fruityveggies.www.repository.Order;
+import com.fruityveggies.www.repository.OrderItems;
 import com.fruityveggies.www.service.ItemService;
 import com.fruityveggies.www.service.OrderService;
 
@@ -40,8 +42,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    
-    
+    private final ItemService itemService;
     
     
 //    @GetMapping("/freshmarketorder")
@@ -53,17 +54,37 @@ public class OrderController {
 //        return "/freshmarket/freshmarketorder";
 //    }
     
-    @GetMapping("/freshmarketorder/{orderItemId}")
-    public String getOrdersByOrderItemId(@PathVariable Long orderItemId, Model model) {
+    @GetMapping("/freshmarketorder/{orderItemId}/{id}")
+    public String getOrdersByOrderItemId_cart(@PathVariable Long orderItemId,@PathVariable String id, Model model ) {
         log.info("orderItemId={}", orderItemId);
+        log.info("orderItemId={}", id);
         
         List<Order> orders = orderService.getOrdersByOrderItemId(orderItemId);
+        
+        List<Cart> lists = itemService.read(id);
+        
+        log.info("lists_cart={}"+lists);
+        
+        model.addAttribute("lists", lists);
         
         model.addAttribute("orders", orders);
         
         return "/freshmarket/freshmarketorder";
     }
     
+    @GetMapping("/freshmarketorder/{id}")
+    public String getOrdersByOrderItemId_order(@PathVariable String id, Model model ) {
+        
+        log.info("getOrdersByOrderItemId_order id={}", id);
+        
+        List<OrderItems> lists = itemService.read_order(id);
+        
+        log.info("lists_order={}"+lists);
+        
+        model.addAttribute("lists", lists);
+        
+        return "/freshmarket/freshmarketorder";
+    }
     
     @PostMapping("/create")
     public String create(FreshmarketOrderDto dto) {
