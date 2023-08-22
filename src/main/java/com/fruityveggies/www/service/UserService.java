@@ -58,7 +58,7 @@ public class UserService extends DefaultOAuth2UserService {
         else if("naver".equals(oauthType.toLowerCase())) {
             // naver는 response 내에 email이 존재함.
             email = ((Map<String, Object>) attributes.get("response")).get("email").toString();
-            log.info("(Map<String, Object>) attributes.get(\"kakao_account\")={}",(Map<String, Object>) attributes.get("response"));
+            
             log.info("naver email={}",email);
         }
         
@@ -75,7 +75,7 @@ public class UserService extends DefaultOAuth2UserService {
         return super.loadUser(userRequest);
     }
     
-    // 저장, 조회만 수행. 기타 예외처리 및 다양한 로직은 연습용이므로 
+    // 저장, 조회만
     public void save(UserDomain user) {
         userRepository.save(user);
     }

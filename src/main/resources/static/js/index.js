@@ -2,6 +2,17 @@
  * 
  */
 document.addEventListener('DOMContentLoaded', () => {
+    
+    const userIdElement = document.querySelector('#userId');
+    
+    const regul_btn = document.querySelector('#regul_btn');
+    
+    regul_btn.addEventListener('click', (e) =>{
+        e.preventDefault();
+        location.href="/rescueorder/rescue_order?id="+userIdElement.innerHTML;   
+    });
+    
+    
     /*console.log('asdf');
    function addDiv() {
        console.log('addDiv');

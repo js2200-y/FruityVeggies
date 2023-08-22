@@ -9,7 +9,7 @@
     
     <main layout:fragment="main" id="order_wrap">
         <div class="left">
-           <img th:src="${item.main_image_path}" alt="Item Image">
+           <img th:src="${item.main_image_path}" id="mainImg" alt="Item Image">
         </div>
         <div class="right">
             <div class="top">
@@ -24,7 +24,7 @@
                 <div class="number">
                     <p class="order_name" th:text="${item.name}">못난이 파프리카</p>
                     <div class="order_number">
-                        <select th:field="*{item}" class="form-select" id="form-select">
+                        <select th:field="*{item}" class="form-select" id="form-select" name="form-select">
                             <option value="">옵션을 선택해주세요</option>
                             <option th:each="item : ${items}" th:value="${item.price}" th:text="${item.name +' '+item.price }"></option>
                         </select>

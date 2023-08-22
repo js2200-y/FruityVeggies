@@ -50,10 +50,10 @@ public class SecurityConfig {
         http
             .csrf((csrf) -> csrf.disable())
             .authorizeRequests(authorize -> authorize
-                // 로그인 페이지는 누구나 접근 가능하게.
-                .requestMatchers("/login/**").permitAll()
-                .anyRequest().permitAll()
-            )
+                    
+                    .requestMatchers("/login/mypage").authenticated() // 마이페이지는 인증된 사용자만 접근 가능
+                    .anyRequest().permitAll()
+                )
             .oauth2Login()
                 .loginPage("/login")
                 .userInfoEndpoint()

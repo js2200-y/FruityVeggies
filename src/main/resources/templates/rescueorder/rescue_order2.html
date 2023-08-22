@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+    <th:block layout:fragment="mycss">
+    <link
+ href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+ rel="stylesheet"
+ 
+ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+ crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/rescueOrder2.css" />
+    </th:block>    
+    
+    
+    <main layout:fragment="main" id=rescueOrder2 >
+    
+<form method="post" style="margin: auto; width: 400px;">
+ <div class="my-2 card" id="card" style="margin: auto; width: 450px; padding-top: 0.5px; padding-bottom: 12px; display: block;" >
+  <div class="card-body"  >
+   
+   
+   
+    <div style="display: flex; align-items: center;">
+    <svg id="back1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" b="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+    <h1 class="font my-5" style="font-size: 16px; padding-top: -60px; text-align: center; padding-left: 30px;"> 채소 플랜 > 배송 정보 입력 > <b>결제</b></h1>
+	</div>
+
+    <div class="my-2">
+    <h1 class="font-bold my-4"  style="font-size: 26px;">결제 정보</h1>
+     <div class="flex flex-col gap-16px">
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">총 상품금액</p>
+       <!-- th:text="${item.price * item.count}" -->
+       <p class="text-16px" >원</p>
+      </div>
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">총 배송비</p>
+       <p class="text-16px">+0원</p>
+      </div>
+      <div class="flex justify-between text-gray-800">
+       <p class="text-16px">사용 적립금</p>
+       <p class="text-16px">-0원</p>
+      </div>
+      <hr>
+      <div class="flex justify-between text-lg font-bold text-gray-800">
+       <p class="text-18px" >총 결제 금액</p>
+       <p class="text-18px text-brand-1" style="color: #9FE2BF;" 
+          >합계</p>
+          <!-- th:text="${item.price * item.count}" -->
+      </div>
+     </div>
+    </div>
+    
+    <div class="my-2">
+    <h1 class="font-bold my-4"  style="font-size: 20px;">결제 수단을 선택해주세요!</h1>
+    </div>
+   <div>
+     <button>카드</button>
+     <button>계좌이체</button>
+     <button>무통장입금</button>
+   </div>
+   <br> 
+    <br>
+
+
+     <div class="flex flex-row items-center gap-13px"
+     style="margin-bottom: 0px;">
+     <img
+      src="https://d3cpiew7rze14b.cloudfront.net/assets/login/Group_4383__2__X6V1UNE92.svg"
+      class="cursor-pointer" name="checkBox" alt="체크 박스">
+    <div class="flex w-full items-center justify-between">
+     <p class="font-body2 text-gray-600">&nbsp;&nbsp;[필수] 개인정보 수집 및 이용 동의</p>
+     <a
+      href="https://fantastic-interest-ad9.notion.site/1f2cdaba7c014ee8b53e76bb1d1e31cb"
+      target="_blank" rel="noreferrer">
+      <img
+      src="https://d3cpiew7rze14b.cloudfront.net/assets/buynow/One/Vector_6_glTm6KLoR.svg?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1659317729815"
+      alt="개인정보 수집 및 이용 동의" class="h-14px w-7px"></a>
+    </div>
+    </div>
+    
+    
+    <br>
+    <button class="btn btn-long" id="payment-button" style="background-color: #9FE2BF;">바로 구매하기</button> 
+
+   
+  </div>
+ </div> 
+ </form>   
+    </main>
+    
+    <th:block layout:fragment="myscripts">
+    </th:block>
+    
+</html>
