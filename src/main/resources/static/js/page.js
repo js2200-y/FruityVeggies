@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	        
 	    } else {
 			userId = userIdElement.innerHTML;
-	        console.log(userId); // 출력: "exampleUser"
+	        window.location.href = "/rescueorder/rescue_order?resId="+userId;
 	    }
     });
     
