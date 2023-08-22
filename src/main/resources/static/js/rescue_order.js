@@ -57,7 +57,8 @@ function handleBoxClick(type) {
     
 document.addEventListener('DOMContentLoaded', () =>{
 	
-	
+
+	        
 	
 	const back1 = document.querySelector('#back1');
 	const back2 = document.querySelector('#back2');
@@ -101,6 +102,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 		card_body4.style.display = 'block';	
 	});
 	
+	back1.addEventListener('click', (e)=>{
+		
+		window.location.href = "/main/regulardelivery";	
+	});
 	
 	back2.addEventListener('click', (e)=>{
 		
