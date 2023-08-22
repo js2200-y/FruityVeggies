@@ -48,7 +48,7 @@ public class RecipeController {
     private final TipService tipService;
     
     @GetMapping("/detail")
-    public void read(@RequestParam("id") Long id, Model model) {
+    public String read(@RequestParam("id") Long id, Model model) {
         log.info("read(id={})",id);
 
         //RECIPES 테이블에서 id에 해당하는 레시피를 검색
@@ -78,6 +78,8 @@ public class RecipeController {
         model.addAttribute("seasoning", seasoning);
         model.addAttribute("making", making);
         model.addAttribute("tip", tip);
+        
+        return "/recipe/detail";
     }
     
     

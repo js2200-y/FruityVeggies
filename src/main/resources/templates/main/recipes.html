@@ -24,9 +24,9 @@
 	    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 	        <div class="col" th:each="recipe : ${recipes}">
 	            <div class="card shadow-sm">
-	                <a href="/recipe/detail">
+						<a th:href="@{ /recipe/detail?id={id} (id = ${recipe.id}) }"
+						th:text="${recipe.title}"></a>
 	                    <img class="bd-placeholder-img card-img-top" th:src="${recipe.image}" aria-label="Placeholder: Thumbnail">
-	                </a>
 	                <div class="card-body">
 	                    <p class="card-text" th:text="${recipe.title}"></p>
 	                </div> 
