@@ -1,11 +1,13 @@
 package com.fruityveggies.www.web;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +33,63 @@ public class FreshMarketController {
     @Autowired
     private ItemService itemService;
 
+    @PostMapping("/cart/bill")
+    public ResponseEntity<Integer> billSelectedCarts(@RequestBody Map<String, Object> selectedIds) {
+        // 선택된 cart.id 값들을 받아 처리하는 로직을 여기에 구현합니다.
+        // 이 예시에서는 간단히 출력하도록 하겠습니다.
+        log.info("Selected IDs: " + selectedIds);
+        
+        List<String> selectedId = (List<String>) selectedIds.get("selectedIds");
+        List<Long> billSelect = new ArrayList<>();
+
+     // counts와 prices를 String에서 Integer로 변환
+	    for (String delStr : selectedId) {
+	        try {
+	        	billSelect.add(Long.parseLong(delStr));
+	        } catch (NumberFormatException e) {
+	            // 처리할 예외 상황에 대한 로직 추가
+	        }
+	    }
+	    
+	    log.info("asdf : {}",billSelect);
+	    
+        // 처리 결과를 클라이언트에게 반환합니다.
+        return ResponseEntity.ok(200); // 또는 원하는 응답 데이터를 반환할 수 있습니다.
+    }
+    
+    
+    @PostMapping("/cart/del")
+    public ResponseEntity<Integer> deleteSelectedCarts(@RequestBody Map<String, Object> selectedIds) {
+        // 선택된 cart.id 값들을 받아 처리하는 로직을 여기에 구현합니다.
+        // 이 예시에서는 간단히 출력하도록 하겠습니다.
+        log.info("Selected IDs: " + selectedIds);
+        
+        List<String> selectedId = (List<String>) selectedIds.get("selectedIds");
+        List<Long> delSelect = new ArrayList<>();
+
+     // counts와 prices를 String에서 Integer로 변환
+	    for (String delStr : selectedId) {
+	        try {
+	        	delSelect.add(Long.parseLong(delStr));
+	        } catch (NumberFormatException e) {
+	            // 처리할 예외 상황에 대한 로직 추가
+	        }
+	    }
+	    
+	    log.info("asdf : {}",delSelect);
+	    
+	    itemService.deleteById(delSelect);
+        
+        // 처리 결과를 클라이언트에게 반환합니다.
+        return ResponseEntity.ok(200); // 또는 원하는 응답 데이터를 반환할 수 있습니다.
+    }
+    
     @GetMapping("/freshmarket/cart")
-    public String cart(Model model, @RequestParam(value = "id") String id) {
-    	
+    public String cart(Model model, @RequestParam(value = "id") String id, Principal principal) {
+        
     	log.info("cart get");
+    	log.info("cart get id={}",id);
+    	
     	
     	List<Cart> lists = itemService.read(id);
     	
@@ -43,9 +98,23 @@ public class FreshMarketController {
     	log.info("lists={}"+lists);
     	
     	model.addAttribute("lists", lists);
-    	model.addAttribute("imgUrl", items.getMain_image_path());
     	
     	return "/freshmarket/cart";
+    }
+    
+    @PostMapping("/freshmarket/maincart")
+    public String cartmain(Model model, @RequestBody Map<String, Object> data) {
+        
+        String userId = (String) data.get("userId");
+        
+        
+        List<Cart> lists = itemService.read(userId);
+        
+        log.info("lists={}"+lists);
+        
+        model.addAttribute("lists", lists);
+        
+        return "/freshmarket/cart";
     }
     
     
@@ -72,63 +141,6 @@ public class FreshMarketController {
 	     model.addAttribute("items", items);
 	    
 		return "/freshmarket/freshmarket";
-	    // 상품이름 : 스트링
-	    // 성장 특징 :
-	    // 메인 이미지
-	    // 디테일 이미지
-	 // 옵션 이름 : 배열
-        // 옵션 가격 : 배열
-//	    String name = items.get(0).getName();
-//	    log.info("name={}", name);
-//	    model.addAttribute("name", name);
-//	    String growChar = items.get(0).getGrow_char();
-//	    log.info("growChar={}", growChar);
-//        model.addAttribute("growChar", growChar);       
-//	    String mainImg = items.get(0).getMain_image_path();
-//	    String detailImg = items.get(0).getDetail_image_path();
-//	    log.info("mainImg={}", mainImg);
-//        model.addAttribute("mainImg", mainImg);
-//        log.info("detailImg={}", detailImg);
-//        model.addAttribute("detailImg", detailImg);
-//	    List<String> itemOptNames = new ArrayList<>(); 
-//	    List<Integer> itemOptPrices = new ArrayList<>();
-	    
-//	    log.info("options={}", items);
-//	    for(int i=0;i<items.size();i++) {
-//	        itemOptNames.add(items.get(i).toString());
-//	    }
-	    
-//	    log.info("itemOptNames:"+itemOptNames);
-//	    log.info("itemOptPrices:"+itemOptPrices);
-//	    
-//	    for(int i=0; i<items.size();i++) {
-//	        itemOptNames.add(i, items.get(i).getItemOption().getName()) ;
-//	        itemOptPrices.add (i, items.get(i).getItemOption().getPrice());	       
-//	    }
-	    
-//	    log.info("itemOptNames={}", itemOptNames);
-//        model.addAttribute("itemOptNames", itemOptNames);
-//        log.info("itemOptPrices={}", itemOptPrices);
-//        model.addAttribute("itemOptPrices", itemOptPrices);
-        
-//	    log.info("items={}", items);
-//	    log.info("name={}", name);
-//	    log.info("growChar={}", growChar);
-//	    log.info("mainImg={}", mainImg);
-//	    log.info("detailImg={}", detailImg);
-//	    log.info("itemOptNames={}", itemOptNames);
-//	    log.info("itemOptPrices={}", itemOptPrices);
-//	    
-//	    
-//	    
-//	    
-
-//	    model.addAttribute("name", name);
-//	    model.addAttribute("growChar", growChar);
-//	    model.addAttribute("mainImg", mainImg);
-//	    model.addAttribute("detailImg", detailImg);
-//	    model.addAttribute("itemOptNames", itemOptNames);
-//	    model.addAttribute("itemOptPrices", itemOptPrices);
 	    
 	    
 	}
@@ -183,7 +195,10 @@ public class FreshMarketController {
 	    List<String> pricesAsStrings = (List<String>) data.get("prices");
 	    String id = (String) data.get("id");
 	    String userId = (String) data.get("userId");
+	    String main_image_path = (String) data.get("mainImg");
 
+	    log.info("main_image_path={}",main_image_path);
+	    
 	    List<Integer> counts = new ArrayList<>();
 	    List<Integer> prices = new ArrayList<>();
 	    
@@ -206,7 +221,7 @@ public class FreshMarketController {
 	    // id를 Long으로 변환
 	    Long convertedId = Long.parseLong(id);
 	    
-	    itemService.cartSave(names, counts, prices, convertedId, userId);
+	    itemService.cartSave(names, counts, prices, convertedId, userId, main_image_path);
 		
 		return "redirect:/main/mission";
 	}

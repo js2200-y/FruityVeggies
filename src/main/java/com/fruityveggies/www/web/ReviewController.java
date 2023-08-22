@@ -20,8 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/recipe")
 public class ReviewController {
-
+    
 	private final ReviewService reviewService;
+	
 	
 	@PostMapping("/review")
 	public String create(ReviewCreateDto dto, @RequestParam(value = "rating", required = false) List<Integer> ratings) {
@@ -43,6 +44,9 @@ public class ReviewController {
     public void review(@RequestParam(value = "id") Long id) {
         log.info("review() GET");
         log.info("id={}", id);
+            
         
     }
+	
+	
 }

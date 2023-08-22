@@ -251,7 +251,8 @@
 		axios.post(reqUrl,data)
 			.then(function(response){//성공 응답일 때 실행할 콜백 등록
 				console.log(response);
-				window.location.href = "/";
+				
+				location.href="/freshmarket/freshmarketorder/"+userId;
 			})
 			.catch((error)=>{//실패일 때 실행할 콜백 등록
 				console.log(error);
@@ -344,36 +345,49 @@ const cart_btn = document.querySelector('#cart_btn');
 	console.log(idValue); // "1" 출력
 // 쿼리스트링 id값 알아내기 끝
         
+	// 이미지 태그를 id로 선택합니다.
+	var imageTag = document.querySelector('#mainImg');
+
+	// 이미지 태그의 src 속성을 변수에 저장합니다.
+	const img = imageTag ? imageTag.src : '';
+
+	// qew 변수에 이미지 URL이 저장되어 있습니다.
+	console.log(img); // 이미지 URL 출력        
+        
+        
 // 데이터 바인딩
 	const data = {
             names: selectedOptionsName,
             counts: selectedOptionsCnt,
             prices: selectedOptionsPrice,
             id: idValue,
-            userId: userId
+            userId: userId,
+            mainImg:img
 	};
 	// Ajax 요청을 보낼 url
 	const reqUrl = '/freshmarket/cart';
 	    
-    // Ajax POST 요청을 보냄
-		axios.post(reqUrl,data)
+	    
+    
+//장바구니 페이지 갈건지 체크 끝
+			const confirmed_f = window.confirm("장바구니 창으로 이동 하시겠습니까?");
+            if (confirmed_f) {
+				// Ajax POST 요청을 보냄
+				axios.post(reqUrl,data)
 			.then(function(response){//성공 응답일 때 실행할 콜백 등록
 				console.log(response);
 				
-				//장바구니 페이지 갈건지 체크 시작
-			const confirmed_f = window.confirm("장바구니 창으로 이동 하시겠습니까?");
-            if (confirmed_f) {
-                window.location.href = "/freshmarket/cart?id="+userId;
-            } else {
-                return;
-            }
-//장바구니 페이지 갈건지 체크 끝
-				
+				window.location.href = "/freshmarket/cart?id="+userId;
 				
 			})
 			.catch((error)=>{//실패일 때 실행할 콜백 등록
 				console.log(error);
 			});
+                
+            } else {
+                return;
+            }
+		
 // 내가 선택한 옵션 선택 ㅌㅌ
 
 

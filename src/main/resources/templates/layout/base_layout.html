@@ -55,11 +55,13 @@
           <li><a href="/" class="nav-link px-2 text-white">About</a></li> -->
         </ul>
 
-        <button type="button" class="btn btn-outline-black me-2">장바구니</button>
+        <button type="button" class="btn btn-outline-black me-2" id="cartmain_btn">장바구니</button>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-black" placeholder="Search..." aria-label="Search">
-        </form>
+        <button type="submit" class="chat-button">
+		 <a href="/chat/chatRoomlist">
+		  <img src="/img/telemarketer.avif" alt="채팅상담" class="chat-image">
+		 </a>
+		</button>
 
         <!-- 인증된 사용자이면(로그인 상태이면) -->
 
@@ -67,10 +69,10 @@
         <th:block sec:authorize="isAuthenticated()">
             <li class="nav-item">
         <!-- 로그인한 email 표시 -->
-                 <span th:if="${session.email}" th:text="${session.email}"></span>
-                 <span th:unless="${session.email}" sec:authentication="name"></span>
-                        <a class="nav-link" th:href="@{/logout}">로그아웃</a>
-                        <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
+                 <span id="userId" th:if="${session.email}" th:text="${session.email}"></span>
+                 <span id="userId" th:unless="${session.email}" th:text="${#authentication.principal.email}"></span>
+                 <a class="nav-link" th:href="@{/logout}">로그아웃</a>
+                 <a class="nav-link" th:href="@{/login/mypage}">마이페이지</a>
             </li>
         </th:block>
 
@@ -125,7 +127,6 @@
 =======
           
         </div> --> 
->>>>>>> branch 'master' of https://github.com/js2200-y/FruityVeggies.git
     </nav>
   </div>
   </div>  
@@ -155,6 +156,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/base_layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- 자바스크립 파일 추가할 위치 -->
     <th:block layout:fragment="myscripts"></th:block>
 </body>

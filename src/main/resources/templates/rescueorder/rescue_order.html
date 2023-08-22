@@ -17,7 +17,7 @@
 
 
 <main id=rescueOrder>
-<form method="post" action="/rescueorder/rescue_order" style="margin: auto; width: 400px;">
+<form method="post" action="/rescueorder/rescue_order" style="margin: auto; width: 600px; align-items: center; display: flex;">
  <div class="my-2 card" id="card1" style="margin: auto; width: 450px; background-color: rgb(232, 247, 230); padding-top: 0.5px; padding-bottom: 12px; display: block;" >
   <div class="card-body"  >
   	
@@ -33,7 +33,7 @@
      <div class="rounded-full bg-brown-600 py-6px px-8px">
      <p class="font-semibold" style="color: green; font-size: 20px; margin-top: -20px;">01</p>
      </div>
-     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 40px;" >박스 크기 선택</h1>
+     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 60px;" >박스 크기 선택</h1>
     
     <div class="flex justify-around gap-10px">
     	<div class="flex w-full flex-col" style="padding-right: 5px;">
@@ -47,7 +47,7 @@
     						<span class="text-14px font-medium">/회차</span>
     				    </p>
     				    <div class="form-check" >
-  							<input class="form-check-input" type="radio" name="boxsize" id="exampleRadios1" value="singlebox_15500"  checked>
+  							<input class="form-check-input" type="radio" name="boxsize" id="exampleRadios1" value="singlebox"  checked>
   							<label class="form-check-label" for="exampleRadios1" style="color: #9FE2BF;">
   							</label>
 						</div>
@@ -68,7 +68,7 @@
     					<span class="text-14px font-medium">/회차</span>
     				</p>
     				<div class="form-check">
-  					<input class="form-check-input" type="radio" name="boxsize" id="exampleRadios2" value="familybox_25000">
+  					<input class="form-check-input" type="radio" name="boxsize" id="exampleRadios2" value="familybox">
   						<label class="form-check-label" for="exampleRadios2">
   						</label>
 					</div>
@@ -133,13 +133,13 @@
 	</div>
      <hr> 
      <div class="rounded-full bg-brown-600 py-6px px-8px">
-     	<p class="font-semibold" style="color: green; font-size: 20px; margin-top: -20px;" >02</p>
+     	<p class="font-semibold" style="color: green; font-size: 20px; margin-top: -20px; padding-left: 10px;"  >02</p>
      </div>
-     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 40px;">배송 주기 선택</h1>
+     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 60px;">배송 주기 선택</h1>
     
     <div class="w-full" style="height: 40px;"></div>
     
-    <div class="grid mx-5" style=" width: 400px;">
+    <div class="grid mx-5" style=" width: 400px; padding-left: 20px;">
     	<input type="radio" class="btn-check" name="weeksize" id="option1" autocomplete="off" value="1주기" checked >
 			<label class="btn btn-light btn-outline-success col-3 mx-auto" for="option1">1주</label>
     	<input type="radio" class="btn-check" name="weeksize" id="option2" autocomplete="off" style="padding-left: 100px;" value="2주기">
@@ -168,7 +168,7 @@
 	
 	<div class="w-full" style="height: 200px;"></div>
     
-    <button class="btn btn-long" id="buyBtn2" style="background-color: #9FE2BF;">다음</button> 
+    <button class="btn btn-long" id="buyBtn2" style="background-color: #9FE2BF; padding-left: 15px; padding-right: 15px;">다음</button> 
 
    <!-- </form> -->
   </div>
@@ -189,17 +189,17 @@
 	</div> 
      <hr> 
      <div class="rounded-full bg-brown-600 py-6px px-8px">
-     	<p class="font-semibold" style="color: green; font-size: 20px; margin-top: -20px;" >03</p>
+     	<p class="font-semibold" style="color: green; font-size: 20px; margin-top: -20px; padding-left: 10px;" >03</p>
      </div>
-     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 40px;">비선호 품목 선택</h1>
+     <h1 class="font-bold"  style="font-size: 26px; margin-top: -20px; margin-bottom: 24px; padding-left: 60px;">비선호 품목 선택</h1>
     
     <div class="w-full" style="height: 16px;"></div>
     
-    <h5 class="text-16px leading-6 text-gray-800">비선호 채소는 채소박스에서 미리 제외해드려요.</h5>
+    <h5 class="text-16px leading-6 text-gray-800" style="padding-left: 20px;">비선호 채소는 채소박스에서 미리 제외해드려요.</h5>
     
     <div class="w-full" style="height: 16px;"></div>
     
-    <img src="https://d3cpiew7rze14b.cloudfront.net/assets/svg/buynow-except-vegetable.svg?w=1024" alt="파프리카" class="mx-4">
+    <img src="https://d3cpiew7rze14b.cloudfront.net/assets/svg/buynow-except-vegetable.svg?w=1024" alt="파프리카" class="mx-4" style="padding-left: 20px;">
     	
     <div class="w-full" style="height: 30px;"></div>	
     	
@@ -220,7 +220,8 @@
 		<br>
        <div>
          <p> 비선호 품목이 구출 품목에 포함되면,<br>
-        	동일 금액의 다른 품목을 대신 보내드려요.</p>
+        	동일 금액의 다른 품목을 대신 보내드려요.<br></p>
+         <p style="color: green;">최대 3개 선택 가능</p>
        </div>
       </div>
       </div>
@@ -229,24 +230,24 @@
         <p>근채류</p>
         <div style="padding-left: 40px;">
         <div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="감자">
   			<label class="form-check-label" for="inlineCheckbox1">감자</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="당근">
   			<label class="form-check-label" for="inlineCheckbox2">당근</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="고구마">
   			<label class="form-check-label" for="inlineCheckbox3">고구마</label>
 		</div>
 		<br>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="비트">
   			<label class="form-check-label" for="inlineCheckbox4">비트</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="무">
   			<label class="form-check-label" for="inlineCheckbox5">무</label>
 		</div>
 		</div>
@@ -255,37 +256,37 @@
       	<p>과채류</p>
       	<div style="padding-left: 40px;">
         <div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="dislikeList" value="option6">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="dislikeList" value="옥수수">
   			<label class="form-check-label" for="inlineCheckbox6">옥수수</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="dislikeList" value="option7">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="dislikeList" value="단호박">
   			<label class="form-check-label" for="inlineCheckbox7">단호박</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="dislikeList" value="option8">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="dislikeList" value="파프리카">
   			<label class="form-check-label" for="inlineCheckbox8">파프리카</label>
 		</div>
 		<br>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="dislikeList" value="option9">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="dislikeList" value="피망">
   			<label class="form-check-label" for="inlineCheckbox9">피망&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox10" name="dislikeList" value="option10">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox10" name="dislikeList" value="애호박">
   			<label class="form-check-label" for="inlineCheckbox10">애호박</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox11" name="dislikeList" value="option11">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox11" name="dislikeList" value="가지">
   			<label class="form-check-label" for="inlineCheckbox11">가지</label>
 		</div>
 		<br>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox12" name="dislikeList" value="option12">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox12" name="dislikeList" value="오이">
   			<label class="form-check-label" for="inlineCheckbox9">오이&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox13" name="dislikeList" value="option13">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox13" name="dislikeList" value="토마토">
   			<label class="form-check-label" for="inlineCheckbox10">토마토</label>
 		</div>
 		</div>
@@ -293,28 +294,28 @@
       	<p>과일류</p>
       	<div style="padding-left: 40px;">
         <div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox14" name="dislikeList" value="option14">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox14" name="dislikeList" value="사과">
   			<label class="form-check-label" for="inlineCheckbox14">사과&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox15" name="dislikeList" value="option15">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox15" name="dislikeList" value="참외">
   			<label class="form-check-label" for="inlineCheckbox15">참외&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox16" name="dislikeList" value="option16">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox16" name="dislikeList" value="감귤/만감류">
   			<label class="form-check-label" for="inlineCheckbox16">감귤/만감류</label>
 		</div>
 		<br>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox17" name="dislikeList" value="option17">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox17" name="dislikeList" value="키위">
   			<label class="form-check-label" for="inlineCheckbox17">키위&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox18" name="dislikeList" value="option18">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox18" name="dislikeList" value="레몬">
   			<label class="form-check-label" for="inlineCheckbox18">레몬&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox19" name="dislikeList" value="option19">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox19" name="dislikeList" value="배">
   			<label class="form-check-label" for="inlineCheckbox19">배&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		</div>
@@ -322,24 +323,24 @@
       	<p>기타</p>
       	<div style="padding-left: 40px;">
         <div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox20" name="dislikeList" value="option20">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox20" name="dislikeList" value="콩류">
   			<label class="form-check-label" for="inlineCheckbox20">콩류&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox21" name="dislikeList" value="option21">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox21" name="dislikeList" value="마늘">
   			<label class="form-check-label" for="inlineCheckbox21">마늘&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox22" name="dislikeList" value="option22">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox22" name="dislikeList" value="매운고추">
   			<label class="form-check-label" for="inlineCheckbox22">매운고추</label>
 		</div>
 		<br>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox23" name="dislikeList" value="option23">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox23" name="dislikeList" value="대파">
   			<label class="form-check-label" for="inlineCheckbox23">대파&nbsp;&nbsp;&nbsp;</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox24" name="dislikeList" value="option24">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox24" name="dislikeList" value="버섯전체">
   			<label class="form-check-label" for="inlineCheckbox24">버섯전체</label>
 		</div>
 		</div>
@@ -348,14 +349,13 @@
       	<div style="padding-left: 40px;">
         <div class="form-check form-check-inline">
   			<input class="form-check-input" type="checkbox" id="inlineCheckbox25" name="dislikeList" 
-  			value="option25">
+  			value="제외품목없어요">
   			<label class="form-check-label" for="inlineCheckbox25">제외할 품목이 없어요</label>
 		</div>
 		</div>
 		<div class="w-full" style="height: 16px;"></div>
 		
-		<button type="button" class="btn btn-long" id="buyBtn5" style="background-color: #9FE2BF;" aria-label="Close" data-bs-dismiss="modal">선택 완
-		료</button>
+		<button type="button" class="btn btn-long" id="buyBtn5" style="background-color: #9FE2BF;" aria-label="Close" data-bs-dismiss="modal">선택 완료</button>
       </div>
       
      </div>
@@ -373,7 +373,7 @@
 	
 	<div class="w-full" style="height: 100px;"></div>
     
-    <button class="btn btn-long" id="buyBtn3" style="background-color: #9FE2BF;">다음</button> 
+    <button class="btn btn-long" id="buyBtn3" style="background-color: #9FE2BF;  padding-left: 15px; padding-right: 15px;">다음</button> 
 
    <!-- </form> -->
   </div>
@@ -391,22 +391,22 @@
     </svg>
     <h1 class="font my-5" style="font-size: 16px; padding-top: -60px; text-align: center; padding-left: 30px;">채소 플랜 > <b>배송 정보 입력</b> > 결제</h1>
 	</div>
-     <h1 class="font-bold my-4"  style="font-size: 26px;">배송 정보</h1>
+     <h1 class="font-bold my-4"  style="font-size: 26px; padding-left: 60px;">배송 정보</h1>
     
 
-    <div class="my-2">
+    <div class="my-2" style="padding-left: 10px; padding-right: 10px;">
      <label class="form-label" for="orderName">받는 사람</label>
      <!-- data-testid="renewal-textfield" -->
      <input class="form-control" id="orderName" type="text"
        name="recipient" placeholder="이름을 입력해주세요." />
     </div>
-    <div class="my-2">
+    <div class="my-2" style="padding-left: 10px; padding-right: 10px;">
      <label class="form-label" for="orderPhone">휴대폰 번호</label> <input
       class="form-control" id="orderPhone" type="text" name="phone"
       placeholder="휴대폰 번호를 입력해주세요." />
     </div>
     
-    <div class="my-2">
+    <div class="my-2" style="padding-left: 10px; padding-right: 10px;">
       <label class="form-label" for="orderAddress">주소</label>
       <div class="card-body fw-bold" style="display: flex; align-items: center;">
                 <main class="my-2">
@@ -518,7 +518,7 @@
                                                                                 </script>
     </div>
   
- <div class="my-2">
+ <div class="my-2" style="padding-left: 10px; padding-right: 10px;">
     <label class="form-label" for="orderRequest">배송 요청 사항(선택)</label>
     <select class="form-select" id="orderRequest" name="orderRequest">
         <option value="선택안함">선택안함</option>
@@ -529,14 +529,14 @@
         <option value="배송 전에 연락주세요.">배송 전에 연락주세요.</option>
         <option value="직접 입력">직접 입력</option>
     </select>
-    <div id="inputContainer" style="display: none;">
+    <div id="inputContainer" style="display: none; padding-left: 10px; padding-right: 10px;">
         <input class="form-control my-2" id="customInput" type="text" name="customInput" placeholder="배송 요청사항을 입력하세요." />
     </div>
 </div>
 
     <div class="w-full" style="height: 80px;"></div>
     <br>
-    <button class="btn btn-long" id="buyBtn4" style="background-color: #9FE2BF;">결제하기</button> 
+    <button class="btn btn-long" id="buyBtn4" style="background-color: #9FE2BF;  padding-left: 15px; padding-right: 15px;">결제하기</button> 
 
    
   </div>
@@ -551,5 +551,5 @@
  crossorigin="anonymous"></script>
  
  <script src="/js/rescue_order.js"></script>
- <
+ 
 </html>

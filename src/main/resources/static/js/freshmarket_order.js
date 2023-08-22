@@ -3,7 +3,9 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
     
-    const orderRequest = document.getElementById("orderRequest");
+    
+    
+    const orderRequest = document.getElementById("orderrequest");
     const inputContainer = document.getElementById("inputContainer");
     const customInput = document.getElementById("customInput");
 
@@ -17,13 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
             customInput.removeAttribute("required");
         }
     });
+    
    // 결제
 
      const buyBtn = document.querySelector('button#buyBtn')
      const radioInputs = document.querySelectorAll('input[type="radio"][name="payment"]');
         
      buyBtn.addEventListener('click', () => {
-      
+                  
+         
+        console.log("떠라")
 
          let selectedPayment = null;
          
@@ -35,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
              console.log(requestJson);
              tossPayments.requestPayment(method, requestJson)
                  .catch(function(error) {
-
                      if (error.code === "USER_CANCEL") {
                          alert('유저가 취소했습니다.');
                      } else {
@@ -52,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
          let orderId = new Date().getTime();
 
 
-
          // 선택된 라디오버튼 값을 확인
          for (const radioInput of radioInputs) {
              if (radioInput.checked) {
@@ -60,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
                  break;
              }
          }
-
+       
+            console.log(orderId)
          if (selectedPayment === 'card') {
              let jsons = {
                  "card": {
@@ -83,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                      "appScheme": null
                  }
              }
-             pay('카드', jsons.card);
+              pay('카드', jsons.card);
+            
          } else if (selectedPayment === 'transfer') {
              let jsons = {
                  "transfer": { //계좌이체 결제창
@@ -123,11 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
              // 선택된 결제 방법이 없는 경우에 대한 처리
              alert('결제 방법을 선택해주세요.');
          }
-           
+         
            
             
         });
-       
        
 
 });

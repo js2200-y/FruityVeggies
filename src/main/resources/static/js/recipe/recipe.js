@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
-        const newInput = createInput( 'making','만드는 방법을 입력하세요.');
+        const newInput = createInput( 'makingDes','만드는 방법을 입력하세요.');
         newRow.appendChild(newInput);
 
         // 이미지 업로드 영역 추가
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const newRow = document.createElement('div');
         newRow.classList.add('d-flex');
-        const newInput = createInput( 'TIP','팁을 입력하세요.');
+        const newInput = createInput( 'TipDes','팁을 입력하세요.');
         newRow.appendChild(newInput);
 
         // 이미지 업로드 영역 추가

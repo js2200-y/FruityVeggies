@@ -39,4 +39,13 @@ public class SeasoningService {
         
         return entity;
     }
+    
+    //디테일 id로 읽어오기
+    public Seasoning read(Long id) {
+        log.info("read(id={})", id);//22
+        
+        Recipe recipe =  recipeRepository.findById(id).orElseThrow();
+        
+        return seasoningRepository.findByRecipe(recipe);
+    }
 }

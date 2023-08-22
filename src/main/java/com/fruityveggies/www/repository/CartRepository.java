@@ -15,8 +15,8 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 	@Query("SELECT c FROM Cart c WHERE c.useremail = :useremail ORDER BY c.id DESC")
 	List<Cart> findByUserEmailOrderByDesc(@Param("useremail") String useremail);
 	
-	@Query("SELECT c FROM Cart c WHERE c.itemid = :itemid")
-	List<Cart> findByItemId(@Param("itemid") Long itemid);
+	@Query("SELECT c FROM Cart c WHERE c.useremail = :useremail")
+	List<Cart> findByItemId(@Param("useremail") String useremail);
     
 	@Modifying
     @Query("UPDATE Cart c SET c.cnt = :cnt WHERE c.name = :name")
