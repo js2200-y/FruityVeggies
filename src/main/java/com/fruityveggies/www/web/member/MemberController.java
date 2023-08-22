@@ -1,8 +1,5 @@
 package com.fruityveggies.www.web.member;
 
-import java.time.LocalDateTime;
-
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,5 +51,10 @@ public class MemberController {
         
         // 회원 가입 이후에 로그인 화면으로 이동(redirect):
         return "redirect:/login";
+    }
+    
+    @GetMapping("/findid")
+    public void findid() {
+        log.info("findid() GET");
     }
 }

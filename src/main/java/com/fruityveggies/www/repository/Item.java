@@ -42,34 +42,9 @@ public class Item {
     
     @Column(nullable = false)
     private String main_image_path; //
-  
-    // 하나의 item이 여러개의 옵션을 가질 수 있다.
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private ItemOption itemOption; // 상품 정보
     
     @Column(nullable = false) 
     private String detail_image_path;
-    
-    /*
-     * @Column(nullable = false) private int count; // 상품 개수
-     */    
-    /*
-     * // 판매자 연결
-     * 
-     * @ManyToOne(fetch = FetchType.EAGER)
-     * 
-     * @JoinColumn(name = "user_id") private Member user;
-     */
-
-    
-//    @OneToMany(mappedBy = "item")
-//    private List<OrderList> orderLists = new ArrayList<>();
-    
-    
-//    @OneToMany(mappedBy = "item")
-//    private List<CartItem> cart_item = new ArrayList<>();
-  
-    
     
     
 }

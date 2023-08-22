@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 /*스크롤 컨트롤*/    
     
-    const loginBtn = document.querySelector('button#loginBtn');
+    const loginBtn = document.querySelector('button#loginBtn1');
     loginBtn.addEventListener('click', function(){
         console.log('login');
         location.href="/login";
     });
     
     
-    const signBtn = document.querySelector('button#signBtn');
+    const signBtn = document.querySelector('button#signBtn1');
     signBtn.addEventListener('click', function(){
         console.log('signup');
     });
@@ -50,6 +50,109 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('signup1');
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const cartmain_btn = document.querySelector('#cartmain_btn');
+    cartmain_btn.addEventListener('click', () =>{
+//로그인 했는지 확인 시작     
+        const userIdElement = document.querySelector('#userId');
+        let userId='';
+    
+        if (userIdElement === null) {
+            
+            const confirmed = window.confirm("로그인 창으로 이동 하시겠습니까?");
+            if (confirmed) {
+                window.location.href = "/login";
+            } else {
+                return;
+            }
+            
+            console.log('Element not found.');
+            return;
+            
+        } else {
+            userId = userIdElement.innerHTML;
+            console.log(userId); // 출력: "exampleUser"
+        }
+//로그인 했는지 확인 끝
+    
+/*    for(let a of selectedOptionsName){
+        console.log('selectedOptionsName : '+a);
+    }
+    for(let a of selectedOptionsCnt){
+        console.log('selectedOptionscccc : '+a);
+    }
+    for(let a of selectedOptionsPrice){
+        console.log('selectedOptionsPrice : '+a);
+    }
+*/
+        
+// 데이터 바인딩
+    const data = {
+            userId: userId,
+    };
+    // Ajax 요청을 보낼 url
+    const reqUrl = '/freshmarket/maincart';
+        
+        
+    
+//장바구니 페이지 갈건지 체크 끝
+            const confirmed_f = window.confirm("장바구니 창으로 이동 하시겠습니까?");
+            if (confirmed_f) {
+                // Ajax POST 요청을 보냄
+                axios.post(reqUrl,data)
+            .then(function(response){//성공 응답일 때 실행할 콜백 등록
+                console.log(response);
+                
+                window.location.href = "/freshmarket/cart?id="+userId;
+                
+            })
+            .catch((error)=>{//실패일 때 실행할 콜백 등록
+                console.log(error);
+            });
+                
+            } else {
+                return;
+            }
+        
+// 내가 선택한 옵션 선택 ㅌㅌ
+
+
+
+
+
+
+
+
+
+
+
+
+    }); 
+// 장바구니 버튼 끝
+
+
+
+
+
+
+
+
+
 
 /*$(function() {
         var lnb = $("#lnb").offset().top;

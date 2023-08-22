@@ -13,6 +13,7 @@
 
 <body>
 
+<div th:fragment="main">
 <section class="hero is-link">
     <div class="hero-body">
         <div class="container">
@@ -23,7 +24,7 @@
         </div>
     </div>
 </section>
-<section class="section ">
+<section class="section">
     <div class="container">
         <button class="button is-link" onclick="pay('카드',jsons.card);">일반결제창</button>
         <button class="button is-link" onclick="pay('가상계좌',jsons.vaccount);">가상계좌</button>
@@ -81,6 +82,7 @@
             "discountCode": null,
             "appScheme": null
         },
+        
         "vaccount": { //가상계좌 결제창
 
             "amount": amount,
@@ -154,5 +156,6 @@
 
     }
 </script>
+</div>
 
 </html>
