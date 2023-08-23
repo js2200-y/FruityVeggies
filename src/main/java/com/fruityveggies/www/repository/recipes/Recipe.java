@@ -54,4 +54,7 @@ public class Recipe {
     @Column
     private String reference_amount;
     
+    @Column
+    private String filename;
+    
 }

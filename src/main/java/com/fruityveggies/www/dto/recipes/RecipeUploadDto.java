@@ -3,6 +3,8 @@ package com.fruityveggies.www.dto.recipes;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,8 @@ import lombok.NoArgsConstructor;
 public class RecipeUploadDto {
 
     // TODO: 파일 업로드
+    private String filename;
+    
     private String title; // 레시피 이름
     private String content; // 레시피 설명
     private String cooking_time; // 예상 소요 시간
@@ -34,6 +38,10 @@ public class RecipeUploadDto {
     //Tip
     private List<String> TipDes;
     
+ // MultipartFile 필드 추가
+    private MultipartFile uploadFile;
+
+  //DTO를 엔터티 객체로 변환해서 리턴하는 메서드
     public RecipeDto toRecipeDto() {
         return RecipeDto.builder()
                 .title(title)
@@ -42,6 +50,7 @@ public class RecipeUploadDto {
                 .hashtag(hashtag)
                 .category_main(category_main)
                 .category_sub(category_sub)
+                .filename(filename)
                 .build();
     }
     

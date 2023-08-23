@@ -1,8 +1,12 @@
 package com.fruityveggies.www.web.recipes;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fruityveggies.www.dto.RecipeSearchDto;
 import com.fruityveggies.www.dto.recipes.AdditionalIngredientDto;
@@ -101,8 +106,20 @@ public class RecipeController {
     
 
     @PostMapping("/upload")
-    public String create(RecipeUploadDto dto) {
+    public String create(RecipeUploadDto dto) throws IllegalStateException, IOException {
         log.info("upload(dto={}) POST", dto);
+        
+     // 파일 업로드 처리
+        String fileName = null;
+        MultipartFile uploadFile = dto.getUploadFile();
+        if (!uploadFile.isEmpty()) {
+            String originalFileName = uploadFile.getOriginalFilename();
+            String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+            UUID uuid = UUID.randomUUID(); // UUID 구하기
+            fileName = uuid + "." + ext;
+            uploadFile.transferTo(new File("C:\\upload\\" + fileName));
+        }
+        dto.setFilename(fileName);
         
       //form에서 submit(제출)된 내용을 DB 테이블에 insert
         RecipeDto recipeDto = dto.toRecipeDto();

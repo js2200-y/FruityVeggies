@@ -101,6 +101,8 @@ public class HomeController {
         
         List<Recipe> list = recipeService.getRecipeList();
         
+        log.info("list={}", list);
+        
         model.addAttribute("recipes", list);
         
         

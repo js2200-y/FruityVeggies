@@ -16,10 +16,10 @@
             <img alt="recipe-point-info" src="/img/info.webp">
             
             <div class="card-body">
-            <form method="post" id="formRe" >
+            <form method="post" id="formRe" encType="multipart/form-data">
             <div class="multiple-upload">
                     <img alt="대표 이미지 업로드" src="/img/recipe-image-upload.svg" id="uploadImage" style="cursor: pointer;">
-                    <input type="file" id="fileInput">
+                    <input type="file" name="uploadFile" id="fileInput">
                     
                     <!-- 이미지 미리보기 -->
                     <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
@@ -31,7 +31,7 @@
                         <p class="font-body" id="CurrentTextLengthInput" style="line-height: 1;">0/20</p>
                     </div>
                     <div class="my-2">
-                        required 레시피랑 레시피설명에 넣기
+                        <!-- required 레시피랑 레시피설명에 넣기 -->
                         <textarea class="form-control" id="content" name="content" placeholder="레시피에 대한 간단한 설명을 덧붙여주세요."></textarea>
                         <p class="font-body" id="CurrentTextLengthTextarea" style="line-height: 1;">0/240</p>
                     </div>
@@ -178,9 +178,6 @@
                             type="text" name="author" th:value="${ #authentication.name }" />
                     </div>
                     <div class="my-2">
-                    <button type="button" id="testBtn">test button</button>
-                         <!-- <input id="btnSave"  class="form-control btn btn-outline-success" 
-                            value="작성 완료" /> -->
                         <input id="btnSave"  class="form-control btn btn-outline-success" 
                             type="submit" value="작성 완료" />
                     </div>
