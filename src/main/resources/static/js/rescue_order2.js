@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () =>{
          let selectedPayment = null;
          let tossPayments = TossPayments("test_ck_4vZnjEJeQVx9dyz6KMOrPmOoBN0k");
 
-         let amount = parseFloat(totalPrice);  
-         console.log('떠라', amount);  
+         /*let amount = parseFloat(totalPrice);*/  
+         console.log('떠라');  
     
          function pay(method, requestJson) {
              console.log(requestJson);
@@ -57,16 +57,16 @@ document.addEventListener('DOMContentLoaded', () =>{
          if (selectedPayment === 'card') {
              let jsons = {
                  "card": {
-                     "amount": amount,
+                     "amount": 25000,
                      "orderId": "sample-" + orderId,
-                     "orderName": '생블루베리 중과 1kg...',
+                     "orderName": '패밀리 박스',
                      "successUrl": successUrl,
                      "failUrl": failUrl,
                      "cardCompany": null,
                      "cardInstallmentPlan": null,
                      "maxCardInstallmentPlan": null,
                      "useCardPoint": false,
-                     "customerName": "이재은",
+                     "customerName": "서정아",
                      "customerEmail": null,
                      "customerMobilePhone": null,
                      "taxFreeAmount": null,
@@ -82,12 +82,12 @@ document.addEventListener('DOMContentLoaded', () =>{
              let jsons = {
                  "transfer": { //계좌이체 결제창
 
-                     "amount": amount,
+                     "amount": 25000,
                      "orderId": "sample-" + orderId,
-                     "orderName": "생블루베리 중과 1kg",
+                     "orderName": "패밀리 박스",
                      "successUrl": successUrl,
                      "failUrl": failUrl,
-                     "customerName": "이재은",
+                     "customerName": "서정아",
                      "customerEmail": null,
                      "customerMobilePhone": null,
                      "taxFreeAmount": null,
@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () =>{
              let jsons = {
                  "phone": { // 휴대폰 결제창
 
-                     "amount": amount,
+                     "amount": 25000,
                      "orderId": "sample-" + orderId,
-                     "orderName": "생블루베리 중과 1kg",
+                     "orderName": "패밀리 박스",
                      "successUrl": successUrl,
                      "failUrl": failUrl,
                      "mobileCarrier": null

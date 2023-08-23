@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (confirmed) {
                 window.location.href = "/login";
             } else {
-                return;
+                window.location.href = "/rescueorder/rescue_order?resId="+userId;
             }
 	        
 	        console.log('Element not found.');

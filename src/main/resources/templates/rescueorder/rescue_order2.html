@@ -10,6 +10,7 @@
  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
  crossorigin="anonymous" />
 <link rel="stylesheet" href="/css/rescueOrder2.css" />
+ <link rel="stylesheet" href="./bulma.min.css">
     </th:block>    
     
     
@@ -73,7 +74,7 @@
      <div class="flex flex-col gap-16px">
       <div class="flex justify-between text-gray-800">
        <p class="text-16px" >총 상품금액</p>
-       <p class="text-16px"></p>
+       <p class="text-16px" th:text="${rescue.box_price}+'원'"></p>
       </div>
       <div class="flex justify-between text-gray-800">
        <p class="text-16px">총 배송비</p>
@@ -86,7 +87,7 @@
       <hr>
       <div class="flex justify-between text-lg font-bold text-gray-800">
        <p class="text-18px" >총 결제 금액</p>
-       <p class="text-18px text-brand-1" style="color: #9FE2BF;" >합계</p>
+       <p class="text-18px text-brand-1" style="color: #9FE2BF;" th:text="${rescue.box_price}+'원'">합계</p>
           <!-- th:text="${item.price * item.count}" -->
       </div>
      </div>
@@ -119,9 +120,10 @@
 
      <div class="flex flex-row items-center gap-13px"
      style="margin-bottom: 0px;">
-     <img
-      src="https://d3cpiew7rze14b.cloudfront.net/assets/login/Group_4383__2__X6V1UNE92.svg"
-      class="cursor-pointer" name="checkBox" alt="체크 박스">
+      <label class="flex items-center gap-5px">
+        <input type="checkbox" id="privacyCheckbox">
+    </label>
+    
     <div class="flex w-full items-center justify-between">
      <p class="font-body2 text-gray-600">&nbsp;&nbsp;[필수] 개인정보 수집 및 이용 동의</p>
      <a
@@ -144,9 +146,9 @@
     </main>
     
     <th:block layout:fragment="myscripts">
-     <script src="/js/rescue_order2
-     
-     .js"></script>
+     <script src="/js/rescue_order2.js"></script>
+      <script src="https://js.tosspayments.com/v1"></script>
+       <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     </th:block>
    
 </html>
