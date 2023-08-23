@@ -67,20 +67,15 @@ public class HomeController {
     public String market(Model model) {
         log.info("market()");
         
-        
         List<Item> items = itemService.findByAll();
         log.info("item={}",items);
         model.addAttribute("items", items);
         
-        
         List<ItemItemOptionDto> joinItems = itemService.getJoinAll();
-        
-        
         List<ItemItemOptionDto> uniqueItems = removeDuplicates(joinItems);
         
-        
         log.info("uniqueItems={}",uniqueItems);
-         model.addAttribute("uniqueItems", uniqueItems);
+        model.addAttribute("uniqueItems", uniqueItems);
         
         return "/main/market"; // View의 이름.
     }

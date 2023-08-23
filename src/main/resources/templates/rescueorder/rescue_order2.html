@@ -52,7 +52,7 @@
         <!-- th:text="${item.name} + ' ' + ${items.max_count} + ' 개'" -->
         <p class="text-16px text-gray-800" id="orderName" th:text="${rescue.boxsize}">item.name</p>
         <!-- th:text="${item.price * items.max_count} + ' 원'" -->
-        <p class="text-16px text-gray-800" th:text="${rescue.box_price}+'원'"></p>
+        <p class="text-16px text-gray-800" th:id="'opTotal_'" th:text="${rescue.box_price}+'원'"></p>
        </div>
       </div>
 
@@ -73,8 +73,7 @@
      <div class="flex flex-col gap-16px">
       <div class="flex justify-between text-gray-800">
        <p class="text-16px" >총 상품금액</p>
-       <!-- th:text="${item.price * item.count}" -->
-       <p class="text-16px" th:text="${rescue.box_price}+'원'"></p>
+       <p class="text-16px"></p>
       </div>
       <div class="flex justify-between text-gray-800">
        <p class="text-16px">총 배송비</p>
@@ -87,8 +86,7 @@
       <hr>
       <div class="flex justify-between text-lg font-bold text-gray-800">
        <p class="text-18px" >총 결제 금액</p>
-       <p class="text-18px text-brand-1" style="color: #9FE2BF;" 
-          >합계</p>
+       <p class="text-18px text-brand-1" style="color: #9FE2BF;" >합계</p>
           <!-- th:text="${item.price * item.count}" -->
       </div>
      </div>
@@ -137,7 +135,7 @@
     
     
     <br>
-    <button class="btn btn-long" id="payment-button" style="background-color: #9FE2BF;">바로 구매하기</button> 
+    <button class="btn btn-long" id="payment-button" type="button" style="background-color: #9FE2BF;">바로 구매하기</button> 
 
    
   </div>

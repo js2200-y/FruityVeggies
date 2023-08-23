@@ -24,7 +24,7 @@ public interface OrderItemsRepository extends JpaRepository<OrderItems, Long> {
     int deleteByUserEmail(@Param("usermail") String usermail);
 	
 	// 로그인한 사용자의 주문 내역 가져오기
-	@Query("SELECT c FROM OrderItems c WHERE c.useremail = :useremail ORDER BY c.id DESC")
+	@Query("SELECT c FROM OrderItems c WHERE c.useremail = :useremail")
     List<OrderItems> findByUseremail(@Param("useremail") String useremail);
 	
 }
