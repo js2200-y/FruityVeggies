@@ -17,7 +17,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT new com.fruityveggies.www.dto.ItemItemOptionDto(a.id, b.name, b.price, a.main_image_path, a.detail_image_path) FROM Item a JOIN ItemOption b on a.id = b.optionId WHERE a.id = :itemId")
     List<ItemItemOptionDto> getJoin(@Param("itemId") Long id);
     
-    @Query("SELECT new com.fruityveggies.www.dto.ItemItemOptionDto(a.id, b.name, b.price, a.main_image_path) FROM Item a JOIN ItemOption b on a.id = b.optionId")
+    @Query("SELECT new com.fruityveggies.www.dto.ItemItemOptionDto(a.id, b.name, b.price, a.main_image_path, a.detail_image_path) FROM Item a JOIN ItemOption b on a.id = b.optionId")
     List<ItemItemOptionDto> getJoinAll();
 
     
